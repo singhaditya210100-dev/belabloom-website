@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Packages — Belabloom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F6F1E8;--green:#1B3A2F;--green-mid:#2C5547;--green-light:#3D7060;--gold:#C8975A;--gold-light:#E8C48A;--dark:#0D1F18;--text:#2A2A2A;--text-muted:#6B6B6B;--white:#FFFFFF;--border:rgba(27,58,47,0.12);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:rgba(246,241,232,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--green);text-decoration:none;}
+    .nav-logo span{color:var(--gold);}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+    .nav-links a{text-decoration:none;color:var(--text);font-size:0.875rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--green);}
+    .nav-cta{background:var(--green);color:var(--cream)!important;padding:0.55rem 1.4rem;border-radius:2px;}
+
+    /* HERO */
+    .page-hero{padding:130px 5% 5rem;text-align:center;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center top,rgba(200,151,90,0.1) 0%,transparent 60%);pointer-events:none;}
+    .page-hero-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:600;line-height:1.1;letter-spacing:-0.02em;color:var(--dark);}
+    .page-hero h1 em{font-style:italic;color:var(--green);}
+    .page-hero-sub{font-size:1rem;color:var(--text-muted);line-height:1.75;max-width:560px;margin:1rem auto 0;}
+
+    /* TOGGLE */
+    .billing-toggle{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2.5rem;}
+    .toggle-label{font-size:0.85rem;font-weight:500;color:var(--text-muted);}
+    .toggle-label.active{color:var(--green);font-weight:600;}
+    .toggle-switch{width:52px;height:28px;background:var(--green);border-radius:100px;position:relative;cursor:pointer;transition:background 0.2s;}
+    .toggle-switch::after{content:'';position:absolute;width:20px;height:20px;background:var(--cream);border-radius:50%;top:4px;left:4px;transition:transform 0.2s;}
+    .toggle-switch.annual::after{transform:translateX(24px);}
+    .save-badge{background:var(--gold);color:var(--dark);font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:100px;}
+
+    /* PACKAGES GRID */
+    .packages-section{padding:3rem 5% 5rem;}
+    .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;align-items:start;}
+    .pkg-card{border-radius:4px;border:1.5px solid var(--border);background:var(--white);overflow:hidden;transition:all 0.3s;position:relative;}
+    .pkg-card:hover{box-shadow:0 12px 40px rgba(27,58,47,0.1);transform:translateY(-4px);}
+    .pkg-card.featured{border-color:var(--green);box-shadow:0 16px 48px rgba(27,58,47,0.15);transform:translateY(-12px);}
+    .pkg-card.featured:hover{transform:translateY(-16px);}
+    .pkg-badge{background:var(--green);color:var(--cream);text-align:center;padding:0.5rem;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+    .pkg-header{padding:2rem 2rem 1.5rem;}
+    .pkg-icon{font-size:2rem;margin-bottom:1rem;}
+    .pkg-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--dark);line-height:1.1;}
+    .pkg-tagline{font-size:0.82rem;color:var(--text-muted);margin-top:0.3rem;line-height:1.5;}
+    .pkg-price{margin-top:1.5rem;}
+    .price-label{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);}
+    .price-value{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--dark);line-height:1.2;margin-top:0.2rem;}
+    .price-note{font-size:0.78rem;color:var(--text-muted);}
+    .pkg-divider{height:1px;background:var(--border);margin:0 2rem;}
+    .pkg-features{padding:1.5rem 2rem;}
+    .feat-group-title{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;margin-top:1.2rem;}
+    .feat-group-title:first-child{margin-top:0;}
+    .feat-item{display:flex;gap:0.6rem;align-items:flex-start;padding:0.4rem 0;font-size:0.85rem;color:var(--text);}
+    .feat-item .check{color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px;}
+    .feat-item .cross{color:var(--border);font-weight:700;flex-shrink:0;margin-top:1px;}
+    .feat-item.dimmed{color:var(--text-muted);}
+    .pkg-footer{padding:0 2rem 2rem;}
+    .pkg-cta{display:block;text-align:center;padding:0.9rem;border-radius:2px;font-size:0.85rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;border:2px solid var(--green);color:var(--green);}
+    .pkg-cta:hover{background:var(--green);color:var(--cream);}
+    .pkg-card.featured .pkg-cta{background:var(--green);color:var(--cream);}
+    .pkg-card.featured .pkg-cta:hover{background:var(--green-mid);}
+
+    /* COMPARISON TABLE */
+    .compare-section{padding:3rem 5% 5rem;background:var(--white);}
+    .compare-title-wrap{text-align:center;margin-bottom:3rem;}
+    .section-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.6rem);font-weight:600;color:var(--dark);line-height:1.2;letter-spacing:-0.02em;}
+    .section-title em{font-style:italic;color:var(--green);}
+    .compare-table{width:100%;border-collapse:collapse;}
+    .compare-table th{padding:1.2rem 1rem;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--border);}
+    .compare-table th:first-child{text-align:left;}
+    .compare-table th.featured-col{background:rgba(27,58,47,0.04);color:var(--green);}
+    .compare-table td{padding:1rem;font-size:0.875rem;text-align:center;border-bottom:1px solid var(--border);color:var(--text);}
+    .compare-table td:first-child{text-align:left;font-weight:500;color:var(--dark);}
+    .compare-table td.featured-col{background:rgba(27,58,47,0.03);}
+    .compare-table tr:hover td{background:rgba(27,58,47,0.02);}
+    .compare-table tr:hover td.featured-col{background:rgba(27,58,47,0.05);}
+    .category-row td{background:var(--cream)!important;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0.8rem 1rem;}
+    .t-yes{color:var(--green);font-size:1rem;}
+    .t-no{color:#D0D0D0;font-size:1rem;}
+    .t-partial{font-size:0.75rem;font-weight:600;color:var(--gold);}
+
+    /* FAQ */
+    .faq-section{padding:5rem 5%;max-width:800px;margin:0 auto;}
+    .faq-header{text-align:center;margin-bottom:3rem;}
+    .faq-item{border-bottom:1px solid var(--border);}
+    .faq-q{width:100%;background:none;border:none;text-align:left;padding:1.4rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.95rem;font-weight:600;color:var(--dark);}
+    .faq-icon{font-size:1.2rem;color:var(--green);transition:transform 0.2s;flex-shrink:0;}
+    .faq-q.open .faq-icon{transform:rotate(45deg);}
+    .faq-a{display:none;padding:0 0 1.4rem;font-size:0.875rem;color:var(--text-muted);line-height:1.75;}
+    .faq-a.open{display:block;}
+
+    /* ENTERPRISE CTA */
+    .enterprise-band{background:var(--green);color:var(--cream);padding:5rem;margin:0 5% 5rem;border-radius:4px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+    .eb-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;line-height:1.2;margin-bottom:1rem;}
+    .eb-title em{font-style:italic;color:var(--gold-light);}
+    .eb-sub{font-size:0.9rem;color:rgba(246,241,232,0.7);line-height:1.7;}
+    .eb-points{display:flex;flex-direction:column;gap:1rem;}
+    .eb-point{display:flex;gap:0.8rem;align-items:flex-start;}
+    .eb-point-icon{font-size:1.1rem;flex-shrink:0;}
+    .eb-point-title{font-weight:600;font-size:0.9rem;color:var(--cream);margin-bottom:0.2rem;}
+    .eb-point-desc{font-size:0.82rem;color:rgba(246,241,232,0.65);line-height:1.5;}
+    .btn-gold{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--dark);padding:0.85rem 2rem;border-radius:2px;font-weight:700;text-decoration:none;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.25s;margin-top:1.5rem;}
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+    /* CTA STRIP */
+    .cta-strip{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:3rem 5%;gap:2rem;flex-wrap:wrap;}
+    .cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--cream);}
+
+    footer{background:var(--dark);color:rgba(246,241,232,0.7);padding:4rem 5% 2rem;}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--cream);text-decoration:none;display:inline-block;margin-bottom:1rem;}
+    .footer-logo span{color:var(--gold);}
+    .footer-tagline{font-size:0.875rem;line-height:1.7;max-width:280px;}
+    .footer-col h4{color:var(--cream);font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+    .footer-col ul a{text-decoration:none;color:rgba(246,241,232,0.6);font-size:0.875rem;transition:color 0.2s;}
+    .footer-col ul a:hover{color:var(--gold);}
+    .footer-bottom{border-top:1px solid rgba(246,241,232,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .footer-bottom p{font-size:0.8rem;}
+
+    @media(max-width:1024px){.pkg-grid{grid-template-columns:1fr 1fr;}.pkg-card.featured{transform:none;}.pkg-card.featured:hover{transform:translateY(-4px);}}
+    @media(max-width:700px){.pkg-grid{grid-template-columns:1fr;}.enterprise-band{grid-template-columns:1fr;padding:3rem 5%;margin:0;}.compare-table{font-size:0.78rem;}.footer-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:500px){.footer-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Bela<span>bloom</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="industries.html">Industries</a></li>
+    <li><a href="packages.html" class="active">Packages</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero" style="padding-top:140px;">
+  <div class="page-hero-tag">Bundled Solutions</div>
+  <h1>Simple packages.<br/><em>Serious</em> results.</h1>
+  <p class="page-hero-sub">We've bundled our most-requested services into three ready-to-go packages — built for every stage of your business journey. Or, build your own.</p>
+  <div class="billing-toggle">
+    <span class="toggle-label active" id="monthlyLabel">Monthly</span>
+    <div class="toggle-switch" id="billingToggle" onclick="toggleBilling()"></div>
+    <span class="toggle-label" id="annualLabel">Annual <span class="save-badge">Save 15%</span></span>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<div class="packages-section">
+  <div class="pkg-grid">
+
+    <!-- STARTUP LAUNCH -->
+    <div class="pkg-card">
+      <div class="pkg-header">
+        <div class="pkg-icon">🚀</div>
+        <div class="pkg-name">Startup Launch</div>
+        <p class="pkg-tagline">Everything a new office needs — from bare walls to fully operational.</p>
+        <div class="pkg-price">
+          <div class="price-label">One-Time Project Fee</div>
+          <div class="price-value">Custom</div>
+          <div class="price-note">Based on space size & requirements</div>
+        </div>
+      </div>
+      <div class="pkg-divider"></div>
+      <div class="pkg-features">
+        <div class="feat-group-title">Space & Setup</div>
+        <div class="feat-item"><span class="check">✓</span> Commercial space sourcing</div>
+        <div class="feat-item"><span class="check">✓</span> Lease negotiation support</div>
+        <div class="feat-item"><span class="check">✓</span> Interior project management</div>
+        <div class="feat-item"><span class="check">✓</span> Space planning & layout design</div>
+        <div class="feat-group-title">Safety & Compliance</div>
+        <div class="feat-item"><span class="check">✓</span> Basic fire safety setup</div>
+        <div class="feat-item"><span class="check">✓</span> Initial pest treatment + certificate</div>
+        <div class="feat-item"><span class="check">✓</span> Insurance advisory consultation</div>
+        <div class="feat-group-title">Support</div>
+        <div class="feat-item"><span class="check">✓</span> Dedicated project manager</div>
+        <div class="feat-item"><span class="cross">✗</span> <span class="dimmed">Ongoing FM contract</span></div>
+        <div class="feat-item"><span class="cross">✗</span> <span class="dimmed">Recurring compliance tracking</span></div>
+      </div>
+      <div class="pkg-footer">
+        <a href="contact.html" class="pkg-cta">Get a Quote →</a>
+      </div>
+    </div>
+
+    <!-- OPERATIONS PACK (FEATURED) -->
+    <div class="pkg-card featured">
+      <div class="pkg-badge">⭐ Most Popular</div>
+      <div class="pkg-header">
+        <div class="pkg-icon">⚙️</div>
+        <div class="pkg-name">Operations Pack</div>
+        <p class="pkg-tagline">For growing businesses that need ongoing management with zero downtime.</p>
+        <div class="pkg-price">
+          <div class="price-label">Monthly Retainer</div>
+          <div class="price-value" id="opsPriceDisplay">Custom</div>
+          <div class="price-note" id="opsPriceNote">Based on facility size & services</div>
+        </div>
+      </div>
+      <div class="pkg-divider"></div>
+      <div class="pkg-features">
+        <div class="feat-group-title">Facility Management</div>
+        <div class="feat-item"><span class="check">✓</span> Integrated FM — soft + hard services</div>
+        <div class="feat-item"><span class="check">✓</span> Housekeeping & deep cleaning</div>
+        <div class="feat-item"><span class="check">✓</span> MEP & electrical maintenance</div>
+        <div class="feat-item"><span class="check">✓</span> Monthly performance reports</div>
+        <div class="feat-group-title">Compliance & Safety</div>
+        <div class="feat-item"><span class="check">✓</span> Monthly pest control + certs</div>
+        <div class="feat-item"><span class="check">✓</span> Fire safety compliance monitoring</div>
+        <div class="feat-item"><span class="check">✓</span> Insurance renewal management</div>
+        <div class="feat-group-title">Advisory & Support</div>
+        <div class="feat-item"><span class="check">✓</span> Quarterly operational audit</div>
+        <div class="feat-item"><span class="check">✓</span> Dedicated senior account manager</div>
+        <div class="feat-item"><span class="check">✓</span> 24hr emergency response</div>
+      </div>
+      <div class="pkg-footer">
+        <a href="contact.html" class="pkg-cta">Get a Quote →</a>
+      </div>
+    </div>
+
+    <!-- COMPLIANCE PACK -->
+    <div class="pkg-card">
+      <div class="pkg-header">
+        <div class="pkg-icon">🛡</div>
+        <div class="pkg-name">Compliance Pack</div>
+        <p class="pkg-tagline">Get audit-ready fast. Every certificate, every renewal, every document covered.</p>
+        <div class="pkg-price">
+          <div class="price-label">Annual Contract</div>
+          <div class="price-value">Custom</div>
+          <div class="price-note">Based on compliance scope</div>
+        </div>
+      </div>
+      <div class="pkg-divider"></div>
+      <div class="pkg-features">
+        <div class="feat-group-title">Certifications</div>
+        <div class="feat-item"><span class="check">✓</span> Fire NOC application & management</div>
+        <div class="feat-item"><span class="check">✓</span> Pest control certificates (annual)</div>
+        <div class="feat-item"><span class="check">✓</span> Insurance gap analysis & placement</div>
+        <div class="feat-group-title">Auditing</div>
+        <div class="feat-item"><span class="check">✓</span> Bi-annual compliance audit</div>
+        <div class="feat-item"><span class="check">✓</span> Vendor performance review</div>
+        <div class="feat-item"><span class="check">✓</span> SOP documentation</div>
+        <div class="feat-group-title">Tracking</div>
+        <div class="feat-item"><span class="check">✓</span> Renewal calendar & reminders</div>
+        <div class="feat-item"><span class="check">✓</span> Document repository management</div>
+        <div class="feat-item"><span class="cross">✗</span> <span class="dimmed">Day-to-day FM services</span></div>
+        <div class="feat-item"><span class="cross">✗</span> <span class="dimmed">Emergency response SLA</span></div>
+      </div>
+      <div class="pkg-footer">
+        <a href="contact.html" class="pkg-cta">Get a Quote →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="compare-section">
+  <div class="compare-title-wrap">
+    <div class="section-tag">Compare</div>
+    <div class="section-title">What's included in <em>each pack</em></div>
+  </div>
+  <div style="overflow-x:auto;">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:40%">Feature</th>
+          <th>Startup Launch</th>
+          <th class="featured-col">Operations Pack</th>
+          <th>Compliance Pack</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="category-row"><td colspan="4">Space & Setup</td></tr>
+        <tr><td>Space sourcing</td><td><span class="t-yes">✓</span></td><td class="featured-col"><span class="t-no">—</span></td><td><span class="t-no">—</span></td></tr>
+        <tr><td>Interior project management</td><td><span class="t-yes">✓</span></td><td class="featured-col"><span class="t-no">—</span></td><td><span class="t-no">—</span></td></tr>
+        <tr><td>Lease negotiation</td><td><span class="t-yes">✓</span></td><td class="featured-col"><span class="t-no">—</span></td><td><span class="t-no">—</span></td></tr>
+
+        <tr class="category-row"><td colspan="4">Facility Management</td></tr>
+        <tr><td>Housekeeping & soft FM</td><td><span class="t-no">—</span></td><td class="featured-col"><span class="t-yes">✓</span></td><td><span class="t-no">—</span></td></tr>
+        <tr><td>Hard FM (MEP, electrical)</td><td><span class="t-no">—</span></td><td class="featured-col"><span class="t-yes">✓</span></td><td><span class="t-no">—</span></td></tr>
+        <tr><td>Monthly FM reports</td><td><span class="t-no">—</span></td><td class="featured-col"><span class="t-yes">✓</span></td><td><span class="t-no">—</span></td></tr>
+        <tr><td>24hr emergency response</td><td><span class="t-no">—</span></td><td class="featured-col"><span class="t-yes">✓</span></td><td><span class="t-no">—</span></td></tr>
+
+        <tr class="category-row"><td colspan="4">Compliance & Safety</td></tr>
+        <tr><td>Fire safety setup / NOC</td><td><span class="t-partial">Setup only</span></td><td class="featured-col"><span class="t-yes">✓ Ongoing</span></td><td><span class="t-yes">✓ Full</span></td></tr>
+        <tr><td>Pest control</td><td><span class="t-partial">Initial only</span></td><td class="featured-col"><span class="t-yes">✓ Monthly</span></td><td><span class="t-yes">✓ Annual cert</span></td></tr>
+        <tr><td>Insurance advisory</td><td><span class="t-partial">Consult only</span></td><td class="featured-col"><span class="t-yes">✓ Managed</span></td><td><span class="t-yes">✓ Full</span></td></tr>
+        <tr><td>Compliance audit</td><td><span class="t-no">—</span></td><td class="featured-col"><span class="t-yes">✓ Quarterly</span></td><td><span class="t-yes">✓ Bi-annual</span></td></tr>
+        <tr><td>Renewal tracking</td><td><span class="t-no">—</span></td><td class="featured-col"><span class="t-yes">✓</span></td><td><span class="t-yes">✓</span></td></tr>
+
+        <tr class="category-row"><td colspan="4">Support</td></tr>
+        <tr><td>Dedicated account manager</td><td><span class="t-partial">PM only</span></td><td class="featured-col"><span class="t-yes">✓ Senior</span></td><td><span class="t-partial">Audit mgr</span></td></tr>
+        <tr><td>SOP documentation</td><td><span class="t-no">—</span></td><td class="featured-col"><span class="t-yes">✓</span></td><td><span class="t-yes">✓</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ENTERPRISE BAND -->
+<div class="enterprise-band">
+  <div>
+    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">For Large Enterprises</div>
+    <h2 class="eb-title">Need something<br/><em>fully custom?</em></h2>
+    <p class="eb-sub">Large enterprises, multi-site operators, and businesses with complex needs deserve a fully tailored solution. We'll build a bespoke infrastructure contract — exactly the services you need, scoped to your scale.</p>
+    <a href="contact.html" class="btn-gold">Talk to Enterprise Sales ↗</a>
+  </div>
+  <div class="eb-points">
+    <div class="eb-point">
+      <div class="eb-point-icon">🗺</div>
+      <div>
+        <div class="eb-point-title">Multi-Site Contracts</div>
+        <p class="eb-point-desc">Standardised FM delivery across all your locations with centralised reporting.</p>
+      </div>
+    </div>
+    <div class="eb-point">
+      <div class="eb-point-icon">⚡</div>
+      <div>
+        <div class="eb-point-title">Custom SLAs</div>
+        <p class="eb-point-desc">Response time, escalation paths, and KPIs designed around your operational requirements.</p>
+      </div>
+    </div>
+    <div class="eb-point">
+      <div class="eb-point-icon">📊</div>
+      <div>
+        <div class="eb-point-title">Dedicated Command Centre</div>
+        <p class="eb-point-desc">Senior team, real-time dashboard access, and quarterly strategic reviews.</p>
+      </div>
+    </div>
+    <div class="eb-point">
+      <div class="eb-point-icon">💰</div>
+      <div>
+        <div class="eb-point-title">Volume Pricing</div>
+        <p class="eb-point-desc">Enterprise-scale contracts unlock significantly better rates across all service lines.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-header">
+    <div class="section-tag">Common Questions</div>
+    <div class="section-title">Frequently <em>Asked</em></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Can I mix services from different packages? <span class="faq-icon">+</span></button>
+    <div class="faq-a">Absolutely. Our packages are starting points, not limitations. We regularly create custom combinations — for example, adding pest control and insurance management to the Startup Launch, or scoping the Operations Pack without hard FM for co-working clients. Just tell us what you need.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How is pricing determined? <span class="faq-icon">+</span></button>
+    <div class="faq-a">Pricing depends on facility size (sq ft), service scope, location, team size, and contract duration. We provide itemised proposals — no vague "call for pricing" runarounds. Once you fill the contact form, we'll turn around a detailed proposal within 48–72 hours.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What's the minimum contract duration? <span class="faq-icon">+</span></button>
+    <div class="faq-a">For project-based work (space sourcing, interior setup), there's no recurring commitment — it's a one-time engagement. For ongoing FM and compliance services, we typically recommend minimum 6-month contracts to deliver measurable value, with 12-month contracts offering better pricing.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How quickly can you start? <span class="faq-icon">+</span></button>
+    <div class="faq-a">For compliance and FM services, we can typically onboard within 2–4 weeks of contract signing. Interior projects and space sourcing timelines depend on your requirements and existing lease situation. We'll give you realistic timelines upfront — no false promises.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Do you work outside of Pune? <span class="faq-icon">+</span></button>
+    <div class="faq-a">Yes — we serve clients pan-India. Our vendor network covers all major metro cities and many Tier 2 markets. For large multi-city requirements, we have regional coordination capabilities. Reach out and we'll confirm coverage for your specific locations.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What happens if a vendor fails to deliver? <span class="faq-icon">+</span></button>
+    <div class="faq-a">This is where Belabloom is fundamentally different from a marketplace. We are operationally accountable — we hold the vendor contracts, we manage their performance, and we make it right if they fail. You deal with us, not the vendor. That's the entire point of our model.</div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>Ready to pick your package?</h2>
+  <a href="contact.html" class="btn-gold">Get a Free Proposal ↗</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo">Bela<span>bloom</span></a>
+      <p class="footer-tagline">Full-stack business infrastructure — from finding your office to keeping it running seamlessly.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#sourcing">Space Sourcing</a></li>
+        <li><a href="services.html#interior">Interior Setup</a></li>
+        <li><a href="services.html#fm">Facility Management</a></li>
+        <li><a href="services.html#fire">Fire Safety</a></li>
+        <li><a href="services.html#pest">Pest Control</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="industries.html">Industries</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="mailto:hello@belabloom.in">hello@belabloom.in</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="contact.html">Request a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Belabloom. All rights reserved.</p>
+    <p>Made with 🌱 for growing businesses</p>
+  </div>
+</footer>
+
+<script>
+let isAnnual = false;
+function toggleBilling() {
+  isAnnual = !isAnnual;
+  const toggle = document.getElementById('billingToggle');
+  const mLabel = document.getElementById('monthlyLabel');
+  const aLabel = document.getElementById('annualLabel');
+  toggle.classList.toggle('annual', isAnnual);
+  mLabel.classList.toggle('active', !isAnnual);
+  aLabel.classList.toggle('active', isAnnual);
+  const display = document.getElementById('opsPriceDisplay');
+  const note = document.getElementById('opsPriceNote');
+  if (isAnnual) {
+    display.textContent = 'Custom';
+    note.textContent = 'Annual contract — save up to 15%';
+  } else {
+    display.textContent = 'Custom';
+    note.textContent = 'Based on facility size & services';
+  }
+}
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+  if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+</script>
+</body>
+</html>

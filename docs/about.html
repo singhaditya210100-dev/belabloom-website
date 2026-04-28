@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — Belabloom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F6F1E8;--green:#1B3A2F;--green-mid:#2C5547;--green-light:#3D7060;--gold:#C8975A;--gold-light:#E8C48A;--dark:#0D1F18;--text:#2A2A2A;--text-muted:#6B6B6B;--white:#FFFFFF;--border:rgba(27,58,47,0.12);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:rgba(246,241,232,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--green);text-decoration:none;}
+    .nav-logo span{color:var(--gold);}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+    .nav-links a{text-decoration:none;color:var(--text);font-size:0.875rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--green);}
+    .nav-cta{background:var(--green);color:var(--cream)!important;padding:0.55rem 1.4rem;border-radius:2px;}
+
+    /* PAGE HERO */
+    .page-hero{padding:130px 5% 5rem;background:var(--cream);position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+    .page-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    .page-hero-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:600;line-height:1.1;letter-spacing:-0.02em;color:var(--dark);}
+    .page-hero h1 em{font-style:italic;color:var(--green);}
+    .page-hero-sub{font-size:1.05rem;color:var(--text-muted);line-height:1.75;margin-top:1.2rem;}
+    .hero-accent-box{background:var(--green);color:var(--cream);border-radius:4px;padding:2.5rem;position:relative;overflow:hidden;}
+    .hero-accent-box::after{content:'✦';position:absolute;bottom:-1rem;right:1rem;font-size:8rem;color:rgba(200,151,90,0.12);line-height:1;}
+    .hero-accent-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;line-height:1.4;color:var(--gold-light);}
+    .hero-accent-body{font-size:0.9rem;color:rgba(246,241,232,0.75);line-height:1.7;margin-top:1rem;}
+
+    /* STORY SECTION */
+    .story-section{padding:5rem 5%;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;border-bottom:1px solid var(--border);}
+    .story-label{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+    .story-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:600;color:var(--dark);line-height:1.2;letter-spacing:-0.02em;}
+    .story-title em{font-style:italic;color:var(--green);}
+    .story-body p{font-size:1rem;color:var(--text-muted);line-height:1.8;margin-bottom:1.2rem;}
+    .story-body strong{color:var(--dark);font-weight:600;}
+
+    /* STATS ROW */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .stat-cell{background:var(--white);padding:2.5rem 2rem;text-align:center;}
+    .stat-big{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;color:var(--green);line-height:1;}
+    .stat-label{font-size:0.78rem;color:var(--text-muted);margin-top:0.3rem;letter-spacing:0.04em;}
+
+    /* VALUES */
+    .values-section{padding:5rem 5%;background:var(--dark);}
+    .values-section .section-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+    .values-section .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:600;color:var(--cream);line-height:1.2;letter-spacing:-0.02em;margin-bottom:3rem;}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .value-card{border:1px solid rgba(246,241,232,0.1);border-radius:4px;padding:2rem;transition:all 0.3s;}
+    .value-card:hover{border-color:var(--gold);background:rgba(200,151,90,0.05);}
+    .value-icon{font-size:2rem;margin-bottom:1rem;}
+    .value-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--cream);margin-bottom:0.5rem;}
+    .value-desc{font-size:0.875rem;color:rgba(246,241,232,0.6);line-height:1.65;}
+
+    /* TEAM */
+    .team-section{padding:5rem 5%;border-bottom:1px solid var(--border);}
+    .team-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+    .section-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:600;color:var(--dark);line-height:1.2;letter-spacing:-0.02em;}
+    .section-title em{font-style:italic;color:var(--green);}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .team-card{background:var(--white);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:all 0.3s;}
+    .team-card:hover{box-shadow:0 8px 32px rgba(27,58,47,0.1);transform:translateY(-4px);}
+    .team-avatar{height:240px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden;}
+    .team-avatar-1{background:linear-gradient(135deg,#2C5547,#1B3A2F);}
+    .team-avatar-2{background:linear-gradient(135deg,#C8975A,#E8C48A);}
+    .team-avatar-3{background:linear-gradient(135deg,#0D1F18,#2C5547);}
+    .team-initials{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:700;color:rgba(246,241,232,0.3);}
+    .team-info{padding:1.5rem;}
+    .team-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--dark);}
+    .team-role{font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);margin-top:0.2rem;}
+    .team-bio{font-size:0.83rem;color:var(--text-muted);line-height:1.6;margin-top:0.8rem;}
+
+    /* VISION MISSION */
+    .vm-section{padding:5rem 5%;background:var(--cream);}
+    .vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
+    .vm-card{border-radius:4px;padding:3rem;border:1.5px solid var(--border);}
+    .vm-card.vision{background:var(--green);border-color:var(--green);color:var(--cream);}
+    .vm-card.mission{background:var(--white);}
+    .vm-type{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;}
+    .vm-card.vision .vm-type{color:var(--gold);}
+    .vm-card.mission .vm-type{color:var(--gold);}
+    .vm-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;line-height:1.2;margin-bottom:1.2rem;}
+    .vm-card.vision .vm-title{color:var(--cream);}
+    .vm-card.mission .vm-title{color:var(--dark);}
+    .vm-card.mission .vm-title em{font-style:italic;color:var(--green);}
+    .vm-points{list-style:none;display:flex;flex-direction:column;gap:0.7rem;}
+    .vm-points li{font-size:0.9rem;line-height:1.6;display:flex;gap:0.7rem;}
+    .vm-card.vision .vm-points li{color:rgba(246,241,232,0.8);}
+    .vm-card.vision .vm-points li::before{content:'→';color:var(--gold);flex-shrink:0;}
+    .vm-card.mission .vm-points li{color:var(--text-muted);}
+    .vm-card.mission .vm-points li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+
+    /* CTA STRIP */
+    .cta-strip{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:3rem 5%;gap:2rem;flex-wrap:wrap;}
+    .cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--cream);}
+    .btn-gold{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--dark);padding:0.85rem 2rem;border-radius:2px;font-weight:700;text-decoration:none;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.25s;}
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+    /* FOOTER */
+    footer{background:var(--dark);color:rgba(246,241,232,0.7);padding:4rem 5% 2rem;}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--cream);text-decoration:none;display:inline-block;margin-bottom:1rem;}
+    .footer-logo span{color:var(--gold);}
+    .footer-tagline{font-size:0.875rem;line-height:1.7;max-width:280px;}
+    .footer-col h4{color:var(--cream);font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+    .footer-col ul a{text-decoration:none;color:rgba(246,241,232,0.6);font-size:0.875rem;transition:color 0.2s;}
+    .footer-col ul a:hover{color:var(--gold);}
+    .footer-bottom{border-top:1px solid rgba(246,241,232,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .footer-bottom p{font-size:0.8rem;}
+
+    @media(max-width:900px){
+      .page-hero-inner,.story-section,.vm-grid{grid-template-columns:1fr;}
+      .stats-row{grid-template-columns:1fr 1fr;}
+      .values-grid,.team-grid{grid-template-columns:1fr 1fr;}
+      .footer-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:600px){
+      .values-grid,.team-grid,.stats-row{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Bela<span>bloom</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="industries.html">Industries</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="page-hero-tag">Our Story</div>
+      <h1>Built to fix<br/>the <em>fragmentation</em><br/>problem.</h1>
+      <p class="page-hero-sub">Belabloom was born from a frustration every ops team knows too well — chasing five vendors for five things that should come from one place. We decided to be that one place.</p>
+    </div>
+    <div class="hero-accent-box">
+      <p class="hero-accent-title">"The future of business operations isn't about more vendors. It's about fewer, better, accountable ones."</p>
+      <p class="hero-accent-body">That belief drives every service we design, every vendor we onboard, and every commitment we make to our clients. Belabloom is the infrastructure partner growing businesses never had — until now.</p>
+    </div>
+  </div>
+</div>
+
+<!-- STATS ROW -->
+<div class="stats-row">
+  <div class="stat-cell">
+    <div class="stat-big">200+</div>
+    <div class="stat-label">Projects Delivered</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-big">7</div>
+    <div class="stat-label">Service Verticals</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-big">98%</div>
+    <div class="stat-label">Client Retention Rate</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-big">40%</div>
+    <div class="stat-label">Avg. Ops Cost Reduction</div>
+  </div>
+</div>
+
+<!-- STORY SECTION -->
+<div class="story-section">
+  <div>
+    <div class="story-label">The Problem We Solve</div>
+    <h2 class="story-title">Businesses deserve<br/>better than<br/><em>vendor chaos.</em></h2>
+  </div>
+  <div class="story-body">
+    <p>When a business sets up a new office or tries to manage an existing one, they typically end up coordinating with a real estate broker, an interior contractor, a housekeeping agency, a pest control company, a fire safety vendor, and an insurance advisor — all separately, all with misaligned incentives, and none of them talking to each other.</p>
+    <p>The result? <strong>Cost overruns, compliance gaps, maintenance failures, and ops teams stretched thin</strong> across things that have nothing to do with their actual job.</p>
+    <p>Belabloom was built to change that. We aggregate the entire infrastructure lifecycle under one roof — with one account manager, one SLA, and full end-to-end ownership. When something needs to be done, we do it. When something breaks, we fix it. You never have to wonder who to call.</p>
+    <p>We're not a marketplace or a referral platform. <strong>We are operationally accountable</strong> — we hold vendor contracts, we supervise execution, and we sign off on quality. That's the Belabloom difference.</p>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="section-tag">What We Stand For</div>
+  <div class="section-title">Our Core Values</div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🎯</div>
+      <div class="value-name">Ownership</div>
+      <p class="value-desc">We don't pass the buck. When we commit to something, we see it through — on time, on budget, to the standard we promised.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔍</div>
+      <div class="value-name">Transparency</div>
+      <p class="value-desc">No hidden costs. No vague timelines. No post-project surprises. We communicate clearly at every stage of engagement.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💡</div>
+      <div class="value-name">Efficiency</div>
+      <p class="value-desc">We obsess over better ways to do things — for our clients and within our own operations. Efficiency is our product.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🤝</div>
+      <div class="value-name">Partnership</div>
+      <p class="value-desc">We're not vendors. We're partners. Our success is directly tied to how well our clients operate, grow, and scale.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌱</div>
+      <div class="value-name">Scalability</div>
+      <p class="value-desc">Whether you're a 10-person startup or a 1,000-person enterprise, our model adapts to where you are and where you're going.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔒</div>
+      <div class="value-name">Compliance-First</div>
+      <p class="value-desc">We never cut corners on safety and compliance. Every engagement is designed to be audit-ready from day one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISION & MISSION -->
+<section class="vm-section">
+  <div class="section-tag">Direction</div>
+  <div class="section-title">Vision &amp; <em>Mission</em></div>
+  <div class="vm-grid">
+    <div class="vm-card vision">
+      <div class="vm-type">Our Vision</div>
+      <div class="vm-title">The one-stop platform for business infrastructure in India.</div>
+      <ul class="vm-points">
+        <li>Be the default infrastructure partner for India's growing businesses</li>
+        <li>Build technology that makes facility management transparent and proactive</li>
+        <li>Expand from metro cities to Tier 2 markets by 2027</li>
+        <li>Evolve into a SaaS + services hybrid platform</li>
+      </ul>
+    </div>
+    <div class="vm-card mission">
+      <div class="vm-type">Our Mission</div>
+      <div class="vm-title">Simplify operations. <em>Unlock growth.</em></div>
+      <ul class="vm-points">
+        <li>Reduce vendor fragmentation for every client we serve</li>
+        <li>Deliver cost-efficient, compliant, and scalable solutions</li>
+        <li>Bring technology, services, and execution under one umbrella</li>
+        <li>Help businesses focus on what they do best — their core</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="team-header">
+    <div>
+      <div class="section-tag">The People</div>
+      <div class="section-title">Meet the <em>team</em> behind Belabloom</div>
+    </div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar team-avatar-1">
+        <div class="team-initials">AB</div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Aditya Singh</div>
+        <div class="team-role">Founder & CEO</div>
+        <p class="team-bio">Operations strategist with deep expertise in facility management and business infrastructure. Obsessed with building systems that scale.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar team-avatar-2">
+        <div class="team-initials">PM</div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Projects & Operations</div>
+        <div class="team-role">PM & Execution Team</div>
+        <p class="team-bio">Our on-ground project managers and operations specialists ensure every setup and every FM contract runs like clockwork.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar team-avatar-3">
+        <div class="team-initials">CS</div>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Client Success</div>
+        <div class="team-role">Account Management</div>
+        <p class="team-bio">Dedicated account managers who proactively manage your needs, not just react to them. Your first and last call for anything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Want to work with us?</h2>
+  <a href="contact.html" class="btn-gold">Start the Conversation ↗</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo">Bela<span>bloom</span></a>
+      <p class="footer-tagline">Full-stack business infrastructure — from finding your office to keeping it running seamlessly.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#sourcing">Space Sourcing</a></li>
+        <li><a href="services.html#interior">Interior Setup</a></li>
+        <li><a href="services.html#fm">Facility Management</a></li>
+        <li><a href="services.html#fire">Fire Safety</a></li>
+        <li><a href="services.html#pest">Pest Control</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="industries.html">Industries</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="mailto:hello@belabloom.in">hello@belabloom.in</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="contact.html">Request a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Belabloom. All rights reserved.</p>
+    <p>Made with 🌱 for growing businesses</p>
+  </div>
+</footer>
+</body>
+</html>
