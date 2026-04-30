@@ -1,5 +1,12 @@
 # 🤖 CLAUDE.md — Belabloom Website
-> Auto-loaded by Claude Code. Read this file at the start of every session before doing anything.
+> ⚡ AUTOMATIC SESSION PROTOCOL — NO HUMAN INTERVENTION NEEDED
+> 
+> **ON STARTUP**: Your absolute first action — before anything else — is:
+> `cat STATUS.md` → read it fully → resume from "Next Immediate Action" without waiting for any instruction.
+>
+> **ON STOP / CONTEXT NEARING LIMIT**: The `Stop` hook auto-saves STATE.md and pushes to GitHub. You do not need to do anything.
+>
+> This project runs fully autonomously across context resets.
 
 ---
 

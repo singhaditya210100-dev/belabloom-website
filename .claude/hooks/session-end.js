@@ -1,150 +1,180 @@
 #!/usr/bin/env node
 /**
- * session-end.js
- * Fires on every Stop event (when Claude finishes responding).
- * 
- * What it does automatically:
- * 1. Checks if there are any changes to commit
- * 2. Reads the session transcript to understand what happened
- * 3. Calls Anthropic API to generate an updated STATUS.md
- * 4. Writes STATUS.md, commits all changes, and pushes to GitHub
- * 
- * This means every time Claude finishes a task, state is saved to GitHub.
- * If context resets, the next session starts from the last committed state.
+ * session-end.js — fires on every Stop event (after Claude finishes responding).
+ *
+ * Automatically:
+ * 1. Checks if there are git changes to commit
+ * 2. Calls Anthropic API to intelligently update STATUS.md
+ * 3. Commits + pushes belabloom-website to GitHub
+ * 4. If a task is complete, moves it from In Progress → Done in KANBAN.md
+ *    and pushes the kanban repo too
  */
 
-const fs = require("fs");
+const fs   = require("fs");
 const path = require("path");
+const os   = require("os");
 const { execSync } = require("child_process");
 
-const ROOT = process.env.CLAUDE_PROJECT_DIR || process.cwd();
+const ROOT            = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const TRANSCRIPT_PATH = process.env.CLAUDE_TRANSCRIPT_PATH || null;
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || "";
+const ANTHROPIC_KEY   = process.env.ANTHROPIC_API_KEY || "";
+const KANBAN_API      = "https://api.github.com/repos/singhaditya210100-dev/belabloom-kanban/contents/KANBAN.md";
 
-async function run() {
+function getToken() {
   try {
-    // Check if there's anything to commit
-    const statusOut = execSync("git status --porcelain", { cwd: ROOT }).toString().trim();
-    const hasChanges = statusOut.length > 0;
-    
-    if (!hasChanges) {
-      // Nothing changed this turn - skip
-      process.exit(0);
-    }
+    const creds = fs.readFileSync(path.join(os.homedir(), ".git-credentials"), "utf8");
+    const match = creds.match(/https:\/\/[^:]+:([^@]+)@github\.com/);
+    return match ? match[1].trim() : "";
+  } catch { return ""; }
+}
 
-    // Get a summary of what changed
-    let diffSummary = "";
-    try {
-      diffSummary = execSync("git diff --stat HEAD", { cwd: ROOT }).toString().trim();
-      if (!diffSummary) {
-        diffSummary = execSync("git diff --cached --stat", { cwd: ROOT }).toString().trim();
-      }
-    } catch (_) {}
+async function fetchKanban(token) {
+  const res = await fetch(KANBAN_API, {
+    headers: { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github.v3+json" }
+  });
+  if (!res.ok) return null;
+  const d = await res.json();
+  return { content: Buffer.from(d.content, "base64").toString("utf8"), sha: d.sha };
+}
 
-    // Read last few lines of transcript if available
-    let recentWork = "";
-    if (TRANSCRIPT_PATH && fs.existsSync(TRANSCRIPT_PATH)) {
-      try {
-        const transcript = fs.readFileSync(TRANSCRIPT_PATH, "utf8");
-        // Get last ~3000 chars of transcript
-        recentWork = transcript.slice(-3000);
-      } catch (_) {}
-    }
+async function pushKanban(token, content, sha, message) {
+  await fetch(KANBAN_API, {
+    method: "PUT",
+    headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ message, content: Buffer.from(content).toString("base64"), sha })
+  });
+}
 
-    // Read current STATUS.md
-    const statusPath = path.join(ROOT, "STATUS.md");
-    const currentStatus = fs.existsSync(statusPath)
-      ? fs.readFileSync(statusPath, "utf8")
-      : "No STATUS.md found.";
+function getInProgressTasks(md) {
+  const m = md.match(/## 🔄 In Progress\n([\s\S]*?)(?=\n## )/);
+  if (!m) return [];
+  return m[1].split("\n").filter(l => l.match(/^- \[[ x]\] /)).map(l => ({
+    line: l, task: l.replace(/^- \[[ x]\] /, ""), done: l.includes("[x]")
+  }));
+}
 
-    // Build commit message from diff
-    const changedFiles = execSync("git diff --name-only HEAD", { cwd: ROOT })
-      .toString().trim().split("\n").filter(Boolean);
-    const newFiles = statusOut.split("\n")
-      .filter(l => l.startsWith("?? "))
-      .map(l => l.replace("?? ", "").trim());
-    const allChanged = [...changedFiles, ...newFiles].slice(0, 5);
-    const commitMessage = allChanged.length > 0
-      ? `chore: auto-sync — updated ${allChanged.join(", ")}`
-      : "chore: auto-sync session state";
+function moveToDone(md, taskLine, taskText) {
+  // Remove from In Progress
+  let updated = md.split(taskLine + "\n").join("").split(taskLine).join("");
+  // Add to Done
+  const doneMarker = "## ✅ Done";
+  const idx = updated.indexOf(doneMarker);
+  if (idx === -1) return updated;
+  const nl = updated.indexOf("\n", idx) + 1;
+  return updated.slice(0, nl) + `- [x] ${taskText}\n` + updated.slice(nl);
+}
 
-    // Call Anthropic API to generate updated STATUS.md
-    let updatedStatus = currentStatus;
-    
-    if (ANTHROPIC_API_KEY) {
-      try {
-        const today = new Date().toISOString().split("T")[0];
-        const prompt = `You are maintaining a STATUS.md file for a Next.js website project called Belabloom.
+async function updateStatusMd(currentStatus, diffSummary, recentWork) {
+  if (!ANTHROPIC_KEY) return currentStatus;
+  try {
+    const today = new Date().toISOString().split("T")[0];
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": ANTHROPIC_KEY,
+        "anthropic-version": "2023-06-01"
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 2000,
+        messages: [{
+          role: "user",
+          content: `Update this STATUS.md to reflect work just completed.
 
 Current STATUS.md:
 \`\`\`
 ${currentStatus}
 \`\`\`
 
-What changed in this session (git diff --stat):
+Git diff --stat:
 \`\`\`
-${diffSummary || "No diff available"}
-\`\`\`
-
-Recent work context:
-\`\`\`
-${recentWork || "No transcript available"}
+${diffSummary}
 \`\`\`
 
-Today's date: ${today}
+Recent transcript context:
+\`\`\`
+${recentWork}
+\`\`\`
 
-Task: Update the STATUS.md file to reflect what was just completed. 
-- Move completed items from "In Progress" or "Todo" to "Completed"  
-- Update "Next Immediate Action" to point to the very next concrete step
-- Add a new entry to the Session Log at the bottom with today's date and 2-3 bullet points of what was done
-- Keep the format identical to the current STATUS.md
-- Do NOT add any commentary outside the markdown file content
-- Output ONLY the raw markdown content, nothing else`;
+Today: ${today}
 
-        const response = await fetch("https://api.anthropic.com/v1/messages", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-api-key": ANTHROPIC_API_KEY,
-            "anthropic-version": "2023-06-01"
-          },
-          body: JSON.stringify({
-            model: "claude-sonnet-4-20250514",
-            max_tokens: 2000,
-            messages: [{ role: "user", content: prompt }]
-          })
-        });
+Rules:
+- Move completed items to "Completed" section
+- Update "Next Immediate Action" to the very next concrete step
+- Add session log entry with date and 2-3 bullets of what was done
+- Keep identical markdown format
+- Output ONLY the raw markdown, nothing else`
+        }]
+      })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      const text = data?.content?.[0]?.text || "";
+      if (text.trim().startsWith("#")) return text.trim();
+    }
+  } catch (_) {}
+  return currentStatus;
+}
 
-        if (response.ok) {
-          const data = await response.json();
-          const content = data?.content?.[0]?.text || "";
-          if (content.trim().startsWith("#")) {
-            updatedStatus = content.trim();
-          }
-        }
-      } catch (apiErr) {
-        // API call failed - still commit with unchanged STATUS.md
-        console.error("STATUS.md update via API failed:", apiErr.message);
-      }
+async function run() {
+  try {
+    const gitStatus = execSync("git status --porcelain", { cwd: ROOT }).toString().trim();
+    if (!gitStatus) { process.exit(0); }
+
+    // Gather context
+    let diffSummary = "";
+    try { diffSummary = execSync("git diff --stat HEAD", { cwd: ROOT }).toString().trim(); } catch (_) {}
+
+    let recentWork = "";
+    if (TRANSCRIPT_PATH && fs.existsSync(TRANSCRIPT_PATH)) {
+      try { recentWork = fs.readFileSync(TRANSCRIPT_PATH, "utf8").slice(-3000); } catch (_) {}
     }
 
-    // Write updated STATUS.md
+    // Update STATUS.md
+    const statusPath = path.join(ROOT, "STATUS.md");
+    const currentStatus = safeRead(statusPath);
+    const updatedStatus = await updateStatusMd(currentStatus, diffSummary, recentWork);
     fs.writeFileSync(statusPath, updatedStatus, "utf8");
 
-    // Stage everything and commit
+    // Build commit message
+    const changed = gitStatus.split("\n").slice(0, 4)
+      .map(l => l.trim().split(" ").pop()).filter(Boolean).join(", ");
+    const commitMsg = `chore: auto-sync — ${changed}`;
+
+    // Commit + push website repo
     execSync("git add -A", { cwd: ROOT });
-    execSync(`git commit -m "${commitMessage}"`, { cwd: ROOT });
-
-    // Push to GitHub
+    execSync(`git commit -m "${commitMsg}"`, { cwd: ROOT });
     execSync("git push origin main", { cwd: ROOT });
-    
-    console.log(`✅ Auto-synced to GitHub: ${commitMessage}`);
-    process.exit(0);
+    console.log(`✅ Pushed website: ${commitMsg}`);
 
+    // Check if kanban task is complete — look for transcript signal
+    const token = getToken();
+    if (token && recentWork.toLowerCase().includes("complet")) {
+      try {
+        const kanban = await fetchKanban(token);
+        if (kanban) {
+          const inProgress = getInProgressTasks(kanban.content);
+          if (inProgress.length > 0) {
+            const task = inProgress[0];
+            const updated = moveToDone(kanban.content, task.line, task.task);
+            await pushKanban(token, updated, kanban.sha,
+              `chore: complete "${task.task.split("|")[0].trim()}" ✅`);
+            console.log(`✅ Kanban updated: "${task.task.split("|")[0].trim()}" → Done`);
+          }
+        }
+      } catch (e) { console.error("Kanban update failed:", e.message); }
+    }
+
+    process.exit(0);
   } catch (err) {
-    console.error("session-end hook error:", err.message);
-    process.exit(0); // Never block Claude — exit 0 even on error
+    console.error("session-end error:", err.message);
+    process.exit(0); // Never block Claude
   }
+}
+
+function safeRead(p) {
+  try { return fs.readFileSync(p, "utf8"); } catch { return ""; }
 }
 
 run();
