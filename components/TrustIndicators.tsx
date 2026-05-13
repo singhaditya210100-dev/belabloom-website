@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import { Award, Shield, TrendingUp } from 'lucide-react'
+import ClientLogoCarousel from '@/components/ClientLogoCarousel'
 
 interface Stat {
   number: string
@@ -68,22 +68,13 @@ export default function TrustIndicators({
           </div>
         )}
 
-        {/* Client Logos placeholder */}
+        {/* Client Logo Carousel */}
         {showClientLogos && (
           <div className="border-t border-neutral-200 pt-12 md:pt-16">
             <h3 className="text-center text-neutral-600 font-semibold mb-8 uppercase tracking-wide">
               Trusted By Industry Leaders
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-8">
-              {[...Array(6)].map((_, idx) => (
-                <div
-                  key={idx}
-                  className="h-16 md:h-20 bg-white rounded-lg border border-neutral-200 flex items-center justify-center p-4"
-                >
-                  <span className="text-xs md:text-sm text-neutral-400">Client Logo</span>
-                </div>
-              ))}
-            </div>
+            <ClientLogoCarousel />
           </div>
         )}
       </div>
