@@ -1,389 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Industries — Belabloom</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
   <style>
-    :root{--cream:#F6F1E8;--green:#1B3A2F;--green-mid:#2C5547;--green-light:#3D7060;--gold:#C8975A;--gold-light:#E8C48A;--dark:#0D1F18;--text:#2A2A2A;--text-muted:#6B6B6B;--white:#FFFFFF;--border:rgba(27,58,47,0.12);}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
-
-    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:rgba(246,241,232,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--green);text-decoration:none;}
-    .nav-logo span{color:var(--gold);}
-    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
-    .nav-links a{text-decoration:none;color:var(--text);font-size:0.875rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
-    .nav-links a:hover,.nav-links a.active{color:var(--green);}
-    .nav-cta{background:var(--green);color:var(--cream)!important;padding:0.55rem 1.4rem;border-radius:2px;}
-
-    /* HERO */
-    .page-hero{padding:130px 5% 5rem;background:var(--dark);color:var(--cream);position:relative;overflow:hidden;}
-    .page-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(200,151,90,0.1) 0%,transparent 60%);pointer-events:none;}
-    .page-hero-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:600;line-height:1.1;letter-spacing:-0.02em;max-width:700px;}
-    .page-hero h1 em{font-style:italic;color:var(--gold-light);}
-    .page-hero-sub{font-size:1rem;color:rgba(246,241,232,0.65);line-height:1.75;max-width:560px;margin-top:1rem;}
-
-    /* INDUSTRY PILLS NAV */
-    .ind-nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:72px;z-index:900;}
-    .ind-nav-inner{display:flex;overflow-x:auto;padding:0 5%;scrollbar-width:none;gap:0;}
-    .ind-nav-inner::-webkit-scrollbar{display:none;}
-    .inav-link{white-space:nowrap;padding:1rem 1.5rem;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;border-bottom:2px solid transparent;transition:all 0.2s;}
-    .inav-link:hover{color:var(--green);border-bottom-color:var(--gold);}
-
-    /* INDUSTRY BLOCKS */
-    .industry-block{padding:5rem 5%;display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start;border-bottom:1px solid var(--border);}
-    .ib-sidebar{position:sticky;top:130px;}
-    .ib-icon-wrap{width:72px;height:72px;border-radius:4px;background:rgba(27,58,47,0.08);display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:1.5rem;}
-    .ib-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
-    .ib-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--dark);line-height:1.2;letter-spacing:-0.02em;}
-    .ib-title em{font-style:italic;color:var(--green);}
-    .ib-desc{font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin-top:1rem;}
-    .ib-cta{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1.5rem;font-size:0.8rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);padding-bottom:2px;transition:all 0.2s;}
-    .ib-cta:hover{color:var(--gold);border-color:var(--gold);}
-
-    /* NEEDS + SOLUTIONS */
-    .ib-main{}
-    .ib-subsection{margin-bottom:2.5rem;}
-    .ib-subsection-title{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
-    .need-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
-    .need-item{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:1.2rem;transition:all 0.25s;}
-    .need-item:hover{border-color:var(--green);}
-    .need-emoji{font-size:1.2rem;margin-bottom:0.4rem;}
-    .need-title{font-weight:600;font-size:0.85rem;color:var(--dark);margin-bottom:0.2rem;}
-    .need-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.5;}
-
-    .solution-list{display:flex;flex-direction:column;gap:0.6rem;}
-    .solution-item{display:flex;gap:0.8rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--white);border:1px solid var(--border);border-radius:4px;}
-    .solution-item::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;font-size:0.85rem;}
-    .solution-item-text{font-size:0.875rem;color:var(--text-muted);}
-    .solution-item-text strong{color:var(--dark);}
-
-    /* SECTOR STAT */
-    .sector-stat{background:var(--green);color:var(--cream);border-radius:4px;padding:1.8rem;margin-top:1.5rem;}
-    .sector-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--gold);line-height:1;}
-    .sector-stat-label{font-size:0.82rem;color:rgba(246,241,232,0.7);margin-top:0.3rem;}
-
-    /* MARKET HIGHLIGHT */
-    .market-band{background:var(--gold);padding:3rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;}
-    .market-stat{text-align:center;}
-    .market-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--dark);}
-    .market-label{font-size:0.78rem;color:var(--dark);opacity:0.7;margin-top:0.2rem;}
-    .market-text{max-width:400px;}
-    .market-text h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--dark);margin-bottom:0.5rem;}
-    .market-text p{font-size:0.875rem;color:var(--dark);opacity:0.8;line-height:1.65;}
-
-    /* CTA STRIP */
-    .cta-strip{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:3rem 5%;gap:2rem;flex-wrap:wrap;}
-    .cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--cream);}
-    .btn-gold{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--dark);padding:0.85rem 2rem;border-radius:2px;font-weight:700;text-decoration:none;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.25s;}
-    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
-
-    footer{background:var(--dark);color:rgba(246,241,232,0.7);padding:4rem 5% 2rem;}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
-    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--cream);text-decoration:none;display:inline-block;margin-bottom:1rem;}
-    .footer-logo span{color:var(--gold);}
-    .footer-tagline{font-size:0.875rem;line-height:1.7;max-width:280px;}
-    .footer-col h4{color:var(--cream);font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;}
-    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-    .footer-col ul a{text-decoration:none;color:rgba(246,241,232,0.6);font-size:0.875rem;transition:color 0.2s;}
-    .footer-col ul a:hover{color:var(--gold);}
-    .footer-bottom{border-top:1px solid rgba(246,241,232,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
-    .footer-bottom p{font-size:0.8rem;}
-
-    @media(max-width:900px){
-      .industry-block{grid-template-columns:1fr;}
-      .ib-sidebar{position:static;}
-      .need-grid{grid-template-columns:1fr;}
-      .footer-grid{grid-template-columns:1fr 1fr;}
-    }
-    @media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+    .ind-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
+    .ind-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;cursor:pointer;transition:background 0.15s;}
+    .ind-card:hover{background:var(--off-white);}
+    .ind-card-img{aspect-ratio:16/9;position:relative;overflow:hidden;}
+    .ind-card-img-bg{position:absolute;inset:0;}
+    .ind-card-body{padding:1.4rem 1.4rem 0.75rem;}
+    .ind-card-title{font-size:1rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:0.5rem;}
+    .ind-card-desc{font-size:0.8rem;color:var(--text-mid);line-height:1.65;}
+    .ind-card-foot{padding:0.65rem 1.4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .ind-card-tags{display:flex;gap:0.35rem;}
+    .ind-card-tag{font-size:0.65rem;font-weight:500;padding:0.15rem 0.5rem;border:1px solid var(--border);color:var(--text-light);}
+    .ind-arrow{font-size:0.75rem;color:var(--text-light);transition:color 0.15s;}
+    .ind-card:hover .ind-arrow{color:var(--green);}
+    .ind-detail{display:none;}
+    .ind-detail.open{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
+    .ind-detail-img{position:relative;min-height:320px;}
+    .ind-detail-img-bg{position:absolute;inset:0;}
+    .ind-detail-body{padding:3.5rem 4%;display:flex;flex-direction:column;justify-content:center;}
+    .ind-detail-title{font-size:1.7rem;font-weight:800;color:var(--text);letter-spacing:-0.025em;margin-bottom:0.75rem;}
+    .ind-detail-desc{font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;}
+    .ind-needs-title{font-size:0.7rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.75rem;}
+    .ind-need-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+    .ind-need-list li{font-size:0.83rem;color:var(--text-mid);display:flex;gap:0.5rem;}
+    .ind-need-list li::before{content:"→";color:var(--gold);flex-shrink:0;}
+    @media(max-width:900px){.ind-grid{grid-template-columns:1fr 1fr;}.ind-detail.open{grid-template-columns:1fr;}}
+    @media(max-width:600px){.ind-grid{grid-template-columns:1fr;}}
   </style>
 </head>
-<body>
-
-<nav>
-  <a href="index.html" class="nav-logo">Bela<span>bloom</span></a>
-  <ul class="nav-links">
-    <li><a href="services.html">Services</a></li>
-    <li><a href="industries.html" class="active">Industries</a></li>
-    <li><a href="packages.html">Packages</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
-  </ul>
+<body><nav class="site-nav">
+  <div class="nav-r1">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">BB</div>
+      <div class="nav-logo-copy"><span class="nav-logo-name">Belabloom</span><span class="nav-logo-sub">Built for business</span></div>
+    </a>
+    <div class="nav-r1-right">
+      <div class="nav-search">⌕</div>
+      <a href="contact.html" class="btn-contact">Contact us</a>
+    </div>
+  </div>
+  <div class="nav-r2">
+    <ul class="nav-primary">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="industries.html"  class='active'>Industries</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <ul class="nav-secondary">
+      <li><a href="about.html">Our Story</a></li><li><a href="about.html#values">Values</a></li><li><a href="contact.html">Get a Quote</a></li>
+    </ul>
+  </div>
 </nav>
-
-<!-- HERO -->
 <div class="page-hero">
-  <div class="page-hero-tag">Who We Serve</div>
-  <h1>Every sector.<br/><em>One partner.</em><br/>Total coverage.</h1>
-  <p class="page-hero-sub">Belabloom serves businesses across industries — from fast-moving startups to established enterprises. Every sector has unique infrastructure needs, and we've built solutions for each.</p>
-</div>
-
-<!-- QUICK NAV -->
-<div class="ind-nav">
-  <div class="ind-nav-inner">
-    <a href="#corporates" class="inav-link">🏢 Corporates</a>
-    <a href="#startups" class="inav-link">🚀 Startups</a>
-    <a href="#smes" class="inav-link">🏭 SMEs</a>
-    <a href="#coworking" class="inav-link">🤝 Co-working</a>
-    <a href="#retail" class="inav-link">🛍 Retail</a>
-    <a href="#warehousing" class="inav-link">📦 Warehousing</a>
-  </div>
-</div>
-
-<!-- ─── CORPORATES ─── -->
-<div id="corporates" class="industry-block">
-  <div class="ib-sidebar">
-    <div class="ib-icon-wrap">🏢</div>
-    <div class="ib-tag">Industry</div>
-    <h2 class="ib-title">Corporate<br/><em>Offices</em></h2>
-    <p class="ib-desc">Large enterprises and mid-market companies managing multiple floors, multiple sites, and large teams — with zero tolerance for operational downtime.</p>
-    <a href="contact.html" class="ib-cta">Talk to Our Enterprise Team →</a>
-    <div class="sector-stat"><div class="sector-stat-num">₹81B+</div><div class="sector-stat-label">India FM market — corporates lead demand</div></div>
-  </div>
-  <div class="ib-main">
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">Key Challenges We Solve</div>
-      <div class="need-grid">
-        <div class="need-item"><div class="need-emoji">🔀</div><div class="need-title">Multi-Vendor Chaos</div><div class="need-desc">Dozens of vendors, no accountability. We consolidate into one contract.</div></div>
-        <div class="need-item"><div class="need-emoji">📋</div><div class="need-title">Compliance Pressure</div><div class="need-desc">Fire NOCs, pest certs, insurance renewals — all tracked proactively.</div></div>
-        <div class="need-item"><div class="need-emoji">💸</div><div class="need-title">Cost Overruns</div><div class="need-desc">Benchmarked vendor rates and bundled contracts reduce OpEx significantly.</div></div>
-        <div class="need-item"><div class="need-emoji">📉</div><div class="need-title">SLA Failures</div><div class="need-desc">We manage vendors to KPIs and provide monthly performance reports.</div></div>
-      </div>
-    </div>
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">What Belabloom Delivers</div>
-      <div class="solution-list">
-        <div class="solution-item"><div class="solution-item-text"><strong>Integrated FM contract</strong> — soft + hard services, one account manager, monthly SLA reports</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Compliance calendar</strong> — fire NOC, pest certs, insurance renewals — zero gaps</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Multi-site management</strong> — standardised service delivery across locations</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Dedicated senior account manager</strong> — escalation-ready, strategically aligned</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── STARTUPS ─── -->
-<div id="startups" class="industry-block">
-  <div class="ib-sidebar">
-    <div class="ib-icon-wrap">🚀</div>
-    <div class="ib-tag">Industry</div>
-    <h2 class="ib-title">Startups &amp;<br/><em>Scale-ups</em></h2>
-    <p class="ib-desc">Fast-moving teams that need to set up fast, spend smart, and focus entirely on growth — not on managing contractors or worrying about fire NOCs.</p>
-    <a href="contact.html" class="ib-cta">Build Your Startup Office →</a>
-    <div class="sector-stat"><div class="sector-stat-num">3× faster</div><div class="sector-stat-label">Office setup timeline vs. self-managed projects</div></div>
-  </div>
-  <div class="ib-main">
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">Key Challenges We Solve</div>
-      <div class="need-grid">
-        <div class="need-item"><div class="need-emoji">⏱</div><div class="need-title">Time to Operational</div><div class="need-desc">You need to move fast. We set up offices in weeks, not months.</div></div>
-        <div class="need-item"><div class="need-emoji">💰</div><div class="need-title">Tight Budgets</div><div class="need-desc">Fixed-fee packages with no surprises — ideal for seed to Series B teams.</div></div>
-        <div class="need-item"><div class="need-emoji">🔧</div><div class="need-title">No In-House Ops Team</div><div class="need-desc">We become your outsourced ops function — saving a hire and a headache.</div></div>
-        <div class="need-item"><div class="need-emoji">📐</div><div class="need-title">Space Planning</div><div class="need-desc">Layouts designed for collaboration, focus, and future headcount growth.</div></div>
-      </div>
-    </div>
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">What Belabloom Delivers</div>
-      <div class="solution-list">
-        <div class="solution-item"><div class="solution-item-text"><strong>Startup Launch Pack</strong> — space sourcing, interior PM, fire safety, pest, insurance</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Flexible FM contracts</strong> — scale up or down as your team grows</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Fixed-fee project management</strong> — no budget shock on handover</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Virtual ops support</strong> — your outsourced facilities function on retainer</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── SMEs ─── -->
-<div id="smes" class="industry-block">
-  <div class="ib-sidebar">
-    <div class="ib-icon-wrap">🏭</div>
-    <div class="ib-tag">Industry</div>
-    <h2 class="ib-title">SMEs &amp;<br/><em>Mid-Market</em></h2>
-    <p class="ib-desc">Established businesses that have outgrown their current setup and need a smarter, more professional operations partner — without the enterprise price tag.</p>
-    <a href="contact.html" class="ib-cta">Upgrade Your Operations →</a>
-    <div class="sector-stat"><div class="sector-stat-num">40%</div><div class="sector-stat-label">Avg. reduction in ops costs within 6 months</div></div>
-  </div>
-  <div class="ib-main">
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">Key Challenges We Solve</div>
-      <div class="need-grid">
-        <div class="need-item"><div class="need-emoji">📜</div><div class="need-title">Compliance Gaps</div><div class="need-desc">Missing fire certs, lapsed pest licenses — we audit and fix all gaps.</div></div>
-        <div class="need-item"><div class="need-emoji">🧾</div><div class="need-title">Vendor Overspend</div><div class="need-desc">Benchmarking your existing contracts typically reveals 20–30% savings.</div></div>
-        <div class="need-item"><div class="need-emoji">🏗</div><div class="need-title">Ageing Infrastructure</div><div class="need-desc">Planned hard FM and predictive maintenance to prevent costly breakdowns.</div></div>
-        <div class="need-item"><div class="need-emoji">📊</div><div class="need-title">No Visibility</div><div class="need-desc">We introduce dashboards and reporting so you always know what's happening.</div></div>
-      </div>
-    </div>
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">What Belabloom Delivers</div>
-      <div class="solution-list">
-        <div class="solution-item"><div class="solution-item-text"><strong>Full operational audit</strong> — identify waste, gaps, and quick wins immediately</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Vendor renegotiation</strong> — we benchmark and renegotiate your existing contracts</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Compliance pack</strong> — all certifications brought up to date and tracked going forward</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Ongoing integrated FM</strong> — one contract replaces your fragmented vendor list</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── CO-WORKING ─── -->
-<div id="coworking" class="industry-block">
-  <div class="ib-sidebar">
-    <div class="ib-icon-wrap">🤝</div>
-    <div class="ib-tag">Industry</div>
-    <h2 class="ib-title">Co-working<br/><em>Spaces</em></h2>
-    <p class="ib-desc">Co-working operators run high-traffic, multi-tenant environments where cleanliness, safety, and operational reliability directly impact member experience and retention.</p>
-    <a href="contact.html" class="ib-cta">Partner With Us →</a>
-    <div class="sector-stat"><div class="sector-stat-num">500+</div><div class="sector-stat-label">Co-working centres active in India's top 8 cities</div></div>
-  </div>
-  <div class="ib-main">
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">Key Challenges We Solve</div>
-      <div class="need-grid">
-        <div class="need-item"><div class="need-emoji">🧹</div><div class="need-title">High-Frequency Cleaning</div><div class="need-desc">Multi-shift housekeeping calibrated to member traffic and peak hours.</div></div>
-        <div class="need-item"><div class="need-emoji">🔐</div><div class="need-title">Access & Security</div><div class="need-desc">Security management, CCTV, and visitor protocols for multi-tenant spaces.</div></div>
-        <div class="need-item"><div class="need-emoji">🧯</div><div class="need-title">Fire Safety Complexity</div><div class="need-desc">Multi-floor, multi-tenant fire safety systems designed and maintained.</div></div>
-        <div class="need-item"><div class="need-emoji">⚡</div><div class="need-title">Uptime Requirements</div><div class="need-desc">MEP reliability is non-negotiable. We deliver preventive maintenance SLAs.</div></div>
-      </div>
-    </div>
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">What Belabloom Delivers</div>
-      <div class="solution-list">
-        <div class="solution-item"><div class="solution-item-text"><strong>High-frequency FM contract</strong> — calibrated to co-working traffic patterns</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Multi-tenant fire safety</strong> — system design, installation, and quarterly inspections</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Monthly pest control</strong> — scheduled and certified for food courts and common areas</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Expansion support</strong> — new site setup as you scale your co-working network</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── RETAIL ─── -->
-<div id="retail" class="industry-block">
-  <div class="ib-sidebar">
-    <div class="ib-icon-wrap">🛍</div>
-    <div class="ib-tag">Industry</div>
-    <h2 class="ib-title">Retail<br/><em>Chains</em></h2>
-    <p class="ib-desc">Retail brands with multiple outlets across cities face the ultimate challenge — consistent store experience delivered by reliable operations at scale, everywhere.</p>
-    <a href="contact.html" class="ib-cta">Scale Your Retail Ops →</a>
-    <div class="sector-stat"><div class="sector-stat-num">Pan-India</div><div class="sector-stat-label">Vendor network across 20+ cities</div></div>
-  </div>
-  <div class="ib-main">
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">Key Challenges We Solve</div>
-      <div class="need-grid">
-        <div class="need-item"><div class="need-emoji">🏪</div><div class="need-title">Consistency Across Stores</div><div class="need-desc">Standardised SOP-driven FM ensures every outlet reflects your brand.</div></div>
-        <div class="need-item"><div class="need-emoji">🔄</div><div class="need-title">Rapid Rollouts</div><div class="need-desc">New store setups executed quickly with our pre-vetted national vendor network.</div></div>
-        <div class="need-item"><div class="need-emoji">📋</div><div class="need-title">License & Compliance</div><div class="need-desc">FSSAI, fire NOC, pest certificates — managed centrally across all outlets.</div></div>
-        <div class="need-item"><div class="need-emoji">💸</div><div class="need-title">Fragmented Vendor Costs</div><div class="need-desc">National contracts give you economies of scale unavailable store-by-store.</div></div>
-      </div>
-    </div>
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">What Belabloom Delivers</div>
-      <div class="solution-list">
-        <div class="solution-item"><div class="solution-item-text"><strong>National FM contract</strong> — single vendor, consistent SOP, centralised reporting</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>New store setup</strong> — interior fit-out, compliance, and FM launch in one package</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Monthly pest + quarterly deep clean</strong> — food-safe, FSSAI-aligned treatments</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Compliance dashboard</strong> — see every outlet's certificate status in real time</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── WAREHOUSING ─── -->
-<div id="warehousing" class="industry-block" style="border-bottom:none;">
-  <div class="ib-sidebar">
-    <div class="ib-icon-wrap">📦</div>
-    <div class="ib-tag">Industry</div>
-    <h2 class="ib-title">Warehousing &amp;<br/><em>Logistics</em></h2>
-    <p class="ib-desc">Large-format facilities with round-the-clock operations, heavy equipment, pest sensitivity, and strict fire safety requirements — where FM downtime means supply chain disruption.</p>
-    <a href="contact.html" class="ib-cta">Get a Warehouse FM Quote →</a>
-    <div class="sector-stat"><div class="sector-stat-num">24/7</div><div class="sector-stat-label">Emergency response capability for logistics clients</div></div>
-  </div>
-  <div class="ib-main">
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">Key Challenges We Solve</div>
-      <div class="need-grid">
-        <div class="need-item"><div class="need-emoji">🐀</div><div class="need-title">Pest Risk</div><div class="need-desc">Warehouses face severe rodent and insect pressure. We manage it proactively.</div></div>
-        <div class="need-item"><div class="need-emoji">🔥</div><div class="need-title">Fire Safety Complexity</div><div class="need-desc">Large-format sprinkler systems, hydrants, and suppression units — installed and maintained.</div></div>
-        <div class="need-item"><div class="need-emoji">⚡</div><div class="need-title">Electrical & MEP</div><div class="need-desc">High-load electrical systems, DG sets, and loading bay infrastructure managed.</div></div>
-        <div class="need-item"><div class="need-emoji">📊</div><div class="need-title">Compliance Audits</div><div class="need-desc">Factory Act, fire NOC, and insurance inspections — we keep you always ready.</div></div>
-      </div>
-    </div>
-    <div class="ib-subsection">
-      <div class="ib-subsection-title">What Belabloom Delivers</div>
-      <div class="solution-list">
-        <div class="solution-item"><div class="solution-item-text"><strong>Large-format FM contract</strong> — hard services focus with 24/7 emergency response</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Intensive pest management</strong> — weekly monitoring, rodent bait stations, certified treatments</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Fire system AMC</strong> — hydrant, sprinkler, and suppression systems under annual maintenance</div></div>
-        <div class="solution-item"><div class="solution-item-text"><strong>Insurance management</strong> — warehouse stock insurance, WC policy, and liability cover</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MARKET BAND -->
-<div class="market-band">
-  <div class="market-stat"><div class="market-num">₹81B</div><div class="market-label">India FM Market 2025</div></div>
-  <div class="market-text">
-    <h3>The industry is growing. Is your operations partner keeping up?</h3>
-    <p>India's facility management market is growing at 7.5% CAGR — driven by commercial real estate growth, compliance demands, and the shift to outsourced operations. Belabloom is built for this moment.</p>
-  </div>
-  <div class="market-stat"><div class="market-num">7.5%</div><div class="market-label">CAGR 2025–2030</div></div>
-  <div class="market-stat"><div class="market-num">10%+</div><div class="market-label">IFM Segment CAGR</div></div>
-</div>
-
-<!-- CTA -->
-<div class="cta-strip">
-  <h2>Your industry. Our expertise.</h2>
-  <a href="contact.html" class="btn-gold">Get a Tailored Proposal ↗</a>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
+  <div class="page-breadcrumb"><a href="index.html">Home</a> › Industries</div>
+  <div class="page-hero-grid">
+    <div><h1>Industries we serve</h1></div>
     <div>
-      <a href="index.html" class="footer-logo">Bela<span>bloom</span></a>
-      <p class="footer-tagline">Full-stack business infrastructure — from finding your office to keeping it running seamlessly.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="services.html#sourcing">Space Sourcing</a></li>
-        <li><a href="services.html#interior">Interior Setup</a></li>
-        <li><a href="services.html#fm">Facility Management</a></li>
-        <li><a href="services.html#fire">Fire Safety</a></li>
-        <li><a href="services.html#pest">Pest Control</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="industries.html">Industries</a></li>
-        <li><a href="packages.html">Packages</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Get in Touch</h4>
-      <ul>
-        <li><a href="mailto:hello@belabloom.in">hello@belabloom.in</a></li>
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="contact.html">Request a Quote</a></li>
-      </ul>
+      <p class="page-hero-desc">With deep expertise across <span class="hl">six major sectors</span>, we provide industry-specific infrastructure expertise, local execution, and tailored service contracts.</p>
+      <div class="keyword-search">
+        <label>Keywords</label>
+        <input type="text" id="indSearch" placeholder="Search by sector or service" oninput="filterIndustries(this.value)"/>
+        <span style="color:var(--text-light);font-size:0.8rem;cursor:pointer;" onclick="document.getElementById('indSearch').value='';filterIndustries('')">✕</span>
+      </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 Belabloom. All rights reserved.</p>
-    <p>Made with 🌱 for growing businesses</p>
+</div>
+<div style="padding:0.75rem 6%;border-bottom:1px solid var(--border);">
+  <span class="result-count" id="indCount">6 Industries</span>
+</div>
+<div style="padding:0 6% 0;border-bottom:1px solid var(--border);">
+  <div class="ind-grid" id="indGrid">
+    <div class="ind-card" id="corporates" data-tags="corporate enterprise office multi-site large" onclick="toggleDetail('d-corp',this)">
+      <div class="ind-card-img"><div class="ind-card-img-bg img-dark"></div><div class="img-grid"></div></div>
+      <div class="ind-card-body"><div class="ind-card-title">Corporate Offices</div><div class="ind-card-desc">Multi-floor enterprise environments where operational downtime is not an option and compliance must be air-tight.</div></div>
+      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">FM</span><span class="ind-card-tag">Compliance</span></div><span class="ind-arrow">→</span></div>
+    </div>
+    <div class="ind-card" id="startups" data-tags="startup scale-up growth office setup fast" onclick="toggleDetail('d-start',this)">
+      <div class="ind-card-img"><div class="ind-card-img-bg img-light"></div><div class="img-grid"></div></div>
+      <div class="ind-card-body"><div class="ind-card-title">Startups &amp; Scale-ups</div><div class="ind-card-desc">Fast-moving teams that need to set up fast, spend smart, and stay focused on growth — not managing contractors.</div></div>
+      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">Setup</span><span class="ind-card-tag">Flexible</span></div><span class="ind-arrow">→</span></div>
+    </div>
+    <div class="ind-card" id="smes" data-tags="sme small medium enterprise mid-market established" onclick="toggleDetail('d-sme',this)">
+      <div class="ind-card-img"><div class="ind-card-img-bg img-mid"></div><div class="img-grid"></div></div>
+      <div class="ind-card-body"><div class="ind-card-title">SMEs &amp; Mid-Market</div><div class="ind-card-desc">Established businesses that have outgrown their current setup and need a smarter operations partner.</div></div>
+      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">Audit</span><span class="ind-card-tag">FM</span></div><span class="ind-arrow">→</span></div>
+    </div>
+    <div class="ind-card" id="coworking" data-tags="coworking co-working flex space shared office tenant" onclick="toggleDetail('d-cow',this)">
+      <div class="ind-card-img"><div class="ind-card-img-bg img-gold"></div><div class="img-grid"></div></div>
+      <div class="ind-card-body"><div class="ind-card-title">Co-working Spaces</div><div class="ind-card-desc">High-traffic multi-tenant environments where cleanliness, safety, and reliability drive member retention.</div></div>
+      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">High-Freq FM</span><span class="ind-card-tag">Safety</span></div><span class="ind-arrow">→</span></div>
+    </div>
+    <div class="ind-card" id="retail" data-tags="retail chain store outlet pan-india rollout brand" onclick="toggleDetail('d-ret',this)">
+      <div class="ind-card-img"><div class="ind-card-img-bg img-warm"></div><div class="img-grid"></div></div>
+      <div class="ind-card-body"><div class="ind-card-title">Retail Chains</div><div class="ind-card-desc">Multi-outlet brands that need consistent store experience delivered by reliable operations at scale.</div></div>
+      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">National FM</span><span class="ind-card-tag">Compliance</span></div><span class="ind-arrow">→</span></div>
+    </div>
+    <div class="ind-card" id="warehousing" data-tags="warehouse logistics supply chain 3pl distribution" onclick="toggleDetail('d-wh',this)">
+      <div class="ind-card-img"><div class="ind-card-img-bg img-mid"></div><div class="img-grid"></div></div>
+      <div class="ind-card-body"><div class="ind-card-title">Warehousing &amp; Logistics</div><div class="ind-card-desc">Large-format facilities with round-the-clock operations, fire safety complexity, and severe pest risk.</div></div>
+      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">24/7 FM</span><span class="ind-card-tag">Pest</span></div><span class="ind-arrow">→</span></div>
+    </div>
   </div>
-</footer>
-</body>
-</html>
+</div>
+<div class="ind-detail" id="d-corp">
+  <div class="ind-detail-img"><div class="ind-detail-img-bg img-dark"></div><div class="img-grid"></div></div>
+  <div class="ind-detail-body">
+    <div class="feature-eyebrow">Corporate Offices</div>
+    <div class="ind-detail-title">Enterprise-grade operations, delivered</div>
+    <p class="ind-detail-desc">Large enterprises need a partner who can consolidate fragmented vendors, enforce compliance, and report on performance without disrupting daily operations.</p>
+    <div class="ind-needs-title">What Belabloom delivers</div>
+    <ul class="ind-need-list"><li>Integrated FM — soft + hard services, one SLA</li><li>Compliance calendar — fire NOC, pest certs, insurance renewals</li><li>Multi-site management with standardised reporting</li><li>Dedicated senior account manager</li></ul>
+    <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a corporate proposal →</a>
+  </div>
+</div>
+<div class="ind-detail" id="d-start">
+  <div class="ind-detail-img"><div class="ind-detail-img-bg img-light"></div><div class="img-grid"></div></div>
+  <div class="ind-detail-body">
+    <div class="feature-eyebrow">Startups &amp; Scale-ups</div>
+    <div class="ind-detail-title">Set up fast. Stay compliant. Focus on growth.</div>
+    <p class="ind-detail-desc">We become your outsourced ops function — handling space, setup, safety, and FM so your team can focus 100% on the product.</p>
+    <div class="ind-needs-title">What Belabloom delivers</div>
+    <ul class="ind-need-list"><li>Startup Launch Pack — space + interior + fire + pest + insurance</li><li>3× faster office setup vs. self-managed</li><li>Flexible FM contracts that scale with headcount</li><li>Virtual ops support on retainer</li></ul>
+    <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a startup proposal →</a>
+  </div>
+</div>
+<div class="ind-detail" id="d-sme">
+  <div class="ind-detail-img"><div class="ind-detail-img-bg img-mid"></div><div class="img-grid"></div></div>
+  <div class="ind-detail-body">
+    <div class="feature-eyebrow">SMEs &amp; Mid-Market</div>
+    <div class="ind-detail-title">Upgrade operations without the enterprise price tag.</div>
+    <p class="ind-detail-desc">SMEs typically carry 20–30% vendor overspend without realising it. We audit, benchmark, and restructure your operations — then manage them going forward.</p>
+    <div class="ind-needs-title">What Belabloom delivers</div>
+    <ul class="ind-need-list"><li>Full operational audit — identify waste and compliance gaps</li><li>Vendor renegotiation and benchmarking</li><li>Compliance pack — all certifications brought up to date</li><li>Ongoing integrated FM</li></ul>
+    <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get an SME proposal →</a>
+  </div>
+</div>
+<div class="ind-detail" id="d-cow">
+  <div class="ind-detail-img"><div class="ind-detail-img-bg img-gold"></div><div class="img-grid"></div></div>
+  <div class="ind-detail-body">
+    <div class="feature-eyebrow">Co-working Spaces</div>
+    <div class="ind-detail-title">Member experience starts with flawless operations.</div>
+    <p class="ind-detail-desc">Multi-tenant, high-traffic environments demand multi-shift housekeeping, fire safety across floors, and zero downtime on MEP systems.</p>
+    <div class="ind-needs-title">What Belabloom delivers</div>
+    <ul class="ind-need-list"><li>High-frequency FM calibrated to member traffic</li><li>Multi-tenant fire safety — design, install, AMC</li><li>Monthly pest control with certificates</li><li>New site setup support as you scale</li></ul>
+    <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a co-working proposal →</a>
+  </div>
+</div>
+<div class="ind-detail" id="d-ret">
+  <div class="ind-detail-img"><div class="ind-detail-img-bg img-warm"></div><div class="img-grid"></div></div>
+  <div class="ind-detail-body">
+    <div class="feature-eyebrow">Retail Chains</div>
+    <div class="ind-detail-title">Consistent experience. Every outlet. Every city.</div>
+    <p class="ind-detail-desc">A national FM contract gives you economies of scale impossible to achieve outlet-by-outlet, plus the brand consistency your customers expect.</p>
+    <div class="ind-needs-title">What Belabloom delivers</div>
+    <ul class="ind-need-list"><li>National FM contract — one vendor, consistent SOP</li><li>New store setup in one package</li><li>Monthly pest + quarterly deep clean</li><li>Compliance dashboard across all outlets</li></ul>
+    <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a retail proposal →</a>
+  </div>
+</div>
+<div class="ind-detail" id="d-wh">
+  <div class="ind-detail-img"><div class="ind-detail-img-bg img-dark"></div><div class="img-grid"></div></div>
+  <div class="ind-detail-body">
+    <div class="feature-eyebrow">Warehousing &amp; Logistics</div>
+    <div class="ind-detail-title">FM downtime means supply chain disruption. Not on our watch.</div>
+    <p class="ind-detail-desc">Intensive pest management, large-format fire safety systems, 24/7 hard FM, and insurance management — all built around your operational uptime requirements.</p>
+    <div class="ind-needs-title">What Belabloom delivers</div>
+    <ul class="ind-need-list"><li>Large-format FM with 24/7 emergency response</li><li>Weekly pest monitoring + rodent bait stations</li><li>Fire system AMC — hydrant, sprinkler, suppression</li><li>Warehouse stock + WC + liability insurance</li></ul>
+    <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a warehousing proposal →</a>
+  </div>
+</div>
+<div class="stat-strip">
+  <div class="stat-cell"><div class="stat-num">₹81B</div><div class="stat-label">India FM market size 2025</div></div>
+  <div class="stat-cell"><div class="stat-num">7.5%</div><div class="stat-label">CAGR through 2030</div></div>
+  <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label">Sectors served</div></div>
+  <div class="stat-cell"><div class="stat-num">20+</div><div class="stat-label">Cities in vendor network</div></div>
+</div>
+<div class="cta-bleed">
+  <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
+  <div class="cta-bleed-content"><h2>Your industry.<br/>Our expertise.</h2><a href="contact.html" class="cta-bleed-link">Get a tailored proposal &nbsp;→</a></div>
+</div>
+<footer><div class="footer-inner"><div class="footer-top">
+  <div><div class="footer-brand-name">Belabloom</div><p class="footer-brand-desc">Full-stack business infrastructure — from finding your office to running it every day.</p><a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a><div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div></div>
+  <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#sourcing">Space sourcing</a></li><li><a href="services.html#fm">Facility management</a></li><li><a href="services.html#fire">Fire safety</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+  <div class="footer-col"><h4>Industries</h4><ul><li><a href="industries.html">All sectors</a></li><li><a href="industries.html#startups">Startups</a></li><li><a href="industries.html#smes">SMEs</a></li></ul></div>
+  <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="packages.html">Packages</a></li><li><a href="contact.html">Get a quote</a></li></ul></div>
+</div><div class="footer-bottom"><span>© 2025 Belabloom. All rights reserved.</span><span>Pune, Maharashtra — Serving Pan-India</span></div></div></footer></body></html>
+<script>
+function toggleDetail(id,card){
+  const all=document.querySelectorAll('.ind-detail');
+  const t=document.getElementById(id);
+  const open=t.classList.contains('open');
+  all.forEach(d=>d.classList.remove('open'));
+  if(!open){t.classList.add('open');setTimeout(()=>t.scrollIntoView({behavior:'smooth',block:'start'}),50);}
+}
+function filterIndustries(q){
+  const cards=document.querySelectorAll('.ind-card');
+  const t=q.toLowerCase();let c=0;
+  cards.forEach(card=>{const show=!t||(card.dataset.tags+' '+card.innerText).toLowerCase().includes(t);card.style.display=show?'':'none';if(show)c++;});
+  document.getElementById('indCount').textContent=c+' Industr'+(c!==1?'ies':'y');
+}
+</script>

@@ -4,581 +4,156 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Services — Belabloom</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --cream:#F6F1E8;--green:#1B3A2F;--green-mid:#2C5547;--green-light:#3D7060;
-      --gold:#C8975A;--gold-light:#E8C48A;--dark:#0D1F18;--text:#2A2A2A;
-      --text-muted:#6B6B6B;--white:#FFFFFF;--border:rgba(27,58,47,0.12);
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
-
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:rgba(246,241,232,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:-0.02em;}
-    .nav-logo span{color:var(--gold);}
-    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
-    .nav-links a{text-decoration:none;color:var(--text);font-size:0.875rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
-    .nav-links a:hover,.nav-links a.active{color:var(--green);}
-    .nav-cta{background:var(--green);color:var(--cream)!important;padding:0.55rem 1.4rem;border-radius:2px;}
-
-    /* PAGE HERO */
-    .page-hero{padding:130px 5% 5rem;background:var(--green);color:var(--cream);position:relative;overflow:hidden;}
-    .page-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);}
-    .page-hero::before{content:'';position:absolute;top:-50%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(200,151,90,0.15) 0%,transparent 65%);pointer-events:none;}
-    .page-hero-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:600;line-height:1.1;letter-spacing:-0.02em;max-width:700px;}
-    .page-hero h1 em{font-style:italic;color:var(--gold-light);}
-    .page-hero-sub{font-size:1rem;color:rgba(246,241,232,0.7);line-height:1.7;max-width:560px;margin-top:1rem;}
-
-    /* SERVICE NAV PILLS */
-    .service-nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:72px;z-index:900;}
-    .service-nav-inner{display:flex;gap:0;overflow-x:auto;padding:0 5%;scrollbar-width:none;}
-    .service-nav-inner::-webkit-scrollbar{display:none;}
-    .snav-link{white-space:nowrap;padding:1rem 1.5rem;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;border-bottom:2px solid transparent;transition:all 0.2s;}
-    .snav-link:hover,.snav-link.active{color:var(--green);border-bottom-color:var(--gold);}
-
-    /* SECTION LAYOUT */
-    .service-block{padding:5rem 5%;display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start;border-bottom:1px solid var(--border);}
-    .service-block:nth-child(even){grid-template-columns:1.6fr 1fr;}
-    .service-block:nth-child(even) .sb-left{order:2;}
-    .service-block:nth-child(even) .sb-right{order:1;}
-    .sb-sticky{position:sticky;top:130px;}
-    .sb-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
-    .sb-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:700;color:rgba(27,58,47,0.07);line-height:1;margin-bottom:-1rem;}
-    .sb-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;color:var(--dark);line-height:1.2;letter-spacing:-0.02em;}
-    .sb-title em{font-style:italic;color:var(--green-light);}
-    .sb-desc{font-size:1rem;color:var(--text-muted);line-height:1.75;margin-top:1rem;}
-    .sb-cta{display:inline-flex;align-items:center;gap:0.5rem;margin-top:2rem;background:var(--green);color:var(--cream);padding:0.75rem 1.8rem;border-radius:2px;text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.25s;}
-    .sb-cta:hover{background:var(--green-mid);transform:translateY(-2px);box-shadow:0 8px 20px rgba(27,58,47,0.2);}
-
-    /* INCLUDES CARDS */
-    .includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-    .include-card{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:1.4rem;transition:all 0.25s;}
-    .include-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(27,58,47,0.08);}
-    .include-icon{font-size:1.4rem;margin-bottom:0.6rem;}
-    .include-title{font-weight:600;font-size:0.875rem;color:var(--dark);margin-bottom:0.3rem;}
-    .include-desc{font-size:0.8rem;color:var(--text-muted);line-height:1.5;}
-
-    /* HIGHLIGHT BOX */
-    .highlight-box{background:var(--green);color:var(--cream);border-radius:4px;padding:2.5rem;margin-top:1rem;}
-    .highlight-box h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:1rem;}
-    .highlight-list{list-style:none;display:flex;flex-direction:column;gap:0.7rem;}
-    .highlight-list li{font-size:0.875rem;display:flex;gap:0.6rem;color:rgba(246,241,232,0.85);}
-    .highlight-list li::before{content:'→';color:var(--gold);flex-shrink:0;}
-
-    /* GOLD BOX */
-    .gold-box{background:var(--gold);border-radius:4px;padding:2rem;margin-top:1rem;}
-    .gold-box h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--dark);margin-bottom:0.5rem;}
-    .gold-box p{font-size:0.875rem;color:var(--dark);opacity:0.8;line-height:1.6;}
-    .gold-box .stat{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--dark);line-height:1;}
-
-    /* SOFT/HARD FM TABS */
-    .tabs{display:flex;gap:0;border:1.5px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:1.5rem;}
-    .tab-btn{flex:1;padding:0.75rem;font-size:0.82rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;border:none;background:transparent;cursor:pointer;transition:all 0.2s;color:var(--text-muted);}
-    .tab-btn.active{background:var(--green);color:var(--cream);}
-    .tab-panel{display:none;}
-    .tab-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
-    .tab-item{background:var(--cream);border:1px solid var(--border);border-radius:4px;padding:1rem;font-size:0.82rem;font-weight:500;color:var(--dark);display:flex;gap:0.5rem;align-items:flex-start;}
-    .tab-item::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
-
-    /* CTA STRIP */
-    .cta-strip{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:3rem 5%;gap:2rem;flex-wrap:wrap;}
-    .cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--cream);}
-    .btn-gold{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--dark);padding:0.85rem 2rem;border-radius:2px;font-weight:700;text-decoration:none;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.25s;}
-    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
-
-    /* FOOTER */
-    footer{background:var(--dark);color:rgba(246,241,232,0.7);padding:4rem 5% 2rem;}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
-    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--cream);text-decoration:none;display:inline-block;margin-bottom:1rem;}
-    .footer-logo span{color:var(--gold);}
-    .footer-tagline{font-size:0.875rem;line-height:1.7;max-width:280px;}
-    .footer-col h4{color:var(--cream);font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;}
-    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-    .footer-col ul a{text-decoration:none;color:rgba(246,241,232,0.6);font-size:0.875rem;transition:color 0.2s;}
-    .footer-col ul a:hover{color:var(--gold);}
-    .footer-bottom{border-top:1px solid rgba(246,241,232,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
-    .footer-bottom p{font-size:0.8rem;}
-
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .service-block,.service-block:nth-child(even){grid-template-columns:1fr;}
-      .service-block:nth-child(even) .sb-left,.service-block:nth-child(even) .sb-right{order:unset;}
-      .includes-grid{grid-template-columns:1fr;}
-      .footer-grid{grid-template-columns:1fr 1fr;}
-      .sb-sticky{position:static;}
-    }
-    @media(max-width:600px){
-      .tab-panel.active{grid-template-columns:1fr;}
-      .footer-grid{grid-template-columns:1fr;}
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css"/>
+  
 </head>
-<body>
-
-<nav>
-  <a href="index.html" class="nav-logo">Bela<span>bloom</span></a>
-  <ul class="nav-links">
-    <li><a href="services.html" class="active">Services</a></li>
-    <li><a href="industries.html">Industries</a></li>
-    <li><a href="packages.html">Packages</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
-  </ul>
+<body><nav class="site-nav">
+  <div class="nav-r1">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">BB</div>
+      <div class="nav-logo-copy"><span class="nav-logo-name">Belabloom</span><span class="nav-logo-sub">Built for business</span></div>
+    </a>
+    <div class="nav-r1-right">
+      <div class="nav-search">⌕</div>
+      <a href="contact.html" class="btn-contact">Contact us</a>
+    </div>
+  </div>
+  <div class="nav-r2">
+    <ul class="nav-primary">
+      <li><a href="services.html"  class='active'>Services</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <ul class="nav-secondary">
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="about.html#values">Values</a></li>
+      <li><a href="contact.html">Get a Quote</a></li>
+    </ul>
+  </div>
 </nav>
-
-<!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="page-hero-tag">What We Do</div>
-  <h1>Seven services.<br/><em>One partner.</em> Zero gaps.</h1>
-  <p class="page-hero-sub">From sourcing your space to running it every day — Belabloom owns the full lifecycle of your business infrastructure so you never have to.</p>
-</div>
-
-<!-- SERVICE QUICK NAV -->
-<div class="service-nav">
-  <div class="service-nav-inner">
-    <a href="#sourcing" class="snav-link">🏢 Space Sourcing</a>
-    <a href="#interior" class="snav-link">🛠 Interior Setup</a>
-    <a href="#fm" class="snav-link">⚙️ Facility Mgmt</a>
-    <a href="#fire" class="snav-link">🔥 Fire Safety</a>
-    <a href="#insurance" class="snav-link">🛡 Insurance</a>
-    <a href="#pest" class="snav-link">🐜 Pest Control</a>
-    <a href="#audit" class="snav-link">📊 Audit & Process</a>
-  </div>
-</div>
-
-<!-- ─── 01 SPACE SOURCING ─── -->
-<div id="sourcing" class="service-block">
-  <div class="sb-left sb-sticky">
-    <div class="sb-tag">Service 01</div>
-    <div class="sb-num">01</div>
-    <h2 class="sb-title">Business Space<br/><em>Sourcing</em></h2>
-    <p class="sb-desc">Finding the right commercial space is the foundation of your business setup. We combine market intelligence, ground-level relationships, and negotiation expertise to land you the best fit — faster and cheaper than going it alone.</p>
-    <a href="contact.html" class="sb-cta">Enquire About Sourcing ↗</a>
-    <div class="gold-box" style="margin-top:2rem;">
-      <div class="stat">3×</div>
-      <h3>Faster Shortlisting</h3>
-      <p>Average time from brief to shortlist is under 72 hours for most requirements.</p>
-    </div>
-  </div>
-  <div class="sb-right">
-    <div class="includes-grid">
-      <div class="include-card">
-        <div class="include-icon">📋</div>
-        <div class="include-title">Requirement Analysis</div>
-        <div class="include-desc">Budget, headcount, location preference, and must-have amenities mapped precisely.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🗺</div>
-        <div class="include-title">Property Shortlisting</div>
-        <div class="include-desc">Curated options across commercial, managed, and co-working spaces tailored to your brief.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🚗</div>
-        <div class="include-title">Site Visits</div>
-        <div class="include-desc">We coordinate and accompany every site visit, so your time is spent deciding, not traveling.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🤝</div>
-        <div class="include-title">Lease Negotiation</div>
-        <div class="include-desc">Rental benchmarking, fit-out allowance negotiation, and lock-in clause review.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📄</div>
-        <div class="include-title">Documentation Support</div>
-        <div class="include-desc">LOI drafting, agreement review, and stamp duty guidance — end to end.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🏙</div>
-        <div class="include-title">Market Intelligence</div>
-        <div class="include-desc">Real-time rental data to ensure you never overpay for your location.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── 02 INTERIOR SETUP ─── -->
-<div id="interior" class="service-block">
-  <div class="sb-right">
-    <div class="includes-grid">
-      <div class="include-card">
-        <div class="include-icon">📐</div>
-        <div class="include-title">Space Planning & Design</div>
-        <div class="include-desc">Floor plans, seating layouts, and zone planning optimised for your team's workflow.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🏗</div>
-        <div class="include-title">Vendor Selection</div>
-        <div class="include-desc">Pre-vetted contractors, civil, MEP, and furniture vendors — right for your budget.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">💰</div>
-        <div class="include-title">Budget Planning</div>
-        <div class="include-desc">Itemised BOQ with zero hidden costs and clear milestone-based payment structure.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📅</div>
-        <div class="include-title">Timeline Tracking</div>
-        <div class="include-desc">Gantt-based scheduling with weekly progress reviews so you're never in the dark.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">👷</div>
-        <div class="include-title">On-Site Supervision</div>
-        <div class="include-desc">Our project manager on the floor daily — catching issues before they become costs.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">✅</div>
-        <div class="include-title">Quality Control</div>
-        <div class="include-desc">Snag list resolution and handover inspection before we hand you the keys.</div>
-      </div>
-    </div>
-  </div>
-  <div class="sb-left sb-sticky">
-    <div class="sb-tag">Service 02</div>
-    <div class="sb-num">02</div>
-    <h2 class="sb-title">Interior Setup &amp;<br/><em>Project Management</em></h2>
-    <p class="sb-desc">We don't just decorate — we deliver. Our end-to-end project management means you get a fully functional workspace without managing a single contractor yourself. We own the timeline, budget, and quality.</p>
-    <a href="contact.html" class="sb-cta">Start Your Setup ↗</a>
-    <div class="highlight-box" style="margin-top:2rem;">
-      <h3>What sets us apart</h3>
-      <ul class="highlight-list">
-        <li>Single PM accountable for the entire project</li>
-        <li>30–40% faster delivery vs. self-managed setups</li>
-        <li>Fixed-fee model with no surprise additions</li>
-        <li>Handover SLA with documented snag resolution</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ─── 03 FACILITY MANAGEMENT ─── -->
-<div id="fm" class="service-block">
-  <div class="sb-left sb-sticky">
-    <div class="sb-tag">Service 03</div>
-    <div class="sb-num">03</div>
-    <h2 class="sb-title">Facility<br/><em>Management</em></h2>
-    <p class="sb-desc">Keeping your space clean, safe, and functional every single day. We deliver integrated soft and hard FM services under one contract — with a dedicated team and regular reporting so nothing falls through the cracks.</p>
-    <a href="contact.html" class="sb-cta">Get an FM Quote ↗</a>
-  </div>
-  <div class="sb-right">
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('soft',this)">Soft Services</button>
-      <button class="tab-btn" onclick="switchTab('hard',this)">Hard Services</button>
-    </div>
-    <div id="soft" class="tab-panel active">
-      <div class="tab-item">Housekeeping & Janitorial</div>
-      <div class="tab-item">Deep Cleaning (Periodic)</div>
-      <div class="tab-item">Pantry & Cafeteria Management</div>
-      <div class="tab-item">Security & Access Control</div>
-      <div class="tab-item">Landscaping & Horticulture</div>
-      <div class="tab-item">Waste Management</div>
-      <div class="tab-item">Mailroom Operations</div>
-      <div class="tab-item">Guest & Reception Services</div>
-    </div>
-    <div id="hard" class="tab-panel">
-      <div class="tab-item">HVAC Maintenance</div>
-      <div class="tab-item">Electrical Systems & UPS</div>
-      <div class="tab-item">Plumbing & Sanitation</div>
-      <div class="tab-item">Fire Suppression Systems</div>
-      <div class="tab-item">Elevators & DG Sets</div>
-      <div class="tab-item">CCTV & BMS Systems</div>
-      <div class="tab-item">Civil & Carpentry Works</div>
-      <div class="tab-item">Façade & Terrace Maintenance</div>
-    </div>
-    <div class="highlight-box" style="margin-top:1.5rem;">
-      <h3>FM Reporting & Accountability</h3>
-      <ul class="highlight-list">
-        <li>Monthly performance dashboards</li>
-        <li>Ticket-based complaint resolution (24hr SLA)</li>
-        <li>Quarterly operational reviews</li>
-        <li>Dedicated site supervisor + account manager</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ─── 04 FIRE SAFETY ─── -->
-<div id="fire" class="service-block">
-  <div class="sb-right">
-    <div class="includes-grid">
-      <div class="include-card">
-        <div class="include-icon">📋</div>
-        <div class="include-title">NOC Documentation</div>
-        <div class="include-desc">Fire department NOC application, drawings, and follow-up managed completely.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🧯</div>
-        <div class="include-title">Extinguisher Supply</div>
-        <div class="include-desc">CO₂, DCP, clean agent — right type and placement per BIS and NBC norms.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">💧</div>
-        <div class="include-title">Sprinkler Systems</div>
-        <div class="include-desc">Design, installation and AMC for wet, dry, and pre-action sprinkler systems.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🚨</div>
-        <div class="include-title">Fire Alarm Systems</div>
-        <div class="include-desc">Conventional and addressable FACP panels with smoke, heat, and beam detectors.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🔍</div>
-        <div class="include-title">Periodic Inspections</div>
-        <div class="include-desc">Scheduled quarterly checks to ensure systems are operational and compliant.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🏅</div>
-        <div class="include-title">Compliance Tracking</div>
-        <div class="include-desc">Renewal reminders, updated certifications, and audit-ready documentation.</div>
-      </div>
-    </div>
-  </div>
-  <div class="sb-left sb-sticky">
-    <div class="sb-tag">Service 04</div>
-    <div class="sb-num">04</div>
-    <h2 class="sb-title">Fire Safety &amp;<br/><em>Compliance</em></h2>
-    <p class="sb-desc">A fire safety gap isn't just a legal risk — it's a people risk. We handle the full chain: equipment supply, system installation, periodic inspections, and compliance documentation so you're always audit-ready.</p>
-    <a href="contact.html" class="sb-cta">Get a Safety Audit ↗</a>
-    <div class="gold-box" style="margin-top:2rem;">
-      <div class="stat">100%</div>
-      <h3>NOC Success Rate</h3>
-      <p>Every fire NOC application we've filed has been approved — first attempt.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ─── 05 INSURANCE ─── -->
-<div id="insurance" class="service-block">
-  <div class="sb-left sb-sticky">
-    <div class="sb-tag">Service 05</div>
-    <div class="sb-num">05</div>
-    <h2 class="sb-title">Insurance<br/><em>Services</em></h2>
-    <p class="sb-desc">Most businesses are either over-insured on the wrong risks or dangerously underprotected on the right ones. We assess, advise, procure, and manage your policies — aligned to your actual operational profile.</p>
-    <a href="contact.html" class="sb-cta">Get a Risk Review ↗</a>
-    <div class="highlight-box" style="margin-top:2rem;">
-      <h3>Coverage Areas</h3>
-      <ul class="highlight-list">
-        <li>Property & Asset Insurance</li>
-        <li>Public Liability</li>
-        <li>Workmen's Compensation (WC)</li>
-        <li>Group Health & Personal Accident</li>
-        <li>Business Interruption Cover</li>
-        <li>Directors & Officers (D&O) Liability</li>
-      </ul>
-    </div>
-  </div>
-  <div class="sb-right">
-    <div class="includes-grid">
-      <div class="include-card">
-        <div class="include-icon">🔎</div>
-        <div class="include-title">Risk Assessment</div>
-        <div class="include-desc">Identify gaps in your existing coverage and prioritise what actually matters for your business.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📊</div>
-        <div class="include-title">Policy Advisory</div>
-        <div class="include-desc">Honest recommendations — we're aligned to your interests, not commission targets.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🏦</div>
-        <div class="include-title">Multi-Insurer Quotes</div>
-        <div class="include-desc">We compare across insurers to get the best coverage at the right premium.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📆</div>
-        <div class="include-title">Renewal Management</div>
-        <div class="include-desc">Proactive renewal tracking — no lapses, no gaps, no missed renewals.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">⚡</div>
-        <div class="include-title">Claims Assistance</div>
-        <div class="include-desc">We guide you through the claims process to maximise settlement outcomes.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📁</div>
-        <div class="include-title">Policy Repository</div>
-        <div class="include-desc">All your policy documents and renewal dates centralised and accessible.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── 06 PEST CONTROL ─── -->
-<div id="pest" class="service-block">
-  <div class="sb-right">
-    <div class="includes-grid">
-      <div class="include-card">
-        <div class="include-icon">🕵️</div>
-        <div class="include-title">Site Inspection</div>
-        <div class="include-desc">Detailed pre-treatment survey to identify infestation type, entry points, and risk zones.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🧪</div>
-        <div class="include-title">Certified Chemicals</div>
-        <div class="include-desc">WHO and CIB-approved formulations — safe for office environments, effective on pests.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📆</div>
-        <div class="include-title">Scheduled Programs</div>
-        <div class="include-desc">Monthly, quarterly, and bi-annual treatment schedules built around your occupancy hours.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🚨</div>
-        <div class="include-title">Emergency Response</div>
-        <div class="include-desc">48-hour emergency call-out for sudden infestation situations — offices, warehouses, retail.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📄</div>
-        <div class="include-title">Treatment Certificates</div>
-        <div class="include-desc">Documentation issued after every treatment — ready for audits, licenses, and renewals.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🔁</div>
-        <div class="include-title">AMC Contracts</div>
-        <div class="include-desc">Annual maintenance contracts for predictable budgeting and uninterrupted protection.</div>
-      </div>
-    </div>
-  </div>
-  <div class="sb-left sb-sticky">
-    <div class="sb-tag">Service 06</div>
-    <div class="sb-num">06</div>
-    <h2 class="sb-title">Pest Control<br/><em>Services</em></h2>
-    <p class="sb-desc">A pest-free environment isn't a nice-to-have — it's a compliance requirement and a basic employee right. We offer comprehensive, scheduled pest management for offices, warehouses, and retail spaces across India.</p>
-    <a href="contact.html" class="sb-cta">Book an Inspection ↗</a>
-    <div class="gold-box" style="margin-top:2rem;">
-      <div class="stat">48h</div>
-      <h3>Emergency Response SLA</h3>
-      <p>Guaranteed on-site response for emergency infestation calls across major cities.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ─── 07 AUDIT & PROCESS ─── -->
-<div id="audit" class="service-block" style="border-bottom:none;">
-  <div class="sb-left sb-sticky">
-    <div class="sb-tag">Service 07</div>
-    <div class="sb-num">07</div>
-    <h2 class="sb-title">Audit &amp;<br/><em>Process Services</em></h2>
-    <p class="sb-desc">Beyond physical infrastructure — we audit your operational processes, identify inefficiencies, and build systems that scale. Whether it's vendor management, SOP creation, or cost benchmarking, we make your operations smarter.</p>
-    <a href="contact.html" class="sb-cta">Request an Audit ↗</a>
-    <div class="highlight-box" style="margin-top:2rem;">
-      <h3>What We Audit</h3>
-      <ul class="highlight-list">
-        <li>Vendor spend & contract terms</li>
-        <li>FM efficiency & SLA adherence</li>
-        <li>Compliance gaps & documentation</li>
-        <li>Energy & utilities consumption</li>
-        <li>Process documentation & SOPs</li>
-      </ul>
-    </div>
-  </div>
-  <div class="sb-right">
-    <div class="includes-grid">
-      <div class="include-card">
-        <div class="include-icon">🔍</div>
-        <div class="include-title">Operational Audit</div>
-        <div class="include-desc">Deep-dive review of your current setup to identify waste, risk, and missed value.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📋</div>
-        <div class="include-title">SOP Creation</div>
-        <div class="include-desc">Standard operating procedures for your FM, admin, and compliance workflows.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">💸</div>
-        <div class="include-title">Cost Benchmarking</div>
-        <div class="include-desc">Compare your vendor spend against market rates to identify savings opportunities.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📊</div>
-        <div class="include-title">Performance Dashboards</div>
-        <div class="include-desc">Build visibility into your operations with KPI tracking and monthly reporting.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🔄</div>
-        <div class="include-title">Process Re-engineering</div>
-        <div class="include-desc">Redesign broken workflows to eliminate bottlenecks and reduce operational drag.</div>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📁</div>
-        <div class="include-title">Compliance Gap Report</div>
-        <div class="include-desc">Structured report identifying every missing certification, renewal, or document.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CTA STRIP -->
-<div class="cta-strip">
-  <h2>Not sure which service you need?</h2>
-  <a href="contact.html" class="btn-gold">Talk to Our Team — It's Free ↗</a>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
+  <div class="page-breadcrumb"><a href="index.html">Home</a> › Services</div>
+  <div class="page-hero-grid">
+    <div><h1>Business infrastructure services</h1></div>
     <div>
-      <a href="index.html" class="footer-logo">Bela<span>bloom</span></a>
-      <p class="footer-tagline">Full-stack business infrastructure — from finding your office to keeping it running seamlessly.</p>
+      <p class="page-hero-desc"><span class="hl">Strategy, execution and ongoing management</span> across your entire physical and operational environment — from finding the right space to running it every day.</p>
+      <div class="keyword-search">
+        <label>Keywords</label>
+        <input type="text" id="srch" placeholder="Search by service or keyword" oninput="filterServices(this.value)"/>
+        <span style="color:var(--text-light);font-size:0.8rem;cursor:pointer;" onclick="document.getElementById('srch').value='';filterServices('')">✕</span>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#sourcing">Space Sourcing</a></li>
-        <li><a href="#interior">Interior Setup</a></li>
-        <li><a href="#fm">Facility Management</a></li>
-        <li><a href="#fire">Fire Safety</a></li>
-        <li><a href="#pest">Pest Control</a></li>
-        <li><a href="#insurance">Insurance</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="industries.html">Industries</a></li>
+  </div>
+</div>
+<div style="padding:0.75rem 6%;border-bottom:1px solid var(--border);">
+  <span id="resultCount" class="result-count">7 Services</span>
+</div>
+<div class="service-list" id="serviceList">
+  <div class="service-row" id="sourcing" onclick="location.href='contact.html'" data-tags="space sourcing real estate lease commercial property">
+    <div class="service-num">01</div>
+    <div><div class="service-row-title">Business Space Sourcing</div><div class="service-row-body">We find, shortlist, and negotiate the perfect commercial space for your business. From requirement analysis and property shortlisting to lease negotiation and documentation support — we cut your search time by 3×.</div></div>
+    <div class="service-tags"><span class="service-tag">Real Estate</span><span class="service-tag">Pan-India</span></div>
+    <div class="service-row-arrow">→</div>
+  </div>
+  <div class="service-row" id="interior" onclick="location.href='contact.html'" data-tags="interior setup design project management fit out workspace">
+    <div class="service-num">02</div>
+    <div><div class="service-row-title">Interior Setup &amp; Project Management</div><div class="service-row-body">End-to-end workspace setup — space planning, vendor selection, on-site supervision, quality-checked handover. One PM accountable for your entire project, on budget, on time.</div></div>
+    <div class="service-tags"><span class="service-tag">Project Mgmt</span><span class="service-tag">India</span></div>
+    <div class="service-row-arrow">→</div>
+  </div>
+  <div class="service-row" id="fm" onclick="location.href='contact.html'" data-tags="facility management fm soft hard housekeeping mep hvac maintenance">
+    <div class="service-num">03</div>
+    <div><div class="service-row-title">Facility Management</div><div class="service-row-body">Integrated soft and hard FM under one contract — housekeeping, MEP maintenance, HVAC, security, waste management, deep cleaning. Managed with KPI dashboards and a dedicated site supervisor.</div></div>
+    <div class="service-tags"><span class="service-tag">Operations</span><span class="service-tag">Pan-India</span></div>
+    <div class="service-row-arrow">→</div>
+  </div>
+  <div class="service-row" id="fire" onclick="location.href='contact.html'" data-tags="fire safety noc compliance sprinkler alarm extinguisher certificate">
+    <div class="service-num">04</div>
+    <div><div class="service-row-title">Fire Safety Equipment &amp; Compliance</div><div class="service-row-body">Full-chain fire safety — equipment supply, system installation (sprinklers, alarms, extinguishers), NOC documentation, periodic inspections, and renewal tracking. 100% first-attempt NOC success rate.</div></div>
+    <div class="service-tags"><span class="service-tag">Safety</span><span class="service-tag">India</span></div>
+    <div class="service-row-arrow">→</div>
+  </div>
+  <div class="service-row" id="insurance" onclick="location.href='contact.html'" data-tags="insurance risk management policy property workmen health">
+    <div class="service-num">05</div>
+    <div><div class="service-row-title">Insurance Services</div><div class="service-row-body">Risk assessment, policy advisory, multi-insurer comparison, and ongoing renewal management. We align your coverage to your actual operational profile — not commission targets.</div></div>
+    <div class="service-tags"><span class="service-tag">Risk Mgmt</span><span class="service-tag">Pan-India</span></div>
+    <div class="service-row-arrow">→</div>
+  </div>
+  <div class="service-row" id="pest" onclick="location.href='contact.html'" data-tags="pest control rodent termite cockroach amc treatment">
+    <div class="service-num">06</div>
+    <div><div class="service-row-title">Pest Control Services</div><div class="service-row-body">Scheduled and emergency pest management with certified chemicals and trained technicians. WHO and CIB-approved formulations. AMC contracts with treatment certificates issued after every visit.</div></div>
+    <div class="service-tags"><span class="service-tag">Operations</span><span class="service-tag">Pan-India</span></div>
+    <div class="service-row-arrow">→</div>
+  </div>
+  <div class="service-row" id="audit" onclick="location.href='contact.html'" data-tags="audit process sop vendor benchmark compliance review kpi">
+    <div class="service-num">07</div>
+    <div><div class="service-row-title">Audit &amp; Process Services</div><div class="service-row-body">Operational deep-dives to identify waste, compliance gaps, and vendor overcharges. We deliver SOP documentation, cost benchmarking, KPI dashboards, and process re-engineering.</div></div>
+    <div class="service-tags"><span class="service-tag">Strategy</span><span class="service-tag">India</span></div>
+    <div class="service-row-arrow">→</div>
+  </div>
+</div>
+<div class="stat-strip">
+  <div class="stat-cell"><div class="stat-num">200+</div><div class="stat-label">Projects delivered</div></div>
+  <div class="stat-cell"><div class="stat-num">7</div><div class="stat-label">Service verticals</div></div>
+  <div class="stat-cell"><div class="stat-num">98%</div><div class="stat-label">Client retention rate</div></div>
+  <div class="stat-cell"><div class="stat-num">40%</div><div class="stat-label">Avg. OpEx reduction</div></div>
+</div>
+<div class="feature">
+  <div class="feature-img"><div class="feature-img-bg img-mid"></div><div class="img-grid"></div><div class="img-label">Single Point of Contact</div></div>
+  <div class="feature-text">
+    <div class="feature-eyebrow">Why Belabloom</div>
+    <h2 class="feature-title">One partner. <span class="hl">Total accountability.</span></h2>
+    <p class="feature-body">Most businesses manage 5–10 vendors for things that should come from one place. Belabloom holds every contract, supervises every vendor, and signs off on every handover. When something breaks, we fix it.</p>
+    <a href="about.html" class="text-link">About our model →</a>
+  </div>
+</div>
+<div class="cta-bleed">
+  <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
+  <div class="cta-bleed-content">
+    <h2>Not sure which service<br/>you need?</h2>
+    <a href="contact.html" class="cta-bleed-link">Talk to our team — it's free &nbsp;→</a>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Belabloom</div>
+        <p class="footer-brand-desc">Full-stack business infrastructure — from finding your office to running it every day.</p>
+        <a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a>
+        <div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul>
+        <li><a href="services.html#sourcing">Space sourcing</a></li>
+        <li><a href="services.html#fm">Facility management</a></li>
+        <li><a href="services.html#fire">Fire safety</a></li>
+        <li><a href="services.html#pest">Pest control</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Industries</h4><ul>
+        <li><a href="industries.html">All sectors</a></li>
+        <li><a href="industries.html#startups">Startups</a></li>
+        <li><a href="industries.html#smes">SMEs</a></li>
+        <li><a href="industries.html#retail">Retail</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="about.html">About us</a></li>
         <li><a href="packages.html">Packages</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+        <li><a href="contact.html">Get a quote</a></li>
+      </ul></div>
     </div>
-    <div class="footer-col">
-      <h4>Get in Touch</h4>
-      <ul>
-        <li><a href="mailto:hello@belabloom.in">hello@belabloom.in</a></li>
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="contact.html">Request a Quote</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <span>© 2025 Belabloom. All rights reserved.</span>
+      <span>Pune, Maharashtra — Serving Pan-India</span>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 Belabloom. All rights reserved.</p>
-    <p>Made with 🌱 for growing businesses</p>
-  </div>
-</footer>
-
+</footer></body></html>
 <script>
-function switchTab(id, btn) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
+function filterServices(q){
+  const rows=document.querySelectorAll('.service-row');
+  const t=q.toLowerCase();let c=0;
+  rows.forEach(r=>{const show=!t||(r.dataset.tags+' '+r.innerText).toLowerCase().includes(t);r.style.display=show?'':'none';if(show)c++;});
+  document.getElementById('resultCount').textContent=c+' Service'+(c!==1?'s':'');
 }
-// Sticky nav highlight
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const id = e.target.id;
-      document.querySelectorAll('.snav-link').forEach(l => {
-        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
-      });
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('[id]').forEach(el => observer.observe(el));
 </script>
-</body>
-</html>
