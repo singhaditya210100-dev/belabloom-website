@@ -3,19 +3,44 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Industries — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=6"/>
+  <link rel="stylesheet" href="styles.css?v=7"/>
   <style>
-.clients-section{padding:4rem 6%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--off-white);}
-.clients-header{text-align:center;margin-bottom:2.5rem;}
-.clients-logo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:0;border:1px solid var(--border);background:var(--white);}
-.client-logo-cell{flex:1 1 180px;min-width:140px;padding:2rem 1.5rem;
-  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  background:var(--white);transition:background 0.2s;}
-.client-logo-cell:hover{background:var(--off-white);}
-.client-logo-img{max-height:54px;max-width:150px;width:auto;height:auto;
-  object-fit:contain;filter:grayscale(100%);opacity:0.65;transition:0.25s;}
+
 .client-logo-cell:hover .client-logo-img{filter:grayscale(0%);opacity:1;}
+</style>
+<style>
+.clients-section{padding:5rem 6%;background:var(--off-white);border-bottom:1px solid var(--border);}
+.clients-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:center;}
+.clients-left{}
+.clients-left .section-eyebrow{margin-bottom:0.75rem;}
+.clients-left h2{font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:800;color:var(--text);
+  letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem;}
+.clients-left p{font-size:0.875rem;color:var(--text-mid);line-height:1.75;
+  max-width:340px;margin-bottom:1.75rem;}
+.clients-btn{display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.65rem 1.4rem;background:var(--green);color:var(--white);
+  font-size:0.825rem;font-weight:600;border:none;cursor:pointer;transition:0.15s;}
+.clients-btn:hover{background:var(--green-mid);}
+.clients-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;}
+.client-card{background:var(--white);border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);
+  padding:1.25rem 1rem;display:flex;align-items:center;justify-content:center;
+  transition:box-shadow 0.2s,transform 0.2s;cursor:default;}
+.client-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.06);
+  transform:translateY(-2px);}
+.client-card:nth-child(2){margin-top:1.2rem;}
+.client-card:nth-child(5){margin-top:-1.2rem;}
+.client-card:nth-child(8){margin-top:0.8rem;}
+.client-card:nth-child(3){margin-top:-0.5rem;}
+.client-card img{max-height:42px;max-width:110px;width:auto;height:auto;
+  object-fit:contain;display:block;}
+@media(max-width:900px){
+  .clients-inner{grid-template-columns:1fr;}
+  .clients-left p{max-width:100%;}
+  .clients-cards{grid-template-columns:repeat(4,1fr);}
+  .client-card:nth-child(n){margin-top:0;}
+}
+@media(max-width:600px){.clients-cards{grid-template-columns:repeat(3,1fr);}}
 </style>
 </head>
 <body><nav class="site-nav">
@@ -149,13 +174,17 @@
   </div>
   <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>
 </div>
+
 <section class="clients-section">
-  <div class="clients-header">
-    <div class="section-eyebrow" style="text-align:center;">Trusted By</div>
-    <div class="section-title" style="font-size:1.8rem;text-align:center;margin-top:0.3rem;">Our <span class="hl">Clients</span></div>
-    <p style="text-align:center;font-size:0.875rem;color:var(--text-mid);margin-top:0.6rem;max-width:520px;margin-left:auto;margin-right:auto;">Leading organisations across Financial Services, Insurance, IT, Mining, and Business Services trust Belabloom to manage their infrastructure.</p>
+  <div class="clients-inner">
+    <div class="clients-left">
+      <div class="section-eyebrow">Our Clients</div>
+      <h2>Trusted by <span class="hl">India's leading</span> organisations</h2>
+      <p>We partner with top institutions across Financial Services, General Insurance, IT &amp; ITES, Mining, and Business Services — managing their infrastructure so they can focus on growth.</p>
+      <a href="about.html" class="clients-btn">Meet our clients &nbsp;→</a>
+    </div>
+    <div class="clients-cards"><div class="client-card"><img src="clients/client-1.png" alt="Client"/></div><div class="client-card"><img src="clients/client-2.png" alt="Client"/></div><div class="client-card"><img src="clients/client-3.jpg" alt="Client"/></div><div class="client-card"><img src="clients/client-4.jpg" alt="Client"/></div><div class="client-card"><img src="clients/client-5.jpg" alt="Client"/></div><div class="client-card"><img src="clients/client-6.png" alt="Client"/></div><div class="client-card"><img src="clients/client-7.png" alt="Client"/></div><div class="client-card"><img src="clients/client-ins.png" alt="Client"/></div><div class="client-card"><img src="clients/client-it.jpg" alt="Client"/></div><div class="client-card"><img src="clients/client-mine.gif" alt="Client"/></div><div class="client-card"><img src="clients/client-cms.jpg" alt="Client"/></div></div>
   </div>
-  <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>
 </section>
 <div class="cta-bleed">
   <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
