@@ -5,29 +5,56 @@
   <title>About Us — Belabloom</title>
   <link rel="stylesheet" href="styles.css?v=9"/>
   <style>
-  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  background:var(--white);transition:background 0.2s;}
-  object-fit:contain;filter:grayscale(100%);opacity:0.65;transition:0.25s;}
-</style>
+    .reg-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);}
+    .reg-cell{padding:1.75rem 2.5rem;border-right:1px solid var(--border);}
+    .reg-cell:last-child{border-right:none;}
+    .reg-label{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.4rem;}
+    .reg-value{font-size:0.88rem;font-weight:600;color:var(--text);}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;padding:4.5rem 6%;border-bottom:1px solid var(--border);align-items:start;}
+    .story-body p{font-size:0.9rem;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+    .story-body strong{color:var(--text);font-weight:600;}
+    .vm-split{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
+    .vm-panel{padding:3.5rem 5%;border-right:1px solid var(--border);}
+    .vm-panel:last-child{border-right:none;}
+    .vm-type{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+    .vm-title{font-size:1.4rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;line-height:1.3;}
+    .val-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
+    .val-cell{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.75rem 1.5rem;transition:background 0.15s;}
+    .val-cell:hover{background:var(--off-white);}
+    .val-name{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:0.35rem;}
+    .val-desc{font-size:0.78rem;color:var(--text-mid);line-height:1.6;}
+    .team-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);}
+    .team-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:180px 1fr;}
+    .team-card:last-child{border-right:none;}
+    .team-photo{overflow:hidden;background:var(--off-white);}
+    .team-photo img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+    .team-body{padding:2rem 1.75rem;}
+    .team-name{font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin-bottom:0.2rem;}
+    .team-role{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+    .team-bio{font-size:0.8rem;color:var(--text-mid);line-height:1.7;}
+    @media(max-width:900px){
+      .reg-strip{grid-template-columns:1fr;}.reg-cell{border-right:none;border-bottom:1px solid var(--border);}
+      .story-grid{grid-template-columns:1fr;gap:2rem;}
+      .vm-split{grid-template-columns:1fr;}.vm-panel{border-right:none;border-bottom:1px solid var(--border);}
+      .val-grid{grid-template-columns:1fr 1fr;}
+      .team-grid{grid-template-columns:1fr;}.team-card{grid-template-columns:140px 1fr;border-right:none;}
+    }
+    @media(max-width:600px){
+      .val-grid{grid-template-columns:1fr;}
+      .team-card{grid-template-columns:1fr;}
+      .team-photo{min-height:220px;}
+    }
+  </style>
 </head>
 <body>
 <nav class="site-nav">
   <div class="nav-r1" style="background:#000000;border-bottom:1px solid rgba(255,255,255,0.06);">
-    <a href="index.html" class="nav-logo">
-      <img src="logo.png" alt="Belabloom" style="height:38px;width:auto;display:block;"/>
-    </a>
-    <div class="nav-r1-right">
-      <div class="nav-search">⌕</div>
-      <a href="contact.html" class="btn-contact">Contact us</a>
-    </div>
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="Belabloom" style="height:38px;width:auto;display:block;"/></a>
+    <div class="nav-r1-right"><div class="nav-search">⌕</div><a href="contact.html" class="btn-contact">Contact us</a></div>
   </div>
   <div class="nav-r2">
     <ul class="nav-primary"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="projects.html">Projects</a></li><li><a href="technology.html">Technology</a></li><li><a href="properties.html">Properties</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html" class='active'>About Us</a></li></ul>
-    <ul class="nav-secondary">
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html">Get a Quote</a></li>
-    </ul>
+    <ul class="nav-secondary"><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Get a Quote</a></li></ul>
   </div>
 </nav>
 <div class="page-hero">
@@ -57,9 +84,9 @@
     <h2 class="section-title">Built to fix the <span class="hl">fragmentation problem</span></h2>
   </div>
   <div class="story-body">
-    <p><strong>BelaBloom Projects &amp; Facility Management Pvt. Ltd.</strong> was incorporated with the Ministry of Commerce Affairs on 27th April 2021, and registered at the Registrar of Companies (ROC), Maharashtra.</p>
+    <p><strong>BelaBloom Projects &amp; Facility Management Pvt. Ltd.</strong> was incorporated with the Ministry of Commerce Affairs on 27th April 2021, registered at the Registrar of Companies (ROC), Maharashtra.</p>
     <p>We exist because most businesses waste enormous time and money coordinating with multiple vendors for things that should come from one place — a real estate broker, an interior contractor, a housekeeping agency, a pest control company, a fire safety vendor, and an insurance advisor, all separately, all with misaligned incentives.</p>
-    <p>Belabloom aggregates the entire infrastructure lifecycle under one roof. We are operationally accountable — we hold vendor contracts, supervise execution, and sign off on quality. We've obtained all required compliance certificates to perform our operations across India.</p>
+    <p>Belabloom aggregates the entire infrastructure lifecycle under one roof. We are operationally accountable — we hold vendor contracts, supervise execution, and sign off on quality. We have obtained all required compliance certificates to perform our operations across India.</p>
     <p>We have successfully partnered with leading organisations across Financial Services, General Insurance, IT &amp; ITES, Mining, and Cash Management sectors.</p>
   </div>
 </div>
@@ -80,7 +107,7 @@
     <div class="section-eyebrow">What We Stand For</div>
     <div class="section-title">Our Core Values</div>
   </div>
-  <div class="values-grid"><div class="value-cell"><div class="value-name">Excellence</div><p class="value-desc">Striving for the highest standards of quality and professionalism in all aspects of project and facility management.</p></div><div class="value-cell"><div class="value-name">Integrity</div><p class="value-desc">Conducting business with honesty, transparency, and ethical practices at every level.</p></div><div class="value-cell"><div class="value-name">Client-Centric</div><p class="value-desc">Putting clients' needs and satisfaction at the forefront of every decision and service delivery.</p></div><div class="value-cell"><div class="value-name">Collaboration</div><p class="value-desc">Fostering a culture of teamwork with clients, partners, and stakeholders to achieve shared goals.</p></div><div class="value-cell"><div class="value-name">Innovation</div><p class="value-desc">Embracing new technologies and creative problem-solving to drive continuous improvement.</p></div><div class="value-cell"><div class="value-name">Accountability</div><p class="value-desc">Taking full responsibility for actions and outcomes, and delivering on every commitment.</p></div><div class="value-cell"><div class="value-name">Safety</div><p class="value-desc">Prioritising the health, safety, and well-being of employees, contractors, and clients.</p></div><div class="value-cell"><div class="value-name">Sustainability</div><p class="value-desc">Integrating sustainable practices and environmentally friendly solutions into every operation.</p></div></div>
+  <div class="val-grid"><div class="val-cell"><div class="val-name">Excellence</div><p class="val-desc">Striving for the highest standards of quality and professionalism in all aspects of project and facility management.</p></div><div class="val-cell"><div class="val-name">Integrity</div><p class="val-desc">Conducting business with honesty, transparency, and ethical practices at every level.</p></div><div class="val-cell"><div class="val-name">Client-Centric</div><p class="val-desc">Putting clients' needs and satisfaction at the forefront of every decision and service delivery.</p></div><div class="val-cell"><div class="val-name">Collaboration</div><p class="val-desc">Fostering a culture of teamwork with clients, partners, and stakeholders to achieve shared goals.</p></div><div class="val-cell"><div class="val-name">Innovation</div><p class="val-desc">Embracing new technologies and creative problem-solving to drive continuous improvement.</p></div><div class="val-cell"><div class="val-name">Accountability</div><p class="val-desc">Taking full responsibility for actions and outcomes, and delivering on every commitment.</p></div><div class="val-cell"><div class="val-name">Safety</div><p class="val-desc">Prioritising the health, safety, and well-being of employees, contractors, and clients.</p></div><div class="val-cell"><div class="val-name">Sustainability</div><p class="val-desc">Integrating sustainable practices and environmentally friendly solutions into every operation.</p></div></div>
 </div>
 
 <div style="padding:3.5rem 6% 0;border-bottom:1px solid var(--border);">
@@ -95,7 +122,7 @@
         <div class="team-name">Mr. Ashok Singh</div>
         <div class="team-role">Founder &amp; Managing Director</div>
         <p class="team-bio">Ashok Singh founded BelaBloom on 21st April 2021, bringing over <strong>30 years of experience</strong> in Projects Management, Estate Management, Procurement, Facilities Management and Operations.</p>
-        <p class="team-bio" style="margin-top:0.6rem;">He began his career at IIT Delhi in 1990, progressing through Dalmia Industries, Pertech Computers, NIIT, NIS Sparta, and Reliance. As Group Manager at Bharti Airtel (2006–2008), and then Deputy Vice President at Edelweiss Securities Limited from 2008, he led the establishment of <strong>400+ branch offices</strong> across India and Singapore, and implemented ISO-9001:2000, ISO27001 (ISMS), and Oracle Property Management.</p>
+        <p class="team-bio" style="margin-top:0.6rem;">He began his career at IIT Delhi in 1990, progressing through Dalmia Industries, Pertech Computers, NIIT, NIS Sparta, and Reliance. As Group Manager at Bharti Airtel (2006–2008), and then Deputy Vice President at Edelweiss Securities Limited from 2008, he led the establishment of <strong>400+ branch offices</strong> across India and Singapore, implementing ISO-9001:2000, ISO27001 (ISMS), and Oracle Property Management.</p>
         <p class="team-bio" style="margin-top:0.6rem;">He holds an <strong>MBA in Project Management</strong> earned while working at Edelweiss.</p>
       </div>
     </div>
@@ -106,14 +133,11 @@
         <div class="team-role">Project Consultant</div>
         <p class="team-bio">Anil Shukla is a committed professional with over <strong>25 years of varied experience</strong> in Project Management, Facility Management, Administration, and Civil Construction with a specialisation in MEP functions.</p>
         <p class="team-bio" style="margin-top:0.6rem;">He previously held senior roles at <strong>Edelweiss and the Sahara Group</strong>, gaining extensive exposure in P&amp;L Management, Leadership, and Strategy.</p>
-        <p class="team-bio" style="margin-top:0.6rem;">He has demonstrated his capabilities in achieving top-line growth and bottom-line improvements, possessing strong analytical skills, work ethics, and interpersonal skills with key decision-making abilities.</p>
+        <p class="team-bio" style="margin-top:0.6rem;">He has demonstrated capabilities in achieving top-line growth and bottom-line improvements, with strong analytical skills and key decision-making abilities to secure profitable businesses.</p>
       </div>
     </div>
   </div>
 </div>
-</div>
-    <p style="text-align:center;font-size:0.875rem;color:var(--text-mid);margin-top:0.6rem;max-width:520px;margin-left:auto;margin-right:auto;">Leading organisations across Financial Services, Insurance, IT, Mining, and Business Services trust Belabloom to manage their infrastructure.</p>
-</section>
 
 <section style="padding:5rem 6%;background:#F7F4EF;border-top:1px solid #DEDBD5;border-bottom:1px solid #DEDBD5;">
   <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:center;">
@@ -121,38 +145,29 @@
       <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#787878;margin-bottom:0.75rem;">Our Clients</div>
       <h2 style="font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:800;color:#1A1A1A;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1rem;">Trusted by <span style="color:#C8975A;font-style:italic;">India's leading</span> organisations</h2>
       <p style="font-size:0.875rem;color:#4A4A4A;line-height:1.75;max-width:340px;margin-bottom:1.75rem;">We partner with top institutions across Financial Services, General Insurance, IT &amp; ITES, Mining, and Business Services.</p>
-      <a href="about.html" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.65rem 1.4rem;background:#1B3A2F;color:#fff;font-size:0.825rem;font-weight:600;text-decoration:none;font-family:inherit;">Meet our clients &nbsp;&#x2192;</a>
+      <a href="about.html" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.65rem 1.4rem;background:#1B3A2F;color:#fff;font-size:0.825rem;font-weight:600;text-decoration:none;font-family:inherit;">Meet our clients &nbsp;→</a>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;"><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;"><img src="clients/client-1.png" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;margin-top:16px;"><img src="clients/client-2.png" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;margin-top:-8px;"><img src="clients/client-3.jpg" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;"><img src="clients/client-4.jpg" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;margin-top:-16px;"><img src="clients/client-5.jpg" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;"><img src="clients/client-6.png" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;margin-top:12px;"><img src="clients/client-7.png" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;"><img src="clients/client-ins.png" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;margin-top:-8px;"><img src="clients/client-it.jpg" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;"><img src="clients/client-mine.gif" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:18px 14px;display:flex;align-items:center;justify-content:center;min-height:72px;margin-top:8px;"><img src="clients/client-cms.jpg" alt="Client" style="max-height:40px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block;"/></div></div>
   </div>
 </section>
+
 <div class="cta-bleed">
   <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
   <div class="cta-bleed-content"><h2>Want to work with us?</h2>
     <a href="contact.html" class="cta-bleed-link">Start the conversation &nbsp;→</a>
   </div>
-</div><footer><div class="footer-inner"><div class="footer-top">
-  <div>
-    <div class="footer-brand-name">Belabloom</div>
+</div>
+<footer><div class="footer-inner"><div class="footer-top">
+  <div><div class="footer-brand-name">Belabloom</div>
     <p class="footer-brand-desc">Managing Projects, Empowering Businesses. Full-stack infrastructure from finding your office to running it every day.</p>
     <a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a>
     <div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div>
   </div>
   <div class="footer-col"><h4>Services</h4><ul>
     <li><a href="services/space-sourcing.html">Space Sourcing</a></li>
-    <li><a href="services/interior-setup.html">Interior Setup</a></li>
     <li><a href="services/facility-management.html">Facility Management</a></li>
     <li><a href="services/fire-safety.html">Fire Safety</a></li>
     <li><a href="services/pest-control.html">Pest Control</a></li>
-    <li><a href="services/insurance.html">Insurance</a></li>
-  </ul></div>
-  <div class="footer-col"><h4>Company</h4><ul>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="technology.html">Technology</a></li>
-    <li><a href="marketplace.html">Marketplace</a></li>
-    <li><a href="insights.html">Insights</a></li>
-    <li><a href="careers.html">Careers</a></li>
   </ul></div>
   <div class="footer-col"><h4>Industries</h4><ul>
     <li><a href="industries/nbfc.html">Diversified NBFC</a></li>
@@ -161,7 +176,14 @@
     <li><a href="industries/healthcare.html">Healthcare</a></li>
     <li><a href="industries.html">All Industries →</a></li>
   </ul></div>
+  <div class="footer-col"><h4>Company</h4><ul>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="technology.html">Technology</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul></div>
 </div><div class="footer-bottom">
-  <span>© 2025 Belabloom Projects &amp; Facility Management Pvt. Ltd. All rights reserved.</span>
+  <span>© 2025 Belabloom Projects &amp; Facility Management Pvt. Ltd.</span>
   <span>CIN: U74999MH2021PTC359595</span>
 </div></div></footer></body></html>
