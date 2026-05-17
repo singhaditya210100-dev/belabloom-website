@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Technology — Belabloom</title>
+  <link rel="stylesheet" href="styles.css?v=5"/>
+  <style>
+    .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);}
+    .tech-cell{padding:2rem 1.75rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background 0.15s;}
+    .tech-cell:hover{background:var(--off-white);}
+    .tech-icon{font-size:1.75rem;margin-bottom:0.75rem;}
+    .tech-name{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;}
+    .tech-desc{font-size:0.8rem;color:var(--text-mid);line-height:1.65;}
+    .platform-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
+    .platform-cell{padding:2.5rem 6%;border-right:1px solid var(--border);}
+    .platform-cell:last-child{border-right:none;}
+    .platform-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+    .platform-desc{font-size:0.83rem;color:var(--text-mid);line-height:1.7;}
+    .platform-list{list-style:none;margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;}
+    .platform-list li{font-size:0.8rem;color:var(--text-mid);display:flex;gap:0.5rem;}
+    .platform-list li::before{content:"→";color:var(--gold);flex-shrink:0;font-weight:700;}
+    @media(max-width:900px){.tech-grid{grid-template-columns:1fr 1fr;}.platform-row{grid-template-columns:1fr;}.platform-cell{border-right:none;border-bottom:1px solid var(--border);}}
+    @media(max-width:600px){.tech-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-r1" style="background:#000000;border-bottom:1px solid rgba(255,255,255,0.06);">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Belabloom" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <div class="nav-r1-right">
+      <div class="nav-search">⌕</div>
+      <a href="contact.html" class="btn-contact">Contact us</a>
+    </div>
+  </div>
+  <div class="nav-r2">
+    <ul class="nav-primary"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="projects.html">Projects</a></li><li><a href="technology.html" class='active'>Technology</a></li><li><a href="properties.html">Properties</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html">About Us</a></li></ul>
+    <ul class="nav-secondary">
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="page-hero">
+  <div class="page-breadcrumb"><a href="index.html">Home</a> › Technology</div>
+  <div class="page-hero-grid">
+    <div><h1>Technology</h1></div>
+    <div><p class="page-hero-desc"><span class="hl">Smarter infrastructure management through technology.</span> We leverage proven digital tools to deliver transparency, accountability, and measurable outcomes across every engagement.</p></div>
+  </div>
+</div>
+
+<div class="feature">
+  <div class="feature-img"><div class="feature-img-bg img-dark"></div><div class="img-grid"></div><div class="img-label">Technology Platform</div></div>
+  <div class="feature-text">
+    <div class="feature-eyebrow">Our Approach</div>
+    <h2 class="feature-title">Technology-enabled <span class="hl">operations</span></h2>
+    <p class="feature-body">At Belabloom, we use technology not as a buzzword but as a practical tool to give our clients real-time visibility into their facility operations, compliance status, and vendor performance. From Oracle Property Management to ISO-certified processes, our systems are built on the same platforms used by India's largest enterprises.</p>
+    <a href="contact.html" class="text-link">See it in action →</a>
+  </div>
+</div>
+
+<div style="padding:3.5rem 6%;border-bottom:1px solid var(--border);">
+  <div style="margin-bottom:1.75rem;">
+    <div class="section-eyebrow">What We Use</div>
+    <div class="section-title">Technology <span class="hl">Capabilities</span></div>
+  </div>
+  <div class="tech-grid">
+    <div class="tech-cell"><div class="tech-icon">📊</div><div class="tech-name">Oracle Property Management</div><p class="tech-desc">Implemented and actively used for managing property portfolios, lease tracking, maintenance schedules, and cost reporting across large estate networks.</p></div>
+    <div class="tech-cell"><div class="tech-icon">🔐</div><div class="tech-name">ISO 27001 ISMS</div><p class="tech-desc">Information security management system implementation and compliance — ensuring your data and operational information is protected at all times.</p></div>
+    <div class="tech-cell"><div class="tech-icon">✅</div><div class="tech-name">ISO 9001:2000 QMS</div><p class="tech-desc">Quality management system implementation for administration and infrastructure processes — delivering consistent, measurable service quality.</p></div>
+    <div class="tech-cell"><div class="tech-icon">📋</div><div class="tech-name">Digital Work Order Management</div><p class="tech-desc">All maintenance, housekeeping, and service requests tracked digitally — with real-time status updates, photo documentation, and closure confirmation.</p></div>
+    <div class="tech-cell"><div class="tech-icon">📈</div><div class="tech-name">KPI Dashboards & Reporting</div><p class="tech-desc">Monthly performance dashboards covering all FM parameters — uptime, SLA adherence, compliance status, and cost variance — delivered to every client.</p></div>
+    <div class="tech-cell"><div class="tech-icon">🗓️</div><div class="tech-name">Compliance Calendar</div><p class="tech-desc">Automated tracking of all certification renewal dates — fire NOC, pest control AMC, insurance renewals — with proactive alerts to ensure you're never caught out.</p></div>
+  </div>
+</div>
+
+<div style="padding:3.5rem 6%;border-bottom:1px solid var(--border);">
+  <div style="margin-bottom:1.75rem;">
+    <div class="section-eyebrow">Platforms & Standards</div>
+    <div class="section-title">Systems we <span class="hl">implement</span></div>
+  </div>
+  <div class="platform-row">
+    <div class="platform-cell">
+      <div class="platform-name">Property & Estate Management</div>
+      <p class="platform-desc">Our founder led the Oracle Property Management Module implementation at Edelweiss Securities, managing 400+ branch offices across India and Singapore.</p>
+      <ul class="platform-list">
+        <li>Lease management and renewal tracking</li>
+        <li>Multi-location portfolio dashboards</li>
+        <li>Maintenance scheduling and vendor tracking</li>
+        <li>Cost allocation and reporting</li>
+      </ul>
+    </div>
+    <div class="platform-cell">
+      <div class="platform-name">Compliance & Quality Systems</div>
+      <p class="platform-desc">We bring ISO-certified process discipline to every engagement — the same standards applied at Edelweiss, Airtel, and India's leading financial institutions.</p>
+      <ul class="platform-list">
+        <li>ISO 9001:2000 administration processes</li>
+        <li>ISO 27001 information security management</li>
+        <li>Statutory compliance documentation and audit trails</li>
+        <li>Fire, pest, and insurance certification management</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="stat-strip">
+  <div class="stat-cell"><div class="stat-num">400+</div><div class="stat-label">Branch offices managed via Oracle PM</div></div>
+  <div class="stat-cell"><div class="stat-num">ISO</div><div class="stat-label">9001 &amp; 27001 certified processes</div></div>
+  <div class="stat-cell"><div class="stat-num">100%</div><div class="stat-label">Digital work order tracking</div></div>
+  <div class="stat-cell"><div class="stat-num">Real-time</div><div class="stat-label">Compliance status dashboards</div></div>
+</div>
+<div class="cta-bleed">
+  <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
+  <div class="cta-bleed-content"><h2>Want a demo of our systems?</h2>
+    <a href="contact.html" class="cta-bleed-link">Book a free consultation &nbsp;→</a>
+  </div>
+</div><footer><div class="footer-inner"><div class="footer-top">
+  <div>
+    <div class="footer-brand-name">Belabloom</div>
+    <p class="footer-brand-desc">Managing Projects, Empowering Businesses. Full-stack infrastructure from finding your office to running it every day.</p>
+    <a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a>
+    <div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div>
+  </div>
+  <div class="footer-col"><h4>Services</h4><ul>
+    <li><a href="services/space-sourcing.html">Space Sourcing</a></li>
+    <li><a href="services/interior-setup.html">Interior Setup</a></li>
+    <li><a href="services/facility-management.html">Facility Management</a></li>
+    <li><a href="services/fire-safety.html">Fire Safety</a></li>
+    <li><a href="services/pest-control.html">Pest Control</a></li>
+  </ul></div>
+  <div class="footer-col"><h4>Company</h4><ul>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="technology.html">Technology</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul></div>
+  <div class="footer-col"><h4>Industries</h4><ul>
+    <li><a href="industries/nbfc.html">NBFC</a></li>
+    <li><a href="industries/wealth-management.html">Wealth Management</a></li>
+    <li><a href="industries/it-services.html">IT &amp; ITES</a></li>
+    <li><a href="industries/healthcare.html">Healthcare</a></li>
+    <li><a href="industries.html">All Industries →</a></li>
+  </ul></div>
+</div><div class="footer-bottom">
+  <span>© 2025 Belabloom Projects &amp; Facility Management Pvt. Ltd.</span>
+  <span>CIN: U74999MH2021PTC359595</span>
+</div></div></footer></body></html>

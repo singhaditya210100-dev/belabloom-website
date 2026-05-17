@@ -2,31 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=4"/>
+  <title>About Us — Belabloom</title>
+  <link rel="stylesheet" href="styles.css?v=5"/>
   <style>
+    
+.clients-section{padding:3rem 6% 2rem;border-bottom:1px solid var(--border);}
+.clients-logo-grid{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);}
+.client-logo-cell{flex:1 1 160px;min-width:120px;max-width:200px;padding:1.5rem 1.25rem;
+  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;background:var(--white);
+  transition:background 0.15s;}
+.client-logo-cell:hover{background:var(--off-white);}
+.client-logo-img{max-height:44px;max-width:130px;width:auto;height:auto;
+  object-fit:contain;filter:grayscale(100%);opacity:0.7;transition:0.2s;}
+.client-logo-cell:hover .client-logo-img{filter:grayscale(0%);opacity:1;}
+
     .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;padding:4.5rem 6%;border-bottom:1px solid var(--border);align-items:start;}
-    .story-body p{font-size:0.9rem;color:var(--text-mid);line-height:1.85;margin-bottom:1.1rem;}
+    .story-body p{font-size:0.9rem;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
     .story-body strong{color:var(--text);font-weight:600;}
-    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
-    .value-cell{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.2rem 2rem;transition:background 0.15s;}
+    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
+    .value-cell{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.75rem 1.5rem;transition:background 0.15s;}
     .value-cell:hover{background:var(--off-white);}
-    .value-icon{font-size:1.5rem;margin-bottom:0.8rem;}
-    .value-name{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;}
-    .value-desc{font-size:0.8rem;color:var(--text-mid);line-height:1.65;}
+    .value-name{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:0.35rem;}
+    .value-desc{font-size:0.78rem;color:var(--text-mid);line-height:1.6;}
     .vm-split{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
-    .vm-panel{padding:4rem 5%;border-right:1px solid var(--border);}
+    .vm-panel{padding:3.5rem 5%;border-right:1px solid var(--border);}
     .vm-panel:last-child{border-right:none;}
-    .vm-type{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
-    .vm-title{font-size:1.6rem;font-weight:800;color:var(--text);letter-spacing:-0.025em;margin-bottom:1rem;}
-    .vm-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
-    .vm-list li{font-size:0.83rem;color:var(--text-mid);display:flex;gap:0.5rem;}
-    .vm-list li::before{content:"→";color:var(--gold);flex-shrink:0;}
-    @media(max-width:900px){.story-grid{grid-template-columns:1fr;gap:2rem;}.values-grid{grid-template-columns:1fr 1fr;}.vm-split{grid-template-columns:1fr;}.vm-panel{border-right:none;border-bottom:1px solid var(--border);}}
-    @media(max-width:600px){.values-grid{grid-template-columns:1fr;}}
+    .vm-type{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+    .vm-title{font-size:1.4rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin-bottom:0.75rem;}
+    .team-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);}
+    .team-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:180px 1fr;}
+    .team-card:last-child{border-right:none;}
+    .team-photo{position:relative;overflow:hidden;min-height:220px;background:var(--off-white);}
+    .team-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+    .team-body{padding:2rem 1.75rem;display:flex;flex-direction:column;justify-content:center;}
+    .team-name{font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin-bottom:0.2rem;}
+    .team-role{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+    .team-bio{font-size:0.8rem;color:var(--text-mid);line-height:1.7;}
+    .reg-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);}
+    .reg-cell{padding:2rem 2.5rem;border-right:1px solid var(--border);}
+    .reg-cell:last-child{border-right:none;}
+    .reg-label{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.4rem;}
+    .reg-value{font-size:0.88rem;font-weight:600;color:var(--text);}
+    @media(max-width:900px){
+      .story-grid{grid-template-columns:1fr;gap:2rem;}
+      .values-grid{grid-template-columns:1fr 1fr;}
+      .vm-split{grid-template-columns:1fr;}
+      .vm-panel{border-right:none;border-bottom:1px solid var(--border);}
+      .team-grid{grid-template-columns:1fr;}
+      .team-card{grid-template-columns:140px 1fr;border-right:none;}
+      .reg-strip{grid-template-columns:1fr;}
+      .reg-cell{border-right:none;border-bottom:1px solid var(--border);}
+    }
+    @media(max-width:600px){
+      .values-grid{grid-template-columns:1fr;}
+      .team-card{grid-template-columns:1fr;}
+      .team-photo{min-height:240px;}
+    }
   </style>
 </head>
-<body><nav class="site-nav">
+<body>
+<nav class="site-nav">
   <div class="nav-r1" style="background:#000000;border-bottom:1px solid rgba(255,255,255,0.06);">
     <a href="index.html" class="nav-logo">
       <img src="logo.png" alt="Belabloom" style="height:38px;width:auto;display:block;"/>
@@ -37,100 +73,137 @@
     </div>
   </div>
   <div class="nav-r2">
-    <ul class="nav-primary"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="projects.html">Projects</a></li><li><a href="properties.html">Properties</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html" class='active'>About Us</a></li></ul>
-    <ul class="nav-secondary"><li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html">Get a Quote</a></li></ul>
+    <ul class="nav-primary"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="projects.html">Projects</a></li><li><a href="technology.html">Technology</a></li><li><a href="properties.html">Properties</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html" class='active'>About Us</a></li></ul>
+    <ul class="nav-secondary">
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Get a Quote</a></li>
+    </ul>
   </div>
 </nav>
 <div class="page-hero">
-  <div class="page-breadcrumb"><a href="index.html">Home</a> › About Belabloom</div>
+  <div class="page-breadcrumb"><a href="index.html">Home</a> › About Us</div>
   <div class="page-hero-grid">
-    <div><h1>Built to fix the fragmentation problem</h1></div>
-    <div>
-      <p class="page-hero-desc">Belabloom was born from a frustration every ops team knows — <span class="hl">chasing five vendors for five things that should come from one place.</span> We decided to be that one place. One partner. Full accountability. Zero fragmentation.</p>
-    </div>
+    <div><h1>About Belabloom</h1></div>
+    <div><p class="page-hero-desc"><span class="hl">Managing Projects, Empowering Businesses.</span> Incorporated in 2021, Belabloom is India's integrated business infrastructure partner — built to replace vendor chaos with a single accountable relationship.</p></div>
   </div>
 </div>
+
+<div class="reg-strip">
+  <div class="reg-cell"><div class="reg-label">Incorporated</div><div class="reg-value">27th April, 2021</div></div>
+  <div class="reg-cell"><div class="reg-label">Registration</div><div class="reg-value">ROC Maharashtra · No. 359595</div></div>
+  <div class="reg-cell"><div class="reg-label">CIN</div><div class="reg-value">U74999MH2021PTC359595</div></div>
+</div>
+
 <div class="stat-strip">
   <div class="stat-cell"><div class="stat-num">200+</div><div class="stat-label">Projects delivered</div></div>
-  <div class="stat-cell"><div class="stat-num">7</div><div class="stat-label">Service verticals</div></div>
-  <div class="stat-cell"><div class="stat-num">98%</div><div class="stat-label">Client retention</div></div>
-  <div class="stat-cell"><div class="stat-num">40%</div><div class="stat-label">Avg. OpEx reduction</div></div>
+  <div class="stat-cell"><div class="stat-num">30+</div><div class="stat-label">Years of founder experience</div></div>
+  <div class="stat-cell"><div class="stat-num">400+</div><div class="stat-label">Branch offices established</div></div>
+  <div class="stat-cell"><div class="stat-num">20+</div><div class="stat-label">Cities across India</div></div>
 </div>
+
 <div class="story-grid">
   <div>
-    <div class="section-eyebrow">The Problem We Solve</div>
-    <h2 class="section-title">Businesses deserve better than <span class="hl">vendor chaos</span></h2>
+    <div class="section-eyebrow">Who We Are</div>
+    <h2 class="section-title">Built to fix the <span class="hl">fragmentation problem</span></h2>
   </div>
   <div class="story-body">
-    <p>When a business sets up a new office, they typically coordinate with a real estate broker, an interior contractor, a housekeeping agency, a pest control company, a fire safety vendor, and an insurance advisor — all separately, all with misaligned incentives.</p>
-    <p>The result? <strong>Cost overruns. Compliance gaps. Maintenance failures. Ops teams stretched thin</strong> across things that have nothing to do with their actual job.</p>
-    <p>Belabloom was built to change that. We aggregate the entire infrastructure lifecycle under one roof — one account manager, one SLA, full end-to-end ownership. We're not a marketplace. We're operationally accountable — we hold vendor contracts, supervise execution, and sign off on quality.</p>
-    <p>That's the Belabloom difference.</p>
+    <p><strong>BelaBloom Projects &amp; Facility Management Pvt. Ltd.</strong> was incorporated with the Ministry of Commerce Affairs on 27th April 2021, and registered at the Registrar of Companies (ROC), Maharashtra.</p>
+    <p>We exist because most businesses waste enormous time and money coordinating with multiple vendors for things that should come from one place — a real estate broker, an interior contractor, a housekeeping agency, a pest control company, a fire safety vendor, and an insurance advisor, all separately, all with misaligned incentives.</p>
+    <p>Belabloom aggregates the entire infrastructure lifecycle under one roof. We are operationally accountable — we hold vendor contracts, supervise execution, and sign off on quality. We've obtained all required compliance certificates to perform our operations across India.</p>
+    <p>We have successfully partnered with leading organisations across Financial Services, General Insurance, IT &amp; ITES, Mining, and Cash Management sectors.</p>
   </div>
 </div>
-<div class="feature">
-  <div class="feature-img"><div class="feature-img-bg img-mid"></div><div class="img-grid"></div><div class="img-label">Our Approach</div></div>
-  <div class="feature-text">
-    <div class="feature-eyebrow">Client perspective</div>
-    <h2 class="feature-title" style="font-style:italic;font-weight:400;font-size:1.4rem;line-height:1.5;">"We stopped chasing five vendors. Belabloom became our single point of truth for everything operations."</h2>
-    <p class="feature-body" style="margin-top:0.5rem;">— Operations Head, Pune-based SaaS company</p>
-    <div style="margin-top:2rem;padding:1.5rem;background:var(--off-white);border:1px solid var(--border);">
-      <div style="font-size:2rem;font-weight:800;color:var(--green);">40%</div>
-      <div style="font-size:0.78rem;color:var(--text-mid);margin-top:0.3rem;">Average reduction in operational overhead within 6 months of engagement</div>
-    </div>
+
+<div class="vm-split">
+  <div class="vm-panel">
+    <div class="vm-type">Our Vision</div>
+    <div class="vm-title">To be the most preferred partners for Indian and Global brands</div>
+  </div>
+  <div class="vm-panel">
+    <div class="vm-type">Our Mission</div>
+    <div class="vm-title">To enable our clients to focus on their core businesses</div>
   </div>
 </div>
-<div id="values" style="padding:4rem 6% 0;border-bottom:1px solid var(--border);">
+
+<div style="padding:3.5rem 6% 0;border-bottom:1px solid var(--border);">
   <div style="margin-bottom:2rem;">
     <div class="section-eyebrow">What We Stand For</div>
     <div class="section-title">Our Core Values</div>
   </div>
-  <div class="values-grid">
-    <div class="value-cell"><div class="value-icon">🎯</div><div class="value-name">Ownership</div><p class="value-desc">When we commit, we deliver — on time, on budget, to the standard promised. No excuses.</p></div>
-    <div class="value-cell"><div class="value-icon">🔍</div><div class="value-name">Transparency</div><p class="value-desc">No hidden costs. No vague timelines. No post-project surprises. Clear communication at every stage.</p></div>
-    <div class="value-cell"><div class="value-icon">💡</div><div class="value-name">Efficiency</div><p class="value-desc">We obsess over better ways to do things — for our clients and within our own operations.</p></div>
-    <div class="value-cell"><div class="value-icon">🤝</div><div class="value-name">Partnership</div><p class="value-desc">We're not vendors. We're partners. Our success is directly tied to how well our clients grow.</p></div>
-    <div class="value-cell"><div class="value-icon">🌱</div><div class="value-name">Scalability</div><p class="value-desc">Whether you're a 10-person startup or a 1,000-person enterprise, our model adapts to where you are.</p></div>
-    <div class="value-cell"><div class="value-icon">🔒</div><div class="value-name">Compliance-First</div><p class="value-desc">We never cut corners on safety and compliance. Every engagement is audit-ready from day one.</p></div>
+  <div class="values-grid"><div class="value-cell"><div class="value-name">Excellence</div><p class="value-desc">Striving for the highest standards of quality and professionalism in all aspects of project and facility management.</p></div><div class="value-cell"><div class="value-name">Integrity</div><p class="value-desc">Conducting business with honesty, transparency, and ethical practices at every level.</p></div><div class="value-cell"><div class="value-name">Client-Centric</div><p class="value-desc">Putting clients' needs and satisfaction at the forefront of every decision and service delivery.</p></div><div class="value-cell"><div class="value-name">Collaboration</div><p class="value-desc">Fostering a culture of teamwork with clients, partners, and stakeholders to achieve shared goals.</p></div><div class="value-cell"><div class="value-name">Innovation</div><p class="value-desc">Embracing new technologies and creative problem-solving to drive continuous improvement.</p></div><div class="value-cell"><div class="value-name">Accountability</div><p class="value-desc">Taking full responsibility for actions and outcomes, and delivering on every commitment.</p></div><div class="value-cell"><div class="value-name">Safety</div><p class="value-desc">Prioritising the health, safety, and well-being of employees, contractors, and clients.</p></div><div class="value-cell"><div class="value-name">Sustainability</div><p class="value-desc">Integrating sustainable practices and environmentally friendly solutions into every operation.</p></div></div>
+</div>
+
+<div style="padding:3.5rem 6% 0;border-bottom:1px solid var(--border);">
+  <div style="margin-bottom:2rem;">
+    <div class="section-eyebrow">Leadership</div>
+    <div class="section-title">Meet the <span class="hl">Team</span></div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-photo"><img src="team/founder.png" alt="Mr. Ashok Singh, Founder"/></div>
+      <div class="team-body">
+        <div class="team-name">Mr. Ashok Singh</div>
+        <div class="team-role">Founder &amp; Managing Director</div>
+        <p class="team-bio">Ashok Singh founded BelaBloom on 21st April 2021, bringing over <strong>30 years of experience</strong> in Projects Management, Estate Management, Procurement, Facilities Management and Operations.</p>
+        <p class="team-bio" style="margin-top:0.6rem;">He began his career at IIT Delhi in 1990, progressing through Dalmia Industries, Pertech Computers, NIIT, NIS Sparta, and Reliance. As Group Manager at Bharti Airtel (2006–2008), and then Deputy Vice President at Edelweiss Securities Limited from 2008, he led the establishment of <strong>400+ branch offices</strong> across India and Singapore, and implemented ISO-9001:2000, ISO27001 (ISMS), and Oracle Property Management.</p>
+        <p class="team-bio" style="margin-top:0.6rem;">He holds an <strong>MBA in Project Management</strong> earned while working at Edelweiss.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo"><img src="team/consultant.png" alt="Mr. Anil Shukla, Project Consultant"/></div>
+      <div class="team-body">
+        <div class="team-name">Mr. Anil Shukla</div>
+        <div class="team-role">Project Consultant</div>
+        <p class="team-bio">Anil Shukla is a committed professional with over <strong>25 years of varied experience</strong> in Project Management, Facility Management, Administration, and Civil Construction with a specialisation in MEP functions.</p>
+        <p class="team-bio" style="margin-top:0.6rem;">He previously held senior roles at <strong>Edelweiss and the Sahara Group</strong>, gaining extensive exposure in P&amp;L Management, Leadership, and Strategy.</p>
+        <p class="team-bio" style="margin-top:0.6rem;">He has demonstrated his capabilities in achieving top-line growth and bottom-line improvements, possessing strong analytical skills, work ethics, and interpersonal skills with key decision-making abilities.</p>
+      </div>
+    </div>
   </div>
 </div>
-<div class="vm-split">
-  <div class="vm-panel">
-    <div class="vm-type">Our Vision</div>
-    <div class="vm-title">The one-stop platform for business infrastructure in India</div>
-    <ul class="vm-list">
-      <li>Default infrastructure partner for India's growing businesses</li>
-      <li>Technology platform for transparent, proactive FM</li>
-      <li>Expand to Tier 2 markets by 2027</li>
-      <li>Evolve into a SaaS + services hybrid</li>
-    </ul>
+<div class="clients-section">
+  <div style="padding:0 6% 1.5rem;">
+    <div class="section-eyebrow">Trusted By</div>
+    <div class="section-title" style="font-size:1.4rem;">Our <span class="hl">Clients</span></div>
   </div>
-  <div class="vm-panel">
-    <div class="vm-type">Our Mission</div>
-    <div class="vm-title">Simplify operations. Unlock growth.</div>
-    <ul class="vm-list">
-      <li>Reduce vendor fragmentation for every client</li>
-      <li>Deliver cost-efficient, compliant, scalable solutions</li>
-      <li>Bring technology, services, and execution under one umbrella</li>
-      <li>Help businesses focus on what they do best</li>
-    </ul>
-  </div>
+  <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Insurance client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="IT client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Mining client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Business services client" class="client-logo-img"/></div></div>
 </div>
 <div class="cta-bleed">
   <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
-  <div class="cta-bleed-content"><h2>Want to work with us?</h2><a href="contact.html" class="cta-bleed-link">Start the conversation &nbsp;→</a></div>
-</div>
-<footer><div class="footer-inner"><div class="footer-top">
-  <div><div class="footer-brand-name">Belabloom</div><p class="footer-brand-desc">Full-stack business infrastructure — from finding your office to running it every day.</p><a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a><div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div></div>
-  <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#sourcing">Space sourcing</a></li><li><a href="services.html#fm">Facility management</a></li><li><a href="services.html#fire">Fire safety</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
-  <div class="footer-col"><h4>Industries</h4><ul><li><a href="industries.html">All sectors</a></li><li><a href="industries.html#startups">Startups</a></li><li><a href="industries.html#smes">SMEs</a></li></ul></div>
+  <div class="cta-bleed-content"><h2>Want to work with us?</h2>
+    <a href="contact.html" class="cta-bleed-link">Start the conversation &nbsp;→</a>
+  </div>
+</div><footer><div class="footer-inner"><div class="footer-top">
+  <div>
+    <div class="footer-brand-name">Belabloom</div>
+    <p class="footer-brand-desc">Managing Projects, Empowering Businesses. Full-stack infrastructure from finding your office to running it every day.</p>
+    <a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a>
+    <div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div>
+  </div>
+  <div class="footer-col"><h4>Services</h4><ul>
+    <li><a href="services/space-sourcing.html">Space Sourcing</a></li>
+    <li><a href="services/interior-setup.html">Interior Setup</a></li>
+    <li><a href="services/facility-management.html">Facility Management</a></li>
+    <li><a href="services/fire-safety.html">Fire Safety</a></li>
+    <li><a href="services/pest-control.html">Pest Control</a></li>
+    <li><a href="services/insurance.html">Insurance</a></li>
+  </ul></div>
   <div class="footer-col"><h4>Company</h4><ul>
     <li><a href="about.html">About Us</a></li>
     <li><a href="projects.html">Projects</a></li>
-    <li><a href="properties.html">Properties</a></li>
+    <li><a href="technology.html">Technology</a></li>
     <li><a href="marketplace.html">Marketplace</a></li>
     <li><a href="insights.html">Insights</a></li>
     <li><a href="careers.html">Careers</a></li>
   </ul></div>
-</div><div class="footer-bottom"><span>© 2025 Belabloom. All rights reserved.</span><span>Pune, Maharashtra — Serving Pan-India</span></div></div></footer></body></html>
+  <div class="footer-col"><h4>Industries</h4><ul>
+    <li><a href="industries/nbfc.html">Diversified NBFC</a></li>
+    <li><a href="industries/wealth-management.html">Wealth Management</a></li>
+    <li><a href="industries/it-services.html">IT &amp; ITES</a></li>
+    <li><a href="industries/healthcare.html">Healthcare</a></li>
+    <li><a href="industries.html">All Industries →</a></li>
+  </ul></div>
+</div><div class="footer-bottom">
+  <span>© 2025 Belabloom Projects &amp; Facility Management Pvt. Ltd. All rights reserved.</span>
+  <span>CIN: U74999MH2021PTC359595</span>
+</div></div></footer></body></html>

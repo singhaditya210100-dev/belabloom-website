@@ -4,7 +4,18 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Belabloom — Business Infrastructure, Simplified — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=4"/>
+  <link rel="stylesheet" href="styles.css?v=5"/>
+<style>
+.clients-section{padding:3rem 6% 2rem;border-bottom:1px solid var(--border);}
+.clients-logo-grid{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);}
+.client-logo-cell{flex:1 1 160px;min-width:120px;max-width:200px;padding:1.5rem 1.25rem;
+  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;background:var(--white);transition:background 0.15s;}
+.client-logo-cell:hover{background:var(--off-white);}
+.client-logo-img{max-height:44px;max-width:130px;width:auto;height:auto;
+  object-fit:contain;filter:grayscale(100%);opacity:0.7;transition:0.2s;}
+.client-logo-cell:hover .client-logo-img{filter:grayscale(0%);opacity:1;}
+</style>
 </head>
 <body>
 <nav class="site-nav">
@@ -18,7 +29,7 @@
     </div>
   </div>
   <div class="nav-r2">
-    <ul class="nav-primary"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="projects.html">Projects</a></li><li><a href="properties.html">Properties</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html">About Us</a></li></ul>
+    <ul class="nav-primary"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="projects.html">Projects</a></li><li><a href="technology.html">Technology</a></li><li><a href="properties.html">Properties</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html">About Us</a></li></ul>
     <ul class="nav-secondary"><li><a href="careers.html">Careers</a></li>
       <li><a href="contact.html">Get a Quote</a></li></ul>
   </div>
@@ -135,6 +146,13 @@
   </div>
 </section>
 
+<div class="clients-section">
+  <div style="padding:0 0 1.5rem;">
+    <div class="section-eyebrow">Trusted By</div>
+    <div class="section-title" style="font-size:1.4rem;">Our <span class="hl">Clients</span></div>
+  </div>
+  <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>
+</div>
 <div class="cta-bleed">
   <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
   <div class="cta-bleed-content">
@@ -184,7 +202,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Belabloom. All rights reserved.</span>
+      <span>© 2025 Belabloom Projects &amp; Facility Management Pvt. Ltd.</span>
       <span>Pune, Maharashtra — Serving Pan-India</span>
     </div>
   </div>
