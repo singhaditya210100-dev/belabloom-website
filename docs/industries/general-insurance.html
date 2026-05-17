@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>General Insurance — Belabloom</title>
+  <link rel="stylesheet" href="../styles.css"/>
+  <style>
+.ind-services{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);}
+.ind-svc-item{padding:1rem 1.25rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--text-mid);transition:background 0.15s;}
+.ind-svc-item:hover{background:var(--off-white);}
+.ind-svc-item::before{content:"→";color:var(--gold);flex-shrink:0;font-weight:700;}
+.ind-svc-item:nth-child(2n){border-right:none;}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);}
+.benefit-cell{padding:2rem 1.5rem;border-right:1px solid var(--border);transition:background 0.15s;}
+.benefit-cell:last-child{border-right:none;}
+.benefit-cell:hover{background:var(--off-white);}
+.benefit-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;}
+.benefit-desc{font-size:0.8rem;color:var(--text-mid);line-height:1.65;}
+.client-strip{padding:2.5rem 6%;background:var(--off-white);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:2rem;}
+.client-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);flex-shrink:0;}
+.client-name{font-size:0.875rem;color:var(--text-mid);}
+@media(max-width:900px){.ind-services{grid-template-columns:1fr;}.ind-svc-item:nth-child(2n){border-right:none;}.ind-svc-item{border-right:none;}.benefits-grid{grid-template-columns:1fr;}.benefit-cell{border-right:none;border-bottom:1px solid var(--border);}}
+</style>
+</head>
+<body><nav class="site-nav">
+  <div class="nav-r1">
+    <a href="../index.html" class="nav-logo">
+      <div class="nav-logo-mark">BB</div>
+      <div class="nav-logo-copy"><span class="nav-logo-name">Belabloom</span><span class="nav-logo-sub">Built for business</span></div>
+    </a>
+    <div class="nav-r1-right">
+      <div class="nav-search">⌕</div>
+      <a href="../contact.html" class="btn-contact">Contact us</a>
+    </div>
+  </div>
+  <div class="nav-r2">
+    <ul class="nav-primary">
+      <li><a href="../services.html">Services</a></li>
+      <li><a href="../industries.html"  class='active'>Industries</a></li>
+      <li><a href="../packages.html">Packages</a></li>
+      <li><a href="../projects.html">Projects</a></li>
+      <li><a href="../insights.html">Insights</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+    <ul class="nav-secondary">
+      <li><a href="../careers.html">Careers</a></li>
+      <li><a href="../about.html">Our Story</a></li>
+      <li><a href="../contact.html">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="page-hero">
+  <div class="page-breadcrumb"><a href="../index.html">Home</a> › <a href="../industries.html">Industries</a> › General Insurance</div>
+  <div class="page-hero-grid">
+    <div><h1>General Insurance</h1></div>
+    <div><p class="page-hero-desc"><span class="hl">Creating Secure &amp; Compliant Workspaces for Insurance Leaders</span></p></div>
+  </div>
+</div>
+
+<div class="client-strip">
+  <div class="client-label">Featured clients</div>
+  <div class="client-name">Tata AIG, Zuno General</div>
+</div>
+
+<div class="feature">
+  <div class="feature-img"><div class="feature-img-bg img-warm"></div><div class="img-grid"></div><div class="img-label">General Insurance</div></div>
+  <div class="feature-text">
+    <div class="feature-eyebrow">Our Approach</div>
+    <h2 class="feature-title">Built for <span class="hl">General Insurance</span></h2>
+    <p class="feature-body">Our team ensures that insurance companies operate in secure environments ready to handle sensitive data and client interactions, meeting all safety and compliance norms.</p>
+    <a href="../contact.html" class="text-link">Get a sector-specific proposal →</a>
+  </div>
+</div>
+
+<div style="padding:3.5rem 6%;border-bottom:1px solid var(--border);">
+  <div style="margin-bottom:1.5rem;">
+    <div class="section-eyebrow">What We Deliver</div>
+    <div class="section-title">Services for General Insurance</div>
+  </div>
+  <div class="ind-services"><div class="ind-svc-item">Secure space sourcing for branch and back-office operations</div><div class="ind-svc-item">Emergency preparedness and fire safety systems</div><div class="ind-svc-item">Facility management for sensitive data environments</div><div class="ind-svc-item">Periodic process audits and gap analysis</div><div class="ind-svc-item">Pest control with documented compliance</div><div class="ind-svc-item">Insurance and risk advisory services</div></div>
+</div>
+
+<div style="border-bottom:1px solid var(--border);">
+  <div style="padding:2rem 6% 1.5rem;">
+    <div class="section-eyebrow">Why Belabloom</div>
+    <div class="section-title">Key Benefits</div>
+  </div>
+  <div class="benefits-grid"><div class="benefit-cell"><div class="benefit-title">Data-Safe Environments</div><p class="benefit-desc">Facility protocols designed to protect client data and meet insurance sector security standards.</p></div><div class="benefit-cell"><div class="benefit-title">Emergency Preparedness</div><p class="benefit-desc">Comprehensive fire safety and evacuation planning for all facility types.</p></div><div class="benefit-cell"><div class="benefit-title">Branch Standardisation</div><p class="benefit-desc">Consistent facility standards across all branch locations nationwide.</p></div></div>
+</div>
+
+<div style="padding:4rem 6%;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+  <div>
+    <div class="section-eyebrow">Ready to transform your operations?</div>
+    <h2 class="section-title" style="font-size:1.8rem;">Get a tailored proposal for <span class="hl">General Insurance</span></h2>
+    <p style="font-size:0.875rem;color:var(--text-mid);line-height:1.8;margin-top:0.8rem;">Tell us about your current setup and challenges. We'll come back within 24 hours with a detailed, itemised proposal — no obligation, no vague pricing.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;">
+    <a href="../contact.html" style="display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.85rem 1.5rem;background:var(--green);color:var(--white);font-size:0.875rem;font-weight:600;transition:0.15s;">Book a free consultation &nbsp;→</a>
+    <a href="../services.html" style="display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.85rem 1.5rem;background:var(--white);color:var(--text);border:1px solid var(--border);font-size:0.875rem;font-weight:500;transition:0.15s;">Browse all services →</a>
+  </div>
+</div>
+<div class="cta-bleed">
+  <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
+  <div class="cta-bleed-content"><h2>Ready to get started?</h2>
+    <a href="../contact.html" class="cta-bleed-link">Talk to our team &nbsp;→</a>
+  </div>
+</div><footer><div class="footer-inner"><div class="footer-top">
+  <div><div class="footer-brand-name">Belabloom</div>
+    <p class="footer-brand-desc">Full-stack business infrastructure — from finding your office to running it every day.</p>
+    <a href="../contact.html" class="footer-subscribe">Get a quote &nbsp;→</a>
+    <div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div>
+  </div>
+  <div class="footer-col"><h4>Services</h4><ul>
+    <li><a href="../services/space-sourcing.html">Space sourcing</a></li>
+    <li><a href="../services/facility-management.html">Facility management</a></li>
+    <li><a href="../services/fire-safety.html">Fire safety</a></li>
+    <li><a href="../services/pest-control.html">Pest control</a></li>
+    <li><a href="../contact.html">Contact us</a></li>
+  </ul></div>
+  <div class="footer-col"><h4>Industries</h4><ul>
+    <li><a href="../industries/nbfc.html">Diversified NBFC</a></li>
+    <li><a href="../industries/wealth-management.html">Wealth Management</a></li>
+    <li><a href="../industries/it-services.html">IT &amp; ITES</a></li>
+    <li><a href="../industries/healthcare.html">Healthcare</a></li>
+    <li><a href="../industries.html">All industries</a></li>
+  </ul></div>
+  <div class="footer-col"><h4>Company</h4><ul>
+    <li><a href="../about.html">About us</a></li>
+    <li><a href="../projects.html">Projects</a></li>
+    <li><a href="../insights.html">Insights</a></li>
+    <li><a href="../careers.html">Careers</a></li>
+    <li><a href="../contact.html">Get a quote</a></li>
+  </ul></div>
+</div><div class="footer-bottom">
+  <span>© 2025 Belabloom. All rights reserved.</span>
+  <span>Pune, Maharashtra — Serving Pan-India</span>
+</div></div></footer></body></html>
