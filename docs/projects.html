@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=5"/>
+  <link rel="stylesheet" href="styles.css?v=6"/>
 <style>
-.clients-section{padding:3rem 6% 2rem;border-bottom:1px solid var(--border);}
-.clients-logo-grid{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);}
-.client-logo-cell{flex:1 1 160px;min-width:120px;max-width:200px;padding:1.5rem 1.25rem;
+.clients-section{padding:4rem 6%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--off-white);}
+.clients-header{text-align:center;margin-bottom:2.5rem;}
+.clients-logo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:0;border:1px solid var(--border);background:var(--white);}
+.client-logo-cell{flex:1 1 180px;min-width:140px;padding:2rem 1.5rem;
   border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;background:var(--white);transition:background 0.15s;}
+  display:flex;align-items:center;justify-content:center;
+  background:var(--white);transition:background 0.2s;}
 .client-logo-cell:hover{background:var(--off-white);}
-.client-logo-img{max-height:44px;max-width:130px;width:auto;height:auto;
-  object-fit:contain;filter:grayscale(100%);opacity:0.7;transition:0.2s;}
+.client-logo-img{max-height:54px;max-width:150px;width:auto;height:auto;
+  object-fit:contain;filter:grayscale(100%);opacity:0.65;transition:0.25s;}
 .client-logo-cell:hover .client-logo-img{filter:grayscale(0%);opacity:1;}
 </style>
 </head>
@@ -115,8 +117,16 @@
     </div>
   </div>
 </div>
+<section class="clients-section">
+  <div class="clients-header">
+    <div class="section-eyebrow" style="text-align:center;">Trusted By</div>
+    <div class="section-title" style="font-size:1.8rem;text-align:center;margin-top:0.3rem;">Our <span class="hl">Clients</span></div>
+    <p style="text-align:center;font-size:0.875rem;color:var(--text-mid);margin-top:0.6rem;max-width:520px;margin-left:auto;margin-right:auto;">Leading organisations across Financial Services, Insurance, IT, Mining, and Business Services trust Belabloom to manage their infrastructure.</p>
+  </div>
+  <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>
+</section>
 <div class="feature">
-  <div class="feature-img"><div class="feature-img-bg img-mid"></div><div class="img-grid"></div></div>
+  <div class="feature-img"><img src="img/doc-img-13.jpg" alt="Project management" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/></div>
   <div class="feature-text">
     <div class="feature-eyebrow">Our Approach</div>
     <h2 class="feature-title">Every project is a <span class="hl">commitment</span>, not a contract</h2>
@@ -124,9 +134,6 @@
     <a href="contact.html" class="text-link">Start a project with us →</a>
   </div>
 </div>
-<div class="clients-section">
-  <div style="padding:0 0 1.5rem;">
-    <div class="section-eyebrow">Trusted By</div>
     <div class="section-title" style="font-size:1.4rem;">Our <span class="hl">Clients</span></div>
   </div>
   <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>

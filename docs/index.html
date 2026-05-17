@@ -4,19 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Belabloom — Business Infrastructure, Simplified — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=5"/>
-<style>
-.clients-section{padding:3rem 6% 2rem;border-bottom:1px solid var(--border);}
-.clients-logo-grid{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);}
-.client-logo-cell{flex:1 1 160px;min-width:120px;max-width:200px;padding:1.5rem 1.25rem;
-  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;background:var(--white);transition:background 0.15s;}
-.client-logo-cell:hover{background:var(--off-white);}
-.client-logo-img{max-height:44px;max-width:130px;width:auto;height:auto;
-  object-fit:contain;filter:grayscale(100%);opacity:0.7;transition:0.2s;}
-.client-logo-cell:hover .client-logo-img{filter:grayscale(0%);opacity:1;}
-</style>
-</head>
+  <link rel="stylesheet" href="styles.css?v=6"/>
+
 <body>
 <nav class="site-nav">
   <div class="nav-r1" style="background:#000000;border-bottom:1px solid rgba(255,255,255,0.06);">
@@ -36,9 +25,8 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-bg-grid"></div>
-  <div class="hero-bg-glow"></div>
+  <div class="hero-bg" style="background-image:url('img/doc-img-12.jpg');background-size:cover;background-position:center top;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.2) 100%);"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Business Infrastructure &amp; Facility Management</div>
     <h1>Set up and run your<br/>office — end to end</h1>
@@ -74,8 +62,16 @@
   </div>
 </section>
 
+<section class="clients-section">
+  <div class="clients-header">
+    <div class="section-eyebrow" style="text-align:center;">Trusted By</div>
+    <div class="section-title" style="font-size:1.8rem;text-align:center;margin-top:0.3rem;">Our <span class="hl">Clients</span></div>
+    <p style="text-align:center;font-size:0.875rem;color:var(--text-mid);margin-top:0.6rem;max-width:520px;margin-left:auto;margin-right:auto;">Leading organisations across Financial Services, Insurance, IT, Mining, and Business Services trust Belabloom to manage their infrastructure.</p>
+  </div>
+  <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>
+</section>
 <div class="feature">
-  <div class="feature-img"><div class="feature-img-bg img-mid"></div><div class="img-grid"></div><div class="img-label">Facility Management</div></div>
+  <div class="feature-img"><img src="img/doc-img-01.png" alt="Smart facility management" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/></div>
   <div class="feature-text">
     <div class="feature-eyebrow">Operations &amp; Maintenance</div>
     <h2 class="feature-title">Your facility, running <span class="hl">flawlessly</span></h2>
@@ -91,11 +87,11 @@
     <p class="feature-body">We continuously transform traditional offices into compliant, efficient, people-first environments — from bare walls to fully operational in weeks, not months.</p>
     <a href="services.html#interior" class="text-link">Explore interior setup →</a>
   </div>
-  <div class="feature-img"><div class="feature-img-bg img-gold"></div><div class="img-grid"></div><div class="img-label">Interior Setup &amp; PM</div></div>
+  <div class="feature-img"><img src="img/doc-img-13.jpg" alt="Business consultation and space setup" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/></div>
 </div>
 
 <div class="feature">
-  <div class="feature-img"><div class="feature-img-bg img-dark"></div><div class="img-grid"></div><div class="img-label">Industries</div></div>
+  <div class="feature-img"><img src="img/doc-img-09.jpg" alt="Financial sector operations" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/></div>
   <div class="feature-text">
     <div class="feature-eyebrow">Industries</div>
     <h2 class="feature-title">Deep <span class="hl">expertise</span> for every sector</h2>

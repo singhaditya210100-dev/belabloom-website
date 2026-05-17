@@ -3,63 +3,20 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=5"/>
+  <link rel="stylesheet" href="styles.css?v=6"/>
   <style>
-    
-.clients-section{padding:3rem 6% 2rem;border-bottom:1px solid var(--border);}
-.clients-logo-grid{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);}
-.client-logo-cell{flex:1 1 160px;min-width:120px;max-width:200px;padding:1.5rem 1.25rem;
+.clients-section{padding:4rem 6%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--off-white);}
+.clients-header{text-align:center;margin-bottom:2.5rem;}
+.clients-logo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:0;border:1px solid var(--border);background:var(--white);}
+.client-logo-cell{flex:1 1 180px;min-width:140px;padding:2rem 1.5rem;
   border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;background:var(--white);
-  transition:background 0.15s;}
+  display:flex;align-items:center;justify-content:center;
+  background:var(--white);transition:background 0.2s;}
 .client-logo-cell:hover{background:var(--off-white);}
-.client-logo-img{max-height:44px;max-width:130px;width:auto;height:auto;
-  object-fit:contain;filter:grayscale(100%);opacity:0.7;transition:0.2s;}
+.client-logo-img{max-height:54px;max-width:150px;width:auto;height:auto;
+  object-fit:contain;filter:grayscale(100%);opacity:0.65;transition:0.25s;}
 .client-logo-cell:hover .client-logo-img{filter:grayscale(0%);opacity:1;}
-
-    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;padding:4.5rem 6%;border-bottom:1px solid var(--border);align-items:start;}
-    .story-body p{font-size:0.9rem;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
-    .story-body strong{color:var(--text);font-weight:600;}
-    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
-    .value-cell{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.75rem 1.5rem;transition:background 0.15s;}
-    .value-cell:hover{background:var(--off-white);}
-    .value-name{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:0.35rem;}
-    .value-desc{font-size:0.78rem;color:var(--text-mid);line-height:1.6;}
-    .vm-split{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
-    .vm-panel{padding:3.5rem 5%;border-right:1px solid var(--border);}
-    .vm-panel:last-child{border-right:none;}
-    .vm-type{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
-    .vm-title{font-size:1.4rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin-bottom:0.75rem;}
-    .team-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);}
-    .team-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:180px 1fr;}
-    .team-card:last-child{border-right:none;}
-    .team-photo{position:relative;overflow:hidden;min-height:220px;background:var(--off-white);}
-    .team-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
-    .team-body{padding:2rem 1.75rem;display:flex;flex-direction:column;justify-content:center;}
-    .team-name{font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin-bottom:0.2rem;}
-    .team-role{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
-    .team-bio{font-size:0.8rem;color:var(--text-mid);line-height:1.7;}
-    .reg-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);}
-    .reg-cell{padding:2rem 2.5rem;border-right:1px solid var(--border);}
-    .reg-cell:last-child{border-right:none;}
-    .reg-label{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.4rem;}
-    .reg-value{font-size:0.88rem;font-weight:600;color:var(--text);}
-    @media(max-width:900px){
-      .story-grid{grid-template-columns:1fr;gap:2rem;}
-      .values-grid{grid-template-columns:1fr 1fr;}
-      .vm-split{grid-template-columns:1fr;}
-      .vm-panel{border-right:none;border-bottom:1px solid var(--border);}
-      .team-grid{grid-template-columns:1fr;}
-      .team-card{grid-template-columns:140px 1fr;border-right:none;}
-      .reg-strip{grid-template-columns:1fr;}
-      .reg-cell{border-right:none;border-bottom:1px solid var(--border);}
-    }
-    @media(max-width:600px){
-      .values-grid{grid-template-columns:1fr;}
-      .team-card{grid-template-columns:1fr;}
-      .team-photo{min-height:240px;}
-    }
-  </style>
+</style>
 </head>
 <body>
 <nav class="site-nav">
@@ -161,13 +118,18 @@
     </div>
   </div>
 </div>
-<div class="clients-section">
-  <div style="padding:0 6% 1.5rem;">
-    <div class="section-eyebrow">Trusted By</div>
     <div class="section-title" style="font-size:1.4rem;">Our <span class="hl">Clients</span></div>
   </div>
   <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Financial client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Insurance client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="IT client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Mining client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Business services client" class="client-logo-img"/></div></div>
 </div>
+<section class="clients-section">
+  <div class="clients-header">
+    <div class="section-eyebrow" style="text-align:center;">Trusted By</div>
+    <div class="section-title" style="font-size:1.8rem;text-align:center;margin-top:0.3rem;">Our <span class="hl">Clients</span></div>
+    <p style="text-align:center;font-size:0.875rem;color:var(--text-mid);margin-top:0.6rem;max-width:520px;margin-left:auto;margin-right:auto;">Leading organisations across Financial Services, Insurance, IT, Mining, and Business Services trust Belabloom to manage their infrastructure.</p>
+  </div>
+  <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>
+</section>
 <div class="cta-bleed">
   <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
   <div class="cta-bleed-content"><h2>Want to work with us?</h2>

@@ -3,44 +3,18 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Industries — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=5"/>
+  <link rel="stylesheet" href="styles.css?v=6"/>
   <style>
-    .ind-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
-    .ind-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;cursor:pointer;transition:background 0.15s;}
-    .ind-card:hover{background:var(--off-white);}
-    .ind-card-img{aspect-ratio:16/9;position:relative;overflow:hidden;}
-    .ind-card-img-bg{position:absolute;inset:0;}
-    .ind-card-body{padding:1.4rem 1.4rem 0.75rem;}
-    .ind-card-title{font-size:1rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:0.5rem;}
-    .ind-card-desc{font-size:0.8rem;color:var(--text-mid);line-height:1.65;}
-    .ind-card-foot{padding:0.65rem 1.4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-    .ind-card-tags{display:flex;gap:0.35rem;}
-    .ind-card-tag{font-size:0.65rem;font-weight:500;padding:0.15rem 0.5rem;border:1px solid var(--border);color:var(--text-light);}
-    .ind-arrow{font-size:0.75rem;color:var(--text-light);transition:color 0.15s;}
-    .ind-card:hover .ind-arrow{color:var(--green);}
-    .ind-detail{display:none;}
-    .ind-detail.open{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
-    .ind-detail-img{position:relative;min-height:320px;}
-    .ind-detail-img-bg{position:absolute;inset:0;}
-    .ind-detail-body{padding:3.5rem 4%;display:flex;flex-direction:column;justify-content:center;}
-    .ind-detail-title{font-size:1.7rem;font-weight:800;color:var(--text);letter-spacing:-0.025em;margin-bottom:0.75rem;}
-    .ind-detail-desc{font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;}
-    .ind-needs-title{font-size:0.7rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.75rem;}
-    .ind-need-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
-    .ind-need-list li{font-size:0.83rem;color:var(--text-mid);display:flex;gap:0.5rem;}
-    .ind-need-list li::before{content:"→";color:var(--gold);flex-shrink:0;}
-    @media(max-width:900px){.ind-grid{grid-template-columns:1fr 1fr;}.ind-detail.open{grid-template-columns:1fr;}}
-    @media(max-width:600px){.ind-grid{grid-template-columns:1fr;}}
-  </style>
-<style>
-.clients-section{padding:3rem 6% 2rem;border-bottom:1px solid var(--border);}
-.clients-logo-grid{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);}
-.client-logo-cell{flex:1 1 160px;min-width:120px;max-width:200px;padding:1.5rem 1.25rem;
+.clients-section{padding:4rem 6%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--off-white);}
+.clients-header{text-align:center;margin-bottom:2.5rem;}
+.clients-logo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:0;border:1px solid var(--border);background:var(--white);}
+.client-logo-cell{flex:1 1 180px;min-width:140px;padding:2rem 1.5rem;
   border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;background:var(--white);transition:background 0.15s;}
+  display:flex;align-items:center;justify-content:center;
+  background:var(--white);transition:background 0.2s;}
 .client-logo-cell:hover{background:var(--off-white);}
-.client-logo-img{max-height:44px;max-width:130px;width:auto;height:auto;
-  object-fit:contain;filter:grayscale(100%);opacity:0.7;transition:0.2s;}
+.client-logo-img{max-height:54px;max-width:150px;width:auto;height:auto;
+  object-fit:contain;filter:grayscale(100%);opacity:0.65;transition:0.25s;}
 .client-logo-cell:hover .client-logo-img{filter:grayscale(0%);opacity:1;}
 </style>
 </head>
@@ -171,13 +145,18 @@
   <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label">Sectors served</div></div>
   <div class="stat-cell"><div class="stat-num">20+</div><div class="stat-label">Cities in vendor network</div></div>
 </div>
-<div class="clients-section">
-  <div style="padding:0 0 1.5rem;">
-    <div class="section-eyebrow">Trusted By</div>
     <div class="section-title" style="font-size:1.4rem;">Our <span class="hl">Clients</span></div>
   </div>
   <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>
 </div>
+<section class="clients-section">
+  <div class="clients-header">
+    <div class="section-eyebrow" style="text-align:center;">Trusted By</div>
+    <div class="section-title" style="font-size:1.8rem;text-align:center;margin-top:0.3rem;">Our <span class="hl">Clients</span></div>
+    <p style="text-align:center;font-size:0.875rem;color:var(--text-mid);margin-top:0.6rem;max-width:520px;margin-left:auto;margin-right:auto;">Leading organisations across Financial Services, Insurance, IT, Mining, and Business Services trust Belabloom to manage their infrastructure.</p>
+  </div>
+  <div class="clients-logo-grid"><div class="client-logo-cell"><img src="clients/client-1.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-2.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-3.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-4.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-5.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-6.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-7.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-ins.png" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-it.jpg" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-mine.gif" alt="Client" class="client-logo-img"/></div><div class="client-logo-cell"><img src="clients/client-cms.jpg" alt="Client" class="client-logo-img"/></div></div>
+</section>
 <div class="cta-bleed">
   <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
   <div class="cta-bleed-content"><h2>Your industry.<br/>Our expertise.</h2><a href="contact.html" class="cta-bleed-link">Get a tailored proposal &nbsp;→</a></div>
