@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Industries — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=3"/>
+  <link rel="stylesheet" href="styles.css?v=4"/>
   <style>
     .ind-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
     .ind-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;cursor:pointer;transition:background 0.15s;}
@@ -44,15 +44,9 @@
     </div>
   </div>
   <div class="nav-r2">
-    <ul class="nav-primary">
-      <li><a href="services.html">Services</a></li>
-      <li><a href="industries.html"  class='active'>Industries</a></li>
-      <li><a href="packages.html">Packages</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-    <ul class="nav-secondary">
-      <li><a href="about.html">Our Story</a></li><li><a href="about.html#values">Values</a></li><li><a href="contact.html">Get a Quote</a></li>
-    </ul>
+    <ul class="nav-primary"><li><a href="services.html">Services</a></li><li><a href="industries.html" class='active'>Industries</a></li><li><a href="projects.html">Projects</a></li><li><a href="properties.html">Properties</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html">About Us</a></li></ul>
+    <ul class="nav-secondary"><li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Get a Quote</a></li></ul>
   </div>
 </nav>
 <div class="page-hero">
@@ -74,40 +68,38 @@
 </div>
 <div style="padding:0 6% 0;border-bottom:1px solid var(--border);">
   <div class="ind-grid" id="indGrid">
-    <div class="ind-card" id="corporates" data-tags="corporate enterprise office multi-site large" onclick="toggleDetail('d-corp',this)">
+    <div class="ind-card" id="corporates" data-tags="corporate enterprise office multi-site large" onclick="location.href='industries/nbfc.html'">
       <div class="ind-card-img"><div class="ind-card-img-bg img-dark"></div><div class="img-grid"></div></div>
       <div class="ind-card-body"><div class="ind-card-title">Corporate Offices</div><div class="ind-card-desc">Multi-floor enterprise environments where operational downtime is not an option and compliance must be air-tight.</div></div>
       <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">FM</span><span class="ind-card-tag">Compliance</span></div><span class="ind-arrow">→</span></div>
     </div>
-    <div class="ind-card" id="startups" data-tags="startup scale-up growth office setup fast" onclick="toggleDetail('d-start',this)">
+    <div class="ind-card" id="startups" data-tags="startup scale-up growth office setup fast" onclick="location.href='industries/it-services.html'">
       <div class="ind-card-img"><div class="ind-card-img-bg img-light"></div><div class="img-grid"></div></div>
       <div class="ind-card-body"><div class="ind-card-title">Startups &amp; Scale-ups</div><div class="ind-card-desc">Fast-moving teams that need to set up fast, spend smart, and stay focused on growth — not managing contractors.</div></div>
       <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">Setup</span><span class="ind-card-tag">Flexible</span></div><span class="ind-arrow">→</span></div>
     </div>
-    <div class="ind-card" id="smes" data-tags="sme small medium enterprise mid-market established" onclick="toggleDetail('d-sme',this)">
+    <div class="ind-card" id="smes" data-tags="sme small medium enterprise mid-market established" onclick="location.href='industries/business-services.html'">
       <div class="ind-card-img"><div class="ind-card-img-bg img-mid"></div><div class="img-grid"></div></div>
       <div class="ind-card-body"><div class="ind-card-title">SMEs &amp; Mid-Market</div><div class="ind-card-desc">Established businesses that have outgrown their current setup and need a smarter operations partner.</div></div>
       <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">Audit</span><span class="ind-card-tag">FM</span></div><span class="ind-arrow">→</span></div>
     </div>
-    <div class="ind-card" id="coworking" data-tags="coworking co-working flex space shared office tenant" onclick="toggleDetail('d-cow',this)">
+    <div class="ind-card" id="coworking" data-tags="coworking co-working flex space shared office tenant" onclick="location.href='industries/wealth-management.html'">
       <div class="ind-card-img"><div class="ind-card-img-bg img-gold"></div><div class="img-grid"></div></div>
       <div class="ind-card-body"><div class="ind-card-title">Co-working Spaces</div><div class="ind-card-desc">High-traffic multi-tenant environments where cleanliness, safety, and reliability drive member retention.</div></div>
       <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">High-Freq FM</span><span class="ind-card-tag">Safety</span></div><span class="ind-arrow">→</span></div>
     </div>
-    <div class="ind-card" id="retail" data-tags="retail chain store outlet pan-india rollout brand" onclick="toggleDetail('d-ret',this)">
+    <div class="ind-card" id="retail" data-tags="retail chain store outlet pan-india rollout brand" onclick="location.href='industries/general-insurance.html'">
       <div class="ind-card-img"><div class="ind-card-img-bg img-warm"></div><div class="img-grid"></div></div>
       <div class="ind-card-body"><div class="ind-card-title">Retail Chains</div><div class="ind-card-desc">Multi-outlet brands that need consistent store experience delivered by reliable operations at scale.</div></div>
       <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">National FM</span><span class="ind-card-tag">Compliance</span></div><span class="ind-arrow">→</span></div>
     </div>
-    <div class="ind-card" id="warehousing" data-tags="warehouse logistics supply chain 3pl distribution" onclick="toggleDetail('d-wh',this)">
+    <div class="ind-card" id="warehousing" data-tags="warehouse logistics supply chain 3pl distribution" onclick="location.href='industries/data-center.html'">
       <div class="ind-card-img"><div class="ind-card-img-bg img-mid"></div><div class="img-grid"></div></div>
       <div class="ind-card-body"><div class="ind-card-title">Warehousing &amp; Logistics</div><div class="ind-card-desc">Large-format facilities with round-the-clock operations, fire safety complexity, and severe pest risk.</div></div>
       <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">24/7 FM</span><span class="ind-card-tag">Pest</span></div><span class="ind-arrow">→</span></div>
     </div>
   </div>
 </div>
-<div class="ind-detail" id="d-corp">
-  <div class="ind-detail-img"><div class="ind-detail-img-bg img-dark"></div><div class="img-grid"></div></div>
   <div class="ind-detail-body">
     <div class="feature-eyebrow">Corporate Offices</div>
     <div class="ind-detail-title">Enterprise-grade operations, delivered</div>
@@ -117,8 +109,6 @@
     <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a corporate proposal →</a>
   </div>
 </div>
-<div class="ind-detail" id="d-start">
-  <div class="ind-detail-img"><div class="ind-detail-img-bg img-light"></div><div class="img-grid"></div></div>
   <div class="ind-detail-body">
     <div class="feature-eyebrow">Startups &amp; Scale-ups</div>
     <div class="ind-detail-title">Set up fast. Stay compliant. Focus on growth.</div>
@@ -128,8 +118,6 @@
     <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a startup proposal →</a>
   </div>
 </div>
-<div class="ind-detail" id="d-sme">
-  <div class="ind-detail-img"><div class="ind-detail-img-bg img-mid"></div><div class="img-grid"></div></div>
   <div class="ind-detail-body">
     <div class="feature-eyebrow">SMEs &amp; Mid-Market</div>
     <div class="ind-detail-title">Upgrade operations without the enterprise price tag.</div>
@@ -139,8 +127,6 @@
     <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get an SME proposal →</a>
   </div>
 </div>
-<div class="ind-detail" id="d-cow">
-  <div class="ind-detail-img"><div class="ind-detail-img-bg img-gold"></div><div class="img-grid"></div></div>
   <div class="ind-detail-body">
     <div class="feature-eyebrow">Co-working Spaces</div>
     <div class="ind-detail-title">Member experience starts with flawless operations.</div>
@@ -150,8 +136,6 @@
     <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a co-working proposal →</a>
   </div>
 </div>
-<div class="ind-detail" id="d-ret">
-  <div class="ind-detail-img"><div class="ind-detail-img-bg img-warm"></div><div class="img-grid"></div></div>
   <div class="ind-detail-body">
     <div class="feature-eyebrow">Retail Chains</div>
     <div class="ind-detail-title">Consistent experience. Every outlet. Every city.</div>
@@ -161,8 +145,6 @@
     <a href="contact.html" class="text-link" style="margin-top:1.5rem">Get a retail proposal →</a>
   </div>
 </div>
-<div class="ind-detail" id="d-wh">
-  <div class="ind-detail-img"><div class="ind-detail-img-bg img-dark"></div><div class="img-grid"></div></div>
   <div class="ind-detail-body">
     <div class="feature-eyebrow">Warehousing &amp; Logistics</div>
     <div class="ind-detail-title">FM downtime means supply chain disruption. Not on our watch.</div>
@@ -186,20 +168,12 @@
   <div><div class="footer-brand-name">Belabloom</div><p class="footer-brand-desc">Full-stack business infrastructure — from finding your office to running it every day.</p><a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a><div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div></div>
   <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#sourcing">Space sourcing</a></li><li><a href="services.html#fm">Facility management</a></li><li><a href="services.html#fire">Fire safety</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
   <div class="footer-col"><h4>Industries</h4><ul><li><a href="industries.html">All sectors</a></li><li><a href="industries.html#startups">Startups</a></li><li><a href="industries.html#smes">SMEs</a></li></ul></div>
-  <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="packages.html">Packages</a></li><li><a href="contact.html">Get a quote</a></li></ul></div>
+  <div class="footer-col"><h4>Company</h4><ul>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="properties.html">Properties</a></li>
+    <li><a href="marketplace.html">Marketplace</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul></div>
 </div><div class="footer-bottom"><span>© 2025 Belabloom. All rights reserved.</span><span>Pune, Maharashtra — Serving Pan-India</span></div></div></footer></body></html>
-<script>
-function toggleDetail(id,card){
-  const all=document.querySelectorAll('.ind-detail');
-  const t=document.getElementById(id);
-  const open=t.classList.contains('open');
-  all.forEach(d=>d.classList.remove('open'));
-  if(!open){t.classList.add('open');setTimeout(()=>t.scrollIntoView({behavior:'smooth',block:'start'}),50);}
-}
-function filterIndustries(q){
-  const cards=document.querySelectorAll('.ind-card');
-  const t=q.toLowerCase();let c=0;
-  cards.forEach(card=>{const show=!t||(card.dataset.tags+' '+card.innerText).toLowerCase().includes(t);card.style.display=show?'':'none';if(show)c++;});
-  document.getElementById('indCount').textContent=c+' Industr'+(c!==1?'ies':'y');
-}
-</script>

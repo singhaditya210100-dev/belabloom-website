@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Careers — Belabloom</title>
+  <link rel="stylesheet" href="styles.css?v=4"/>
+</head>
+<body><style>
+.job-list{border-top:1px solid var(--border);}
+.job-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1.75rem 6%;border-bottom:1px solid var(--border);gap:2rem;transition:background 0.15s;cursor:pointer;}
+.job-row:hover{background:var(--off-white);}
+.job-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.job-meta{font-size:0.78rem;color:var(--text-light);display:flex;gap:1rem;}
+.job-tag{font-size:0.7rem;font-weight:500;padding:0.25rem 0.65rem;border:1px solid var(--border);color:var(--text-light);}
+.job-arrow{font-size:0.9rem;color:var(--text-light);}
+.job-row:hover .job-arrow{color:var(--green);}
+.values-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);}
+.val-cell{padding:2rem 1.5rem;border-right:1px solid var(--border);}
+.val-cell:last-child{border-right:none;}
+.val-icon{font-size:1.5rem;margin-bottom:0.6rem;}
+.val-name{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.val-desc{font-size:0.78rem;color:var(--text-mid);line-height:1.6;}
+@media(max-width:900px){.values-row{grid-template-columns:1fr 1fr;}.val-cell:nth-child(2){border-right:none;}.val-cell:nth-child(3){border-right:none;}}
+@media(max-width:600px){.values-row{grid-template-columns:1fr;}.val-cell{border-right:none;border-bottom:1px solid var(--border);}}
+</style><nav class="site-nav">
+  <div class="nav-r1" style="background:#111111;border-bottom:1px solid rgba(255,255,255,0.08);">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Belabloom" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <div class="nav-r1-right">
+      <div class="nav-search">⌕</div>
+      <a href="contact.html" class="btn-contact">Contact us</a>
+    </div>
+  </div>
+  <div class="nav-r2">
+    <ul class="nav-primary"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="projects.html">Projects</a></li><li><a href="properties.html">Properties</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html">About Us</a></li></ul>
+    <ul class="nav-secondary">
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="page-hero">
+  <div class="page-breadcrumb"><a href="index.html">Home</a> › Careers</div>
+  <div class="page-hero-grid">
+    <div><h1>Join Belabloom</h1></div>
+    <div><p class="page-hero-desc"><span class="hl">We're building India's most trusted business infrastructure company.</span> If you're sharp, accountable, and want to work on real operational problems — we'd love to hear from you.</p></div>
+  </div>
+</div>
+<div class="stat-strip">
+  <div class="stat-cell"><div class="stat-num">50+</div><div class="stat-label">Team members</div></div>
+  <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label">Cities active</div></div>
+  <div class="stat-cell"><div class="stat-num">5★</div><div class="stat-label">Avg. employee rating</div></div>
+  <div class="stat-cell"><div class="stat-num">40%</div><div class="stat-label">Internal promotions</div></div>
+</div>
+<div style="padding:3.5rem 6%;border-bottom:1px solid var(--border);">
+  <div style="margin-bottom:1.5rem;">
+    <div class="section-eyebrow">Why Belabloom</div>
+    <div class="section-title">Life at <span class="hl">Belabloom</span></div>
+  </div>
+  <div class="values-row">
+    <div class="val-cell"><div class="val-icon">🚀</div><div class="val-name">Own Your Work</div><p class="val-desc">We hire people who take initiative. You'll own outcomes, not just tasks.</p></div>
+    <div class="val-cell"><div class="val-icon">📈</div><div class="val-name">Grow Fast</div><p class="val-desc">We're scaling quickly. Early team members grow with the company.</p></div>
+    <div class="val-cell"><div class="val-icon">🤝</div><div class="val-name">Real Impact</div><p class="val-desc">Your work directly affects clients and shapes how the company operates.</p></div>
+  </div>
+</div>
+<div style="padding:3.5rem 6%;border-bottom:1px solid var(--border);">
+  <div style="margin-bottom:1.5rem;">
+    <div class="section-eyebrow">Open Positions</div>
+    <div class="section-title">Current <span class="hl">Openings</span></div>
+  </div>
+  <div class="job-list">
+    <div class="job-row" onclick="location.href='contact.html'">
+      <div><div class="job-title">Facility Manager — Pune</div><div class="job-meta"><span>Full-time</span><span>Pune, Maharashtra</span><span>Operations</span></div></div>
+      <span class="job-tag">Apply →</span>
+    </div>
+    <div class="job-row" onclick="location.href='contact.html'">
+      <div><div class="job-title">Business Development Executive — Mumbai</div><div class="job-meta"><span>Full-time</span><span>Mumbai, Maharashtra</span><span>Sales</span></div></div>
+      <span class="job-tag">Apply →</span>
+    </div>
+    <div class="job-row" onclick="location.href='contact.html'">
+      <div><div class="job-title">Fire Safety Engineer</div><div class="job-meta"><span>Full-time</span><span>Pune / Mumbai</span><span>Technical</span></div></div>
+      <span class="job-tag">Apply →</span>
+    </div>
+    <div class="job-row" onclick="location.href='contact.html'">
+      <div><div class="job-title">Project Manager — Interior Fit-outs</div><div class="job-meta"><span>Full-time</span><span>Pune, Maharashtra</span><span>Projects</span></div></div>
+      <span class="job-tag">Apply →</span>
+    </div>
+    <div class="job-row" onclick="location.href='contact.html'">
+      <div><div class="job-title">Operations Coordinator</div><div class="job-meta"><span>Full-time</span><span>Pune, Maharashtra</span><span>Operations</span></div></div>
+      <span class="job-tag">Apply →</span>
+    </div>
+  </div>
+</div>
+<div class="feature reverse">
+  <div class="feature-text">
+    <div class="feature-eyebrow">Don't see a fit?</div>
+    <h2 class="feature-title">Send us an <span class="hl">open application</span></h2>
+    <p class="feature-body">If you're sharp, driven, and care about doing good work — we want to know you. Send your CV and a note on what kind of role you're looking for. We keep great profiles on file and hire fast when we scale.</p>
+    <a href="contact.html" class="text-link">Send an open application →</a>
+  </div>
+  <div class="feature-img"><div class="feature-img-bg img-mid"></div><div class="img-grid"></div></div>
+</div>
+<div class="cta-bleed">
+  <div class="cta-bleed-bg"></div><div class="cta-bleed-texture"></div>
+  <div class="cta-bleed-content"><h2>Ready to build something?</h2>
+    <a href="contact.html" class="cta-bleed-link">Explore open roles &nbsp;→</a>
+  </div>
+</div><footer><div class="footer-inner"><div class="footer-top">
+  <div>
+    <div class="footer-brand-name">Belabloom</div>
+    <p class="footer-brand-desc">Full-stack business infrastructure — from finding your office to running it every day.</p>
+    <a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a>
+    <div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div>
+  </div>
+  <div class="footer-col"><h4>Services</h4><ul>
+    <li><a href="services/space-sourcing.html">Space Sourcing</a></li>
+    <li><a href="services/interior-setup.html">Interior Setup</a></li>
+    <li><a href="services/facility-management.html">Facility Management</a></li>
+    <li><a href="services/fire-safety.html">Fire Safety</a></li>
+    <li><a href="services/pest-control.html">Pest Control</a></li>
+    <li><a href="services/insurance.html">Insurance</a></li>
+  </ul></div>
+  <div class="footer-col"><h4>Industries</h4><ul>
+    <li><a href="industries/nbfc.html">Diversified NBFC</a></li>
+    <li><a href="industries/wealth-management.html">Wealth Management</a></li>
+    <li><a href="industries/it-services.html">IT &amp; ITES</a></li>
+    <li><a href="industries/healthcare.html">Healthcare</a></li>
+    <li><a href="industries.html">All Industries →</a></li>
+  </ul></div>
+  <div class="footer-col"><h4>Company</h4><ul>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="properties.html">Properties</a></li>
+    <li><a href="marketplace.html">Marketplace</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul></div>
+</div><div class="footer-bottom">
+  <span>© 2025 Belabloom. All rights reserved.</span>
+  <span>Pune, Maharashtra — Serving Pan-India</span>
+</div></div></footer></body></html>
