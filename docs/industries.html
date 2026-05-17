@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Industries — Belabloom</title>
-  <link rel="stylesheet" href="styles.css?v=10"/>
+  <link rel="stylesheet" href="styles.css?v=11"/>
   <style>
-    .ind-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
+    .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
     .ind-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;cursor:pointer;transition:background 0.15s;display:flex;flex-direction:column;}
     .ind-card:hover{background:var(--off-white);}
     .ind-card-img{aspect-ratio:16/9;position:relative;overflow:hidden;}
-    .ind-card-img-bg{position:absolute;inset:0;}
-    .ind-card-body{padding:1.4rem 1.4rem 0.75rem;flex:1;}
-    .ind-card-title{font-size:1rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:0.5rem;}
-    .ind-card-desc{font-size:0.8rem;color:var(--text-mid);line-height:1.65;}
-    .ind-card-foot{padding:0.65rem 1.4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-    .ind-card-tags{display:flex;gap:0.35rem;}
-    .ind-card-tag{font-size:0.65rem;font-weight:500;padding:0.15rem 0.5rem;border:1px solid var(--border);color:var(--text-light);}
-    .ind-arrow{font-size:0.75rem;color:var(--text-light);transition:color 0.15s;}
+    .ind-card-img img{transition:transform 0.4s ease;}
+    .ind-card:hover .ind-card-img img{transform:scale(1.05);}
+    .ind-card-body{padding:1.1rem 1.25rem 0.6rem;flex:1;}
+    .ind-card-title{font-size:0.9rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:0.35rem;}
+    .ind-card-desc{font-size:0.75rem;color:var(--text-mid);line-height:1.6;}
+    .ind-card-foot{padding:0.6rem 1.25rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .ind-card-tags{display:flex;gap:0.3rem;flex-wrap:wrap;}
+    .ind-card-tag{font-size:0.62rem;font-weight:500;padding:0.12rem 0.45rem;border:1px solid var(--border);color:var(--text-light);}
+    .ind-arrow{font-size:0.75rem;color:var(--text-light);flex-shrink:0;transition:color 0.15s;}
     .ind-card:hover .ind-arrow{color:var(--green);}
-    .all-industries-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;}
-    @media(max-width:900px){.ind-grid{grid-template-columns:1fr 1fr;}.all-industries-grid{grid-template-columns:1fr;}}
-    @media(max-width:600px){.ind-grid{grid-template-columns:1fr;}}
+    @media(max-width:1100px){.ind-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:700px){.ind-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:460px){.ind-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -50,40 +51,166 @@
 </div>
 
 <div style="padding:0.75rem 6%;border-bottom:1px solid var(--border);">
-  <span class="result-count" id="indCount">6 Industries</span>
+  <span class="result-count" id="indCount">12 Industries</span>
 </div>
 
 <div style="padding:0 6%;border-bottom:1px solid var(--border);">
   <div class="ind-grid" id="indGrid">
-    <div class="ind-card" id="corporates" data-tags="corporate enterprise office multi-site" onclick="location.href='industries/nbfc.html'">
-      <div class="ind-card-img"><div class="ind-card-img-bg img-dark"></div><div class="img-grid"></div></div>
-      <div class="ind-card-body"><div class="ind-card-title">Corporate Offices</div><div class="ind-card-desc">Multi-floor enterprise environments where operational downtime is not an option and compliance must be air-tight.</div></div>
-      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">FM</span><span class="ind-card-tag">Compliance</span></div><span class="ind-arrow">→</span></div>
+    <div class="ind-card" id="nbfc" data-tags="nbfc financial services banking diversified" onclick="location.href='industries/nbfc.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-09.jpg" alt="Diversified NBFC" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Diversified NBFC</div>
+        <div class="ind-card-desc">Non-banking financial corporations needing compliant, client-ready branch environments across India.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">BFSI</span><span class="ind-card-tag">Compliance</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
     </div>
-    <div class="ind-card" id="startups" data-tags="startup scale-up growth office setup fast" onclick="location.href='industries/it-services.html'">
-      <div class="ind-card-img"><div class="ind-card-img-bg img-light"></div><div class="img-grid"></div></div>
-      <div class="ind-card-body"><div class="ind-card-title">Startups &amp; Scale-ups</div><div class="ind-card-desc">Fast-moving teams that need to set up fast, spend smart, and stay focused on growth — not managing contractors.</div></div>
-      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">Setup</span><span class="ind-card-tag">Flexible</span></div><span class="ind-arrow">→</span></div>
+    <div class="ind-card" id="wealth" data-tags="wealth management investment advisory financial" onclick="location.href='industries/wealth-management.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-09.jpg" alt="Wealth Management" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Wealth Management</div>
+        <div class="ind-card-desc">Premium offices that reflect integrity and trust — designed for high-net-worth client interactions.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">Premium FM</span><span class="ind-card-tag">Advisory</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
     </div>
-    <div class="ind-card" id="smes" data-tags="sme small medium enterprise mid-market" onclick="location.href='industries/business-services.html'">
-      <div class="ind-card-img"><div class="ind-card-img-bg img-mid"></div><div class="img-grid"></div></div>
-      <div class="ind-card-body"><div class="ind-card-title">SMEs &amp; Mid-Market</div><div class="ind-card-desc">Established businesses that have outgrown their current setup and need a smarter operations partner.</div></div>
-      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">Audit</span><span class="ind-card-tag">FM</span></div><span class="ind-arrow">→</span></div>
+    <div class="ind-card" id="brokerage" data-tags="brokerage risk management insurance consulting" onclick="location.href='industries/brokerage.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-09.jpg" alt="Brokerage &amp; Risk Management" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Brokerage &amp; Risk Management</div>
+        <div class="ind-card-desc">Secure, audit-ready environments for brokerage and risk advisory operations.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">Security</span><span class="ind-card-tag">Audit</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
     </div>
-    <div class="ind-card" id="coworking" data-tags="coworking co-working flex space shared office" onclick="location.href='industries/wealth-management.html'">
-      <div class="ind-card-img"><div class="ind-card-img-bg img-gold"></div><div class="img-grid"></div></div>
-      <div class="ind-card-body"><div class="ind-card-title">Co-working Spaces</div><div class="ind-card-desc">High-traffic multi-tenant environments where cleanliness, safety, and reliability drive member retention.</div></div>
-      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">High-Freq FM</span><span class="ind-card-tag">Safety</span></div><span class="ind-arrow">→</span></div>
+    <div class="ind-card" id="insurance" data-tags="general insurance irdai compliance branch" onclick="location.href='industries/general-insurance.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-10.jpg" alt="General Insurance" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">General Insurance</div>
+        <div class="ind-card-desc">Secure workspaces meeting IRDAI standards — fire safety, data protection, and branch management.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">Compliance</span><span class="ind-card-tag">FM</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
     </div>
-    <div class="ind-card" id="retail" data-tags="retail chain store outlet pan-india rollout" onclick="location.href='industries/general-insurance.html'">
-      <div class="ind-card-img"><div class="ind-card-img-bg img-warm"></div><div class="img-grid"></div></div>
-      <div class="ind-card-body"><div class="ind-card-title">Retail Chains</div><div class="ind-card-desc">Multi-outlet brands that need consistent store experience delivered by reliable operations at scale.</div></div>
-      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">National FM</span><span class="ind-card-tag">Compliance</span></div><span class="ind-arrow">→</span></div>
+    <div class="ind-card" id="it" data-tags="it information technology enabled services software" onclick="location.href='industries/it-services.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-08.png" alt="IT &amp; IT-Enabled Services" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">IT &amp; IT-Enabled Services</div>
+        <div class="ind-card-desc">Scalable, tech-ready office environments for IT firms from startup to large delivery centres.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">Scalable FM</span><span class="ind-card-tag">MEP</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
     </div>
-    <div class="ind-card" id="warehousing" data-tags="warehouse logistics supply chain 3pl distribution" onclick="location.href='industries/data-center.html'">
-      <div class="ind-card-img"><div class="ind-card-img-bg img-mid"></div><div class="img-grid"></div></div>
-      <div class="ind-card-body"><div class="ind-card-title">Warehousing &amp; Logistics</div><div class="ind-card-desc">Large-format facilities with round-the-clock operations, fire safety complexity, and severe pest risk.</div></div>
-      <div class="ind-card-foot"><div class="ind-card-tags"><span class="ind-card-tag">24/7 FM</span><span class="ind-card-tag">Pest</span></div><span class="ind-arrow">→</span></div>
+    <div class="ind-card" id="datacenter" data-tags="data center cloud infrastructure colocation tier" onclick="location.href='industries/data-center.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-08.png" alt="Data Center &amp; Cloud" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Data Center &amp; Cloud</div>
+        <div class="ind-card-desc">Critical environment management — fire suppression, 24/7 FM, and uptime-first maintenance protocols.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">24/7 FM</span><span class="ind-card-tag">Fire Safety</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
+    </div>
+    <div class="ind-card" id="mining" data-tags="mining minerals processing industrial remote site" onclick="location.href='industries/mining.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-00.jpg" alt="Mining &amp; Minerals Processing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Mining &amp; Minerals Processing</div>
+        <div class="ind-card-desc">Rugged, compliant facility solutions for remote and capital-intensive industrial operations.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">Industrial</span><span class="ind-card-tag">Safety</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
+    </div>
+    <div class="ind-card" id="healthcare" data-tags="healthcare hospital clinic medical nabh" onclick="location.href='industries/healthcare.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-03.jpg" alt="Healthcare" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Healthcare</div>
+        <div class="ind-card-desc">NABH-aligned facility management — medical-grade pest control, fire safety, and hygienic environments.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">NABH-ready</span><span class="ind-card-tag">Hygiene</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
+    </div>
+    <div class="ind-card" id="bizservices" data-tags="business services cash management logistics support" onclick="location.href='industries/business-services.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-02.jpg" alt="Business Services" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Business Services</div>
+        <div class="ind-card-desc">Multi-site FM for business support and logistics companies — consistent SLAs across every location.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">Multi-site</span><span class="ind-card-tag">FM</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
+    </div>
+    <div class="ind-card" id="housing" data-tags="housing finance nhb mortgage branch retail" onclick="location.href='industries/housing-finance.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-14.jpg" alt="Housing Finance" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Housing Finance</div>
+        <div class="ind-card-desc">Welcoming branch environments that build customer trust — designed for front-office and back-office operations.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">Branch FM</span><span class="ind-card-tag">Setup</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
+    </div>
+    <div class="ind-card" id="stockbroking" data-tags="stock broking trading sebi exchange floor" onclick="location.href='industries/stock-broking.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-09.jpg" alt="Stock Broking" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Stock Broking</div>
+        <div class="ind-card-desc">Zero-downtime trading floor management — maintenance outside market hours, SEBI-compliant environments.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">SEBI</span><span class="ind-card-tag">Zero Downtime</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
+    </div>
+    <div class="ind-card" id="infra" data-tags="infrastructure services construction project management" onclick="location.href='industries/mining.html'">
+      <div class="ind-card-img">
+        <img src="img/doc-img-01.png" alt="Infrastructure Services" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="ind-card-body">
+        <div class="ind-card-title">Infrastructure Services</div>
+        <div class="ind-card-desc">Project and facility management for large-scale infrastructure companies and EPC contractors.</div>
+      </div>
+      <div class="ind-card-foot">
+        <div class="ind-card-tags"><span class="ind-card-tag">Projects</span><span class="ind-card-tag">FM</span></div>
+        <span class="ind-arrow">→</span>
+      </div>
     </div>
   </div>
 </div>
@@ -93,19 +220,6 @@
   <div class="stat-cell"><div class="stat-num">7.5%</div><div class="stat-label">CAGR through 2030</div></div>
   <div class="stat-cell"><div class="stat-num">12</div><div class="stat-label">Sectors served</div></div>
   <div class="stat-cell"><div class="stat-num">20+</div><div class="stat-label">Cities in vendor network</div></div>
-</div>
-
-<div style="padding:3.5rem 6%;border-bottom:1px solid var(--border);">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;">
-    <div>
-      <div class="section-eyebrow">All Sectors</div>
-      <div class="section-title" style="margin-bottom:1.5rem;">Every industry <span class="hl">we cover</span></div>
-      <div class="all-industries-grid"><a href="industries/nbfc.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Diversified NBFC <span style="color:var(--text-light);">→</span></a><a href="industries/wealth-management.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Wealth Management <span style="color:var(--text-light);">→</span></a><a href="industries/brokerage.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Brokerage &amp; Risk <span style="color:var(--text-light);">→</span></a><a href="industries/general-insurance.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">General Insurance <span style="color:var(--text-light);">→</span></a><a href="industries/it-services.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">IT &amp; IT-Enabled Services <span style="color:var(--text-light);">→</span></a><a href="industries/data-center.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Data Center &amp; Cloud <span style="color:var(--text-light);">→</span></a><a href="industries/mining.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Infrastructure Services <span style="color:var(--text-light);">→</span></a><a href="industries/mining.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Mining &amp; Minerals <span style="color:var(--text-light);">→</span></a><a href="industries/healthcare.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Healthcare <span style="color:var(--text-light);">→</span></a><a href="industries/business-services.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Business Services <span style="color:var(--text-light);">→</span></a><a href="industries/housing-finance.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Housing Finance <span style="color:var(--text-light);">→</span></a><a href="industries/stock-broking.html" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.825rem;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#1B3A2F'" onmouseout="this.style.color='#4A4A4A'">Stock Broking <span style="color:var(--text-light);">→</span></a></div>
-    </div>
-    <div class="feature-img" style="min-height:360px;border-radius:0;overflow:hidden;position:relative;">
-      <img src="img/doc-img-09.jpg" alt="Financial sector" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-    </div>
-  </div>
 </div>
 
 <section style="padding:5rem 6%;background:#F7F4EF;border-top:1px solid #DEDBD5;border-bottom:1px solid #DEDBD5;">
@@ -128,7 +242,7 @@
 </div>
 <footer><div class="footer-inner"><div class="footer-top">
   <div><div class="footer-brand-name">Belabloom</div>
-    <p class="footer-brand-desc">Managing Projects, Empowering Businesses. Full-stack infrastructure from finding your office to running it every day.</p>
+    <p class="footer-brand-desc">Managing Projects, Empowering Businesses.</p>
     <a href="contact.html" class="footer-subscribe">Get a quote &nbsp;→</a>
     <div class="footer-social"><a href="#">in</a><a href="#">tw</a><a href="#">ig</a></div>
   </div>
