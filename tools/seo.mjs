@@ -3,6 +3,7 @@
 //   - docs/sitemap.xml
 // Titles, meta descriptions, canonical URLs, H1s and breadcrumbs are read from each page,
 // so edit those in the HTML, then run:  node tools/seo.mjs
+// Redirect stubs (pages with <meta http-equiv="refresh">) are left alone and kept out of the sitemap.
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -57,6 +58,8 @@ function read(file) {
     canonical: get(/<link rel="canonical" href="([^"]+)"/),
     h1: text(get(/<h1[^>]*>([\s\S]*?)<\/h1>/) ?? ''),
     breadcrumb: get(/<div class="page-breadcrumb">([\s\S]*?)<\/div>/),
+    localities: [...html.matchAll(/<article class="locality" id="[^"]+"><h3>([\s\S]*?)<\/h3>/g)].map((m) => text(m[1])),
+    published: get(/<time class="published" datetime="([^"]+)"/),
   };
   for (const key of ['title', 'description', 'canonical']) {
     if (!page[key]) throw new Error(`${page.path}: missing ${key}`);
@@ -84,7 +87,10 @@ function service(page) {
   }
   if (page.path.startsWith('pest-control/')) {
     const area = page.h1.match(/^Pest Control in (.+)$/);
-    if (area) return { ...base, name: page.h1, serviceType: 'Pest control', areaServed: place(area[1]) };
+    if (area) {
+      const areaServed = page.localities.length ? page.localities.map(place) : place(area[1]);
+      return { ...base, name: page.h1, serviceType: 'Pest control', areaServed };
+    }
     if (page.path === 'pest-control/index.html') {
       return { ...base, name: page.h1, serviceType: 'Pest control', areaServed: ['Mumbai', 'Navi Mumbai', 'Thane'].map(place) };
     }
@@ -100,6 +106,13 @@ function structuredData(page) {
   }
   const svc = service(page);
   if (svc) graph.push(svc);
+  if (page.path.startsWith('insights/') && page.published) {
+    graph.push({
+      '@type': 'Article', headline: page.h1, description: page.description, url: page.canonical,
+      datePublished: page.published, image: `${SITE}/og-image.jpg`,
+      author: { '@id': ORG_ID }, publisher: { '@id': ORG_ID }, mainEntityOfPage: page.canonical,
+    });
+  }
   if (page.breadcrumb) graph.push(breadcrumbList(page));
   return graph.length ? { '@context': 'https://schema.org', '@graph': graph } : null;
 }
@@ -134,7 +147,10 @@ function lastmod(file) {
   return git('log', '-1', '--format=%cs', '--', file) || today;
 }
 
-const pages = walk(DOCS).filter((f) => !SKIP.has(relative(DOCS, f).split('\\').join('/'))).map(read);
+const isRedirect = (f) => /<meta http-equiv="refresh"/i.test(readFileSync(f, 'utf8'));
+const pages = walk(DOCS)
+  .filter((f) => !SKIP.has(relative(DOCS, f).split('\\').join('/')) && !isRedirect(f))
+  .map(read);
 for (const page of pages) {
   const stripped = page.html.replace(/\n[ \t]*<!-- seo:start[\s\S]*?<!-- seo:end -->/, '');
   if (!stripped.includes('</head>')) throw new Error(`${page.path}: no </head>`);
