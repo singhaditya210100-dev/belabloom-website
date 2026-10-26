@@ -59,8 +59,8 @@ export default function ContactPage() {
                     ✉️ Email
                   </h3>
                   <p className="text-gray-600">
-                    <a href="mailto:info@belabloom.com" className="hover:text-primary-600 transition">
-                      info@belabloom.com
+                    <a href="mailto:ashoksingh@belabloom.com" className="hover:text-primary-600 transition">
+                      ashoksingh@belabloom.com
                     </a>
                   </p>
                 </div>
