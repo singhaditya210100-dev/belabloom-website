@@ -27,6 +27,7 @@ const ORGANIZATION = {
   image: `${SITE}/og-image.jpg`,
   telephone: PHONE,
   email: EMAIL,
+  address: { '@type': 'PostalAddress', addressLocality: 'Nerul, Navi Mumbai', addressRegion: 'Maharashtra', postalCode: '400706', addressCountry: 'IN' },
   foundingDate: '2021-04-27',
   areaServed: { '@type': 'Country', name: 'India' },
   contactPoint: { '@type': 'ContactPoint', telephone: PHONE, email: EMAIL, contactType: 'sales', areaServed: 'IN' },
