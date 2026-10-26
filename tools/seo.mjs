@@ -13,6 +13,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = join(ROOT, 'docs');
 const SITE = 'https://www.belabloom.com';
 const PHONE = '+91-99303-62961';
+const EMAIL = 'ashoksingh@belabloom.com';
 const SKIP = new Set(['404.html']);
 
 const ORG_ID = `${SITE}/#organization`;
@@ -25,9 +26,10 @@ const ORGANIZATION = {
   logo: `${SITE}/icon-512.png`,
   image: `${SITE}/og-image.jpg`,
   telephone: PHONE,
+  email: EMAIL,
   foundingDate: '2021-04-27',
   areaServed: { '@type': 'Country', name: 'India' },
-  contactPoint: { '@type': 'ContactPoint', telephone: PHONE, contactType: 'sales', areaServed: 'IN' },
+  contactPoint: { '@type': 'ContactPoint', telephone: PHONE, email: EMAIL, contactType: 'sales', areaServed: 'IN' },
   sameAs: ['https://www.indiamart.com/belabloomprojectsfacilitymanagement/'],
 };
 const PROVIDER = { '@type': 'Organization', '@id': ORG_ID, name: 'Belabloom', url: `${SITE}/` };
@@ -152,9 +154,10 @@ const pages = walk(DOCS)
   .filter((f) => !SKIP.has(relative(DOCS, f).split('\\').join('/')) && !isRedirect(f))
   .map(read);
 for (const page of pages) {
-  const stripped = page.html.replace(/\n[ \t]*<!-- seo:start[\s\S]*?<!-- seo:end -->/, '');
+  const eol = page.html.includes('\r\n') ? '\r\n' : '\n'; // Windows checkouts (core.autocrlf) use CRLF
+  const stripped = page.html.replace(/\r?\n[ \t]*<!-- seo:start[\s\S]*?<!-- seo:end -->/, '');
   if (!stripped.includes('</head>')) throw new Error(`${page.path}: no </head>`);
-  const html = stripped.replace('</head>', `${headBlock(page)}\n</head>`);
+  const html = stripped.replace('</head>', `${headBlock(page).replace(/\n/g, eol)}${eol}</head>`);
   if (html !== page.html) writeFileSync(join(DOCS, page.path), html);
 }
 

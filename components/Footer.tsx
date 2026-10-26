@@ -133,9 +133,9 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold mb-4 uppercase text-sm tracking-wide">Get in Touch</h4>
               <div className="space-y-4">
-                <a href="mailto:info@belabloom.com" className="flex items-start gap-3 text-neutral-400 hover:text-accent-400 transition group">
+                <a href="mailto:ashoksingh@belabloom.com" className="flex items-start gap-3 text-neutral-400 hover:text-accent-400 transition group">
                   <Mail className="h-5 w-5 mt-0.5 flex-shrink-0 group-hover:text-accent-400" />
-                  <span className="text-sm break-all">info@belabloom.com</span>
+                  <span className="text-sm break-all">ashoksingh@belabloom.com</span>
                 </a>
                 <a href="tel:+91" className="flex items-start gap-3 text-neutral-400 hover:text-accent-400 transition group">
                   <Phone className="h-5 w-5 mt-0.5 flex-shrink-0 group-hover:text-accent-400" />
