@@ -16,7 +16,7 @@
 - **Live WordPress source**: https://www.belabloom.com/
 - **GitHub**: https://github.com/singhaditya210100-dev/belabloom-website
 - **Deployment target**: Vercel (not yet deployed)
-- **Live site today**: the static HTML in `docs/`, deployed to GitHub Pages on every push to `main` (`.github/workflows/deploy.yml`). After adding or editing a page in `docs/`, run `node tools/seo.mjs` to refresh its Open Graph/structured-data tags and `docs/sitemap.xml`. Pest-control locations live on 8 zone pages (`docs/pest-control/<zone>.html`, one `<article class="locality">` per locality); the old per-locality URLs are redirect stubs, so add a new locality to its zone page rather than creating a new page.
+- **Live site today**: the static HTML in `docs/`, deployed to GitHub Pages on every push to `main` (`.github/workflows/deploy.yml`). After adding or editing a page in `docs/`, run `node tools/seo.mjs` to refresh its Open Graph/structured-data tags and `docs/sitemap.xml`. Pest-control locations live on 8 zone pages (`docs/pest-control/<zone>.html`, one `<article class="locality">` per locality); the old per-locality URLs are redirect stubs, so add a new locality to its zone page rather than creating a new page. Pages are linked and canonicalised without `.html` (`about.html` is served at `/about`; old `.html` addresses redirect in the browser), so write links, canonical URLs and sitemap entries without the extension.
 
 ---
 
