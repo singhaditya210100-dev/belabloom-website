@@ -139,6 +139,8 @@ function headBlock(page) {
     meta('og:image:height', '630'),
     meta('twitter:card', 'summary_large_image'),
     ...(json ? [`  <script type="application/ld+json">${JSON.stringify(json).replace(/<\//g, '<\\/')}</script>`] : []),
+    // Pages are linked without ".html" (GitHub Pages serves /about from about.html). Send old .html addresses to the clean one.
+    `  <script>if(/\\.html$/.test(location.pathname))location.replace(location.pathname.replace(/(\\/index)?\\.html$/,function(m,i){return i?'/':''})+location.search+location.hash)</script>`,
     '  <script async src="/track.js"></script>', // Google Ads tag + lead conversion, see docs/track.js
     '  <!-- seo:end -->',
   ].join('\n');
