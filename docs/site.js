@@ -25,6 +25,7 @@
       '.section-eyebrow', '.section-title', '.stat-cell', '.service-row',
       '.svc-point', '.process-step', '.locality', '.pest-link', '.zone-grid > div',
       '.prose > *', '.faq details', '.split > *',
+      '.proj-head', '.proj-grid a',
       '.cta-bleed h2', '.cta-sub', '.cta-actions', '.cta-info > div',
     ].join(','));
 
