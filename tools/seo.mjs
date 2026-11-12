@@ -142,6 +142,7 @@ function headBlock(page) {
     // Pages are linked without ".html" (GitHub Pages serves /about from about.html). Send old .html addresses to the clean one.
     `  <script>if(/\\.html$/.test(location.pathname))location.replace(location.pathname.replace(/(\\/index)?\\.html$/,function(m,i){return i?'/':''})+location.search+location.hash)</script>`,
     '  <script async src="/track.js"></script>', // Google Ads tag + lead conversion, see docs/track.js
+    '  <script defer src="/site.js"></script>', // nav state + reveal-on-scroll, see docs/site.js
     '  <!-- seo:end -->',
   ].join('\n');
 }
